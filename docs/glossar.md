@@ -40,3 +40,8 @@ title: "Glossar"
 | Add-on | Spieler-Erweiterung in einer Sandbox: liest die Beobachtung, schlägt Intents vor |
 | RL (Reinforcement Learning) | Lernverfahren, bei dem Agenten durch Belohnungen aus vielen Spielen lernen |
 | Backlog-Item (B-nnn) | konkrete nächste Aufgabe mit Abhängigkeiten und Tests, im Backlog |
+| Zelle / CellId | Quadrat des Weltrasters; Einheit, in der die Welt geladen und entladen wird |
+| Interessenbereich | Zellen im Radius R um den eigenen Magier; nur dort existiert für einen Client etwas Simulationsrelevantes |
+| Fernsicht | grobe Landschaft außerhalb des Interessenbereichs, reine Präsentation ohne Gameplay |
+| Reittier (Mount) | Bewegungsmodus des Magiers aus einem `MountBlueprint`: Boden oder Flug |
+| Fähigkeitenleiste (Loadout) | vom Spieler deklarierte Zuordnung Slot → Fähigkeit; Teil der Simulation |

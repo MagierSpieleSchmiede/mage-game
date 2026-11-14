@@ -19,3 +19,4 @@ Mage Game ist kein festes Duell: Eine Runde hat zwei oder mehr Teams, jedes mit 
 
 - Teamfarben im HUD und an den Magiern, auch für Farbenblinde: [[stil-vorbild|Stil-Vorbild]].
 - Obergrenze an Spielern pro Runde: ergibt sich aus [[benchmarks|Benchmarks]] und der Bandbreite ([[netzwerk|Netzwerk]]).
+- Teams in der großen Welt mit tausenden Spielern: die Grenze von 32 Teams gilt für die Arena; für die Welt [[p-018-sichtbarkeit-bei-vielen-teams|P-018]].

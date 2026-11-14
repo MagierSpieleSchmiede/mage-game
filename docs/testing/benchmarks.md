@@ -16,6 +16,7 @@ Alle Szenarien sind deterministisch (fester Seed, aufgezeichnete Intents) und di
 | `teams_5v5` | 5-gegen-5, Kampf | Sichtbarkeit, Zielwahl, Trefferprüfung mit vielen Spielern |
 | `projectile_storm` | 4-gegen-4, 300 gleichzeitige Projektile und Fragmente | Shape-Casts, Spawn und Despawn |
 | `stealth_5v5` | 5-gegen-5, die Hälfte unsichtbar | Sichtlinien-Raycasts |
+| `world_crowd` (ab M11) | Testwelt mit vielen Zellen, 1000 Magier, wandernd | Laden und Entladen von Zellen, Interessenbereich, Kosten pro Serverprozess ([[p-017-welt-auf-mehrere-server-verteilen\|P-017]]) |
 
 ## Was gemessen wird
 

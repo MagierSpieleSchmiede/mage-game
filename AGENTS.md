@@ -65,7 +65,7 @@ Laut Spec 001 nach **jedem** Modul `cargo check` und `cargo clippy -- -D warning
 - **Balance-Konstanten** gehören in die zentrale Balance-Ressource, nie als magische Zahlen in Systeme.
 - **Umfang:** Keine Abstraktion, die nicht der „Entwirf für“-Liste dient oder mindestens zweimal verwendet wird. Keine TODO-Stubs für Kernfunktionalität. Netzwerk, KI, Add-ons, Menüs, Audio, Asset-Pipelines, Spielstände und Animationen aus Asset-Dateien sind außerhalb des Prototyps.
 - **`Cargo.lock` wird eingecheckt.** Neue Abhängigkeiten nur mit Begründung (ADR, wenn es eine Architekturfrage ist).
-- **Branches und `master`:** Die Planungsphase ist vorbei; niemand committet mehr direkt auf `master`. Jede Person arbeitet auf ihrem eigenen Branch `dev-<name>` (Daniel: `dev-danielb`) und legt ihn selbst an; Agenten arbeiten auf dem Branch der Person, für die sie arbeiten. Nach `master` kommt alles per Pull Request; gemergt wird, wenn Daniel es sagt. Pushen immer nur nach Freigabe.
+- **Branches und `master`:** Die Planungsphase ist vorbei; niemand committet mehr direkt auf `master`. Jede Person arbeitet auf ihrem eigenen Branch `dev-<name>` (Daniel: `dev-danielb`) und legt ihn selbst an; Agenten arbeiten auf dem Branch der Person, für die sie arbeiten. Nach `master` kommt alles per Pull Request; gemergt wird, wenn Daniel es sagt. Ausnahme, solange nur Daniel arbeitet: Ein Agent, der für Daniel arbeitet, pusht nach jeder erledigten Aufgabe ohne Nachfrage auf `dev-danielb`, wartet die CI ab und übernimmt bei Grün per Fast-Forward nach `master`; ist die CI rot, wird nicht übernommen, sondern repariert. Alle anderen Pushes nur nach Freigabe.
 - **Nie committen:** `target/`, `site/.quartz/`, `site/public/`, `.env`, `.secrets`.
 
 ## `target/` klein halten

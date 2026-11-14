@@ -11,12 +11,13 @@ Gespielt wird mit Tastatur und Maus oder mit Controller, auf Mobilgeräten per T
 | --- | --- | --- | --- |
 | Bewegen | `W` `A` `S` `D` | linker Stick | virtueller Stick links |
 | Kamera und Zielen | Maus | rechter Stick | Wischen rechts |
-| Zauber 1 (Bolt) | `1` oder linke Maustaste | rechter Trigger | Knopf |
-| Zauber 2 (Homing-Bolt) | `2` | rechte Schultertaste | Knopf |
-| Zauber 3 (Feuerball) | `3` | linker Trigger | Knopf |
+| Slot 1 (Standard: Bolt) | `1` oder linke Maustaste | rechter Trigger | Knopf |
+| Slot 2 (Standard: Homing-Bolt) | `2` | rechte Schultertaste | Knopf |
+| Slot 3 (Standard: Feuerball) | `3` | linker Trigger | Knopf |
+| Slot 4 bis `MAX_SLOTS` | `4` … `0`, `Q`, `E` | Schultertaste + Knopf | Knopf |
 | Menü | `Esc` | Start | Menü-Knopf |
 
-Platzhalter, wird im Spieltest angepasst. Jede Belegung ist vom Spieler änderbar und wird gespeichert. Das README zeigt eine Kopie der Spalten Tastatur und Controller; wer hier ändert, zieht sie mit.
+Platzhalter, wird im Spieltest angepasst. Welche Fähigkeit in einem Slot liegt, legt der Spieler in seiner Fähigkeitenleiste fest ([[faehigkeiten|Fähigkeiten & Belegung]]). Jede Belegung ist vom Spieler änderbar und wird gespeichert. Das README zeigt eine Kopie der Spalten Tastatur und Controller; wer hier ändert, zieht sie mit.
 
 ## Regeln
 

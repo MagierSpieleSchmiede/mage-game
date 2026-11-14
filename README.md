@@ -37,6 +37,9 @@ Grundlage für alles, was danach kommt:
   ([Sicherheit](docs/architecture/sicherheit.md)).
 - **Add-ons**, die den eigenen Charakter auslesen oder automatisieren, in
   einer Sandbox.
+- **Reittiere** am Boden und in der Luft, auf denen auch gekämpft wird.
+- Eine **große Welt** für tausende Spieler, von der jeder Client nur die
+  Umgebung seines Magiers lädt.
 
 Geschrieben in **Rust** mit [Bevy](https://bevy.org) 0.20 und
 [Avian](https://github.com/avianphysics/avian) 0.8 (Physik-Queries).
@@ -70,11 +73,12 @@ Standardbelegung, Kopie aus [Eingabegeräte](docs/architecture/eingabegeraete.md
 | --- | --- | --- |
 | Bewegen | `W` `A` `S` `D` | linker Stick |
 | Kamera und Zielen | Maus | rechter Stick |
-| Bolt | `1` oder linke Maustaste | rechter Trigger |
-| Homing-Bolt | `2` | rechte Schultertaste |
-| Feuerball | `3` | linker Trigger |
+| Slot 1 (Standard: Bolt) | `1` oder linke Maustaste | rechter Trigger |
+| Slot 2 (Standard: Homing-Bolt) | `2` | rechte Schultertaste |
+| Slot 3 (Standard: Feuerball) | `3` | linker Trigger |
+| Slot 4 bis 12 | `4` … `0`, `Q`, `E` | Schultertaste + Knopf |
 
-Alle Belegungen sind änderbar.
+Alle Belegungen sind änderbar, und welche Fähigkeit in welchem Slot liegt, stellt jeder Spieler selbst zusammen.
 
 ## Bauen und testen
 

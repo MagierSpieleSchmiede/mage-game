@@ -3,7 +3,7 @@ title: "Entscheidungen — alle ADRs mit ihrem Stand"
 ---
 # Entscheidungen — alle ADRs mit ihrem Stand
 
-Die eine Liste aller Architekturentscheidungen. Der **Stand** steht nur hier und in der ADR selbst; andere Seiten verlinken die ADR, ohne ihren Stand zu wiederholen. Neue ADRs nach der [[adr-nnnn|ADR-Vorlage]] und den [[konventionen|Konventionen]]. Nächste freie Nummer: **ADR-0028**.
+Die eine Liste aller Architekturentscheidungen. Der **Stand** steht nur hier und in der ADR selbst; andere Seiten verlinken die ADR, ohne ihren Stand zu wiederholen. Neue ADRs nach der [[adr-nnnn|ADR-Vorlage]] und den [[konventionen|Konventionen]]. Nächste freie Nummer: **ADR-0031**.
 
 *Vorgeschlagen* heißt: Planungsgrundlage, aber vor Code, der darauf baut, Daniels Freigabe einholen.
 
@@ -36,7 +36,10 @@ Die eine Liste aller Architekturentscheidungen. Der **Stand** steht nur hier und
 | [[adr-0025-add-ons-als-intent-produzenten\|ADR-0025]] | Add-ons lesen nur die Beobachtung und schreiben nur Intents, in einer Sandbox | **vorgeschlagen** |
 | [[adr-0026-tests-zuerst\|ADR-0026]] | Tests zuerst: jede Funktion beginnt mit einem fehlschlagenden Test | angenommen (2026-11-14) |
 | [[adr-0027-zielfilter-pro-faehigkeit\|ADR-0027]] | Friendly Fire wird pro Fähigkeit über einen Zielfilter entschieden | angenommen |
+| [[adr-0028-grosse-welt-mit-interessenbereich\|ADR-0028]] | Große Welt in Zellen; geladen wird nur der Interessenbereich um den Spieler | **vorgeschlagen** |
+| [[adr-0029-reittiere-als-bewegungsmodus\|ADR-0029]] | Reittiere sind ein Bewegungsmodus des Magiers, Boden oder Flug, und Kampf geht auch im Sattel | **vorgeschlagen** |
+| [[adr-0030-faehigkeitenleiste-vom-spieler\|ADR-0030]] | Der Spieler stellt seine Fähigkeitenleiste und ihre Tastenbelegung selbst zusammen | **vorgeschlagen** |
 
 ## Was offen ist
 
-Sieben vorgeschlagene ADRs warten auf Freigabe. Als Nächstes braucht Milestone 1 ADR-0016 (Attribute, B-007); siehe [[status|Status]].
+Zehn vorgeschlagene ADRs warten auf Freigabe. Als Nächstes braucht Milestone 1 ADR-0016 (Attribute, B-007); siehe [[status|Status]]. ADR-0030 (Fähigkeitenleiste) betrifft schon M1/M2: Der Intent sollte von Anfang an `MAX_SLOTS` Slots haben (B-006).

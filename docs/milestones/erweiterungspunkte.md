@@ -14,6 +14,9 @@ title: "Erweiterungspunkte — wo das System wachsen soll, ohne umgebaut zu werd
 | Eingabegeräte | Aktionen und Belegungen | [[eingabegeraete\|Eingabegeräte]] |
 | Sprachen | Fluent-Ordner pro Sprache | [[lokalisierung\|Lokalisierung]] |
 | Plattformen | Stufen-Regeln | [[plattformen\|Plattformen]] |
+| Große Welt | Zellen, Interessenbereich, Set Welt | [[welt\|Welt]] |
+| Reittiere | `MountBlueprint`, `Mounted`, vertikale Intent-Achse | [[reittiere\|Reittiere]] |
+| Eigene Fähigkeitenleisten | `Loadout`, Slot-Aktionen | [[faehigkeiten\|Fähigkeiten & Belegung]] |
 
 **Snapshot und Restore** (für Rollback auf den Clients, Server-Korrekturen und Replays): Zu snapshotten sind alle Simulations-Components (`SimId`, `TeamId`, Position und Richtung von Magiern und Zaubern, Health, Mana, Cooldowns, Basiswerte und aktive Attribut-Modifikatoren, `VisibleTo` und Enthüllungen, `IntentForTick`, Zustände laufender Zauber inklusive Fuse und Lebensdauer, `Dead` und Respawn-Timer) und die Ressourcen mit Zustand (RNG, `SimId`-Zähler; Balance ist pro Runde konstant und bleibt außen vor). Dazu kommt eine Intent-Historie pro Tick, aus der das Set Intent bei der Neuberechnung liest. Explizit nicht gesnapshottet: statische Arena-Kollider und Avian-Interna, weil die Simulation Avian nur abfragt ([[adr-0003-kinematik-statt-dynamischer-rigidbodies|ADR-0003]], [[adr-0007-shape-cast-pro-tick-fuer-projektile|ADR-0007]]). Restore heißt: Simulations-Entities entfernen, Zustand aus dem Snapshot wiederherstellen, Bindung `PlayerId` → Entity neu aufbauen, Avians Query-Struktur einmal auffrischen, Ticks ab dort neu ausführen. Weil jede Reihenfolge an der `SimId` hängt, dürfen die Entities dabei neue Indizes bekommen ([[adr-0013-simid-statt-entity-index-fuer-jede|ADR-0013]]).
 

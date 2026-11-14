@@ -11,7 +11,7 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 > 3. **Fertig heißt:** die Gates aus `AGENTS.md` grün, betroffene Vault-Seiten nachgezogen.
 > 4. **Dieses Backlog pflegen:** das erledigte Item **entfernen** und mit einem Satz ins Implementation-Log des Milestones schreiben (`milestones/mN-implementation-log.md`); Items, die sich durch die Arbeit geändert haben, **anpassen**; neu entdeckte Aufgaben **als neue Items** mit Abhängigkeiten und Tests eintragen; Graph unten nachziehen.
 > 5. **Übergabe schreiben:** [[status|Status]] überschreiben: was erledigt wurde, die nächste Aufgabe, welche Seiten sie braucht, Hinweise. Das ist das Letzte jeder Sitzung; die nächste liest zuerst nur diese Seite.
-> 6. **Nummern** werden nie wiederverwendet. Nächste freie Nummer: **B-028**.
+> 6. **Nummern** werden nie wiederverwendet. Nächste freie Nummer: **B-029**.
 
 ## Milestone 1 — Walking Skeleton
 
@@ -19,7 +19,7 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 | --- | --- | --- | --- | --- |
 | B-004 | IDs: `SimId`-Zähler, `PlayerId`, `TeamId`, `SpellId`; Szenario spawnt Magier mit Teams ([[teams\|Teams]], [[serialisierung-ids\|Serialisierung & IDs]]) | — | `SimId` fortlaufend und eindeutig; 2-gegen-2-Szenario hat vier Magier in zwei Teams | offen |
 | B-005 | Tick-Kette als `SystemSet`s inkl. Werte und Sichtbarkeit (leer), Avian in `FixedUpdate` als Set Physik ([[simulationsmodell\|Simulationsmodell]], [[p-005-avians-physik-in-fixedupdate-einhaengen\|P-005]]) | — | Reihenfolge der Sets; ein Shape-Cast im Set Treffer sieht die Magier-Position desselben Ticks | offen |
-| B-006 | `MageIntent`, `InputBuffer`, Flanken-Protokoll, `IntentForTick` ([[intent-steuerung\|Intent & Steuerung]]) | B-004 | Latch-Garantien bei 0, 1 und mehreren Ticks pro Frame; `just_released` | offen |
+| B-006 | `MageIntent`, `InputBuffer`, Flanken-Protokoll, `IntentForTick`; Slots bis `MAX_SLOTS` ([[intent-steuerung\|Intent & Steuerung]], [[faehigkeiten\|Fähigkeiten & Belegung]]) | B-004 | Latch-Garantien bei 0, 1 und mehreren Ticks pro Frame; `just_released` | offen |
 | B-007 | Attribute: Basiswerte, Modifikatoren, Set Werte, `EffectiveAttributes`; Balance als Daten ([[attribute\|Attribute]]) | B-004, B-005 | Verrechnung, Stapelregeln, Ablauf in Ticks, Grenzen, Ganzzahligkeit, Reihenfolge nach Quelle | offen |
 | B-008 | Geseedete RNG-Ressource | — | gleicher Seed → gleiche Folge; eine Clippy-Regel (`disallowed_methods`) verbietet andere Zufallsquellen in `mage_sim` | offen |
 | B-009 | Magier: Leben, Mana in Tausendsteln, Regeneration, Cooldowns, Bewegung per `MoveAndSlide` mit effektivem Tempo ([[kampf-physik\|Kampf & Physik]]) | B-005, B-006, B-007 | Regeneration vor Ausgaben; Cooldown N = frühestens N Ticks später; Tempo-Modifikator ändert Weg pro Tick | offen |
@@ -37,6 +37,7 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 | B-017 | Homing-Bolt mit Zielwahl nach Team und Sichtbarkeit | B-011, B-015 | nächster sichtbarer Gegner; Zielverlust hinter Wand; Gleichstand nach `SimId` | offen |
 | B-018 | Slow als Attribut-Modifikator | B-007, B-011 | Tempo sinkt ab dem Folgetick; erneuter Slow setzt Dauer zurück | offen |
 | B-019 | Feuerball: GroundArea, Fuse, Split, Fragmente, AreaDamage | B-011 | Zielpunkt geklemmt; Fuse in Ticks; Fragmente ab Folgetick; Hindernis schirmt Flächenschaden ab; Flächenschaden trifft auch Verbündete und den Zaubernden (Zielfilter) | offen |
+| B-028 | Fähigkeitenleiste: `Loadout` pro Spieler im Szenario, Prüfung (erlaubt, höchstens `MAX_SLOTS`, keine doppelt), Casting liest Slot → `SpellId` aus der Leiste ([[faehigkeiten\|Fähigkeiten & Belegung]]) | B-011, [[adr-0030-faehigkeitenleiste-vom-spieler\|ADR-0030]] | ungültige Leiste wird abgelehnt; zwei Spieler mit vertauschten Leisten zaubern bei gleichem Slot verschiedene Zauber; leerer Slot wirkt nichts | offen |
 | B-020 | Tod und Respawn mit Spawnpunkten je Team | B-011 | tödlicher Treffer setzt `Dead` im selben Tick; Respawn nach 180 Ticks am Team-Spawnpunkt | offen |
 
 ## Milestone 3 — Arena & Präsentation
@@ -65,6 +66,8 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 | M7 Netzwerk & Sicherheit | M4, M5 (Interest Management braucht volle Sichtbarkeit) | [[netzwerk\|Netzwerk]], [[sicherheit\|Sicherheit]] |
 | M8 Add-ons | M6 (gleiche Schnittstelle), M7 (Regeln im PvP) | [[add-ons\|Add-ons]] |
 | M9 Mobile & Web | M3 (Eingabe über Aktionen), M4 | [[plattformen\|Plattformen]] |
+| M10 Reittiere | M3, B-028 (Aufsitzen als Fähigkeit) | [[reittiere\|Reittiere]] |
+| M11 Große Welt | M7 (Server, Interest Management), P-017, P-018, P-021 | [[welt\|Welt]] |
 
 ## Abhängigkeiten
 
@@ -92,6 +95,7 @@ flowchart LR
   B011 --> B018
   B011 --> B019["B-019 Feuerball"]
   B011 --> B020["B-020 Tod und Respawn"]
+  B011 --> B028["B-028 Fähigkeitenleiste"]
   B016 --> B021["B-021 Client"]
   B006 --> B022["B-022 Eingabe"]
   B021 --> B022
