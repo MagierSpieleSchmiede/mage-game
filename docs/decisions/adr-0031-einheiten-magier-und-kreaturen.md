@@ -3,7 +3,7 @@ title: "ADR-0031 — Magier und Kreaturen sind Einheiten mit gemeinsamem Kern; B
 ---
 # ADR-0031 — Magier und Kreaturen sind Einheiten mit gemeinsamem Kern; Bosse, Pets und Tiere sind Kreaturen
 
-**Status:** vorgeschlagen
+**Status:** angenommen (2026-11-15)
 
 **Kontext:** Neben Spielern soll es Bosse, Pets, wilde Tiere und andere Gegnertypen geben, und Reittiere sollen eigenes Leben haben ([[adr-0029-reittiere-als-bewegungsmodus|ADR-0029]]). Bisher kennt die Simulation nur den Magier, gebunden an eine `PlayerId`. Vieles teilen alle diese Wesen (Team, Leben, Attribute, Fähigkeiten, Bewegung, Treffer), manches nicht: Kreaturen haben keinen Spieler, Bosse haben Phasen und mehrere Trefferzonen, Pets einen Besitzer.
 

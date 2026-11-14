@@ -8,22 +8,19 @@ title: "Status — Übergabe: was zuletzt erledigt wurde und was als Nächstes k
 
 ## Zuletzt erledigt
 
-**2026-11-15, Planung und B-004 (Branch `dev-danielb`):**
-
-- **Neue Vorgaben geplant** (alle *vorgeschlagen*): große Welt mit Interessenbereich ([[adr-0028-grosse-welt-mit-interessenbereich|ADR-0028]], [[welt|Welt]]), Reittiere am Boden und in der Luft ([[adr-0029-reittiere-als-bewegungsmodus|ADR-0029]], [[reittiere|Reittiere]]), vom Spieler deklarierte Fähigkeitenleiste und Belegung ([[adr-0030-faehigkeitenleiste-vom-spieler|ADR-0030]], [[faehigkeiten|Fähigkeiten & Belegung]]). Offene Fragen P-017 bis P-021, Milestones M10 und M11, Backlog-Item B-028.
-- **B-004:** `mage_sim::ids` (`SimId` u64 mit `SimIdCounter`, `PlayerId` u32, `TeamId` u8, `SpellId` u16) und `mage_sim::mage` (Marker `Mage`, `spawn_scenario_mages` beim Start). Tests in `crates/mage_sim/tests/ids.rs`.
+**2026-11-15, B-005 (Branch `dev-danielb`):** Die Tick-Kette steht: `mage_sim::schedule::SimSet` (Intent, Values, Casting, Movement, Physics, Hits, Damage, Visibility, Cleanup), verkettet in `FixedUpdate`; Avian läuft im Set Physics. Ein Shape-Cast im Set Hits sieht Positionen desselben Ticks; mit Avians Standard-Schedule tat er das nicht (P-005 erledigt). `headless_app` hat jetzt `TaskPoolPlugin`, `TransformPlugin`, `finish()`/`cleanup()`. Tests in `crates/mage_sim/tests/tick_chain.rs`. Davor angenommen: ADR-0030 (Fähigkeitenleiste) und ADR-0031 (Einheiten).
 
 ## Nächste Aufgabe
 
-**B-005 — Tick-Kette als `SystemSet`s (Intent, Werte, Casting, Bewegung, Physik, Treffer, Schaden, Sichtbarkeit, Aufräumen), Avian in `FixedUpdate` als Set Physik.**
+**B-006 — `MageIntent`, `InputBuffer` nach `SimId` der gesteuerten Einheit, `Controller` (Spieler oder KI), Flanken-Protokoll, `IntentForTick`; Slots bis `MAX_SLOTS`.**
 
-- **Erst klären:** nichts; das Set Sichtbarkeit bleibt leer (ADR-0018 ist noch vorgeschlagen). Ein Set *Welt* vor Intent kommt erst, wenn ADR-0028 angenommen ist.
-- **Dafür lesen:** die Zeile B-005 im [[backlog|Backlog]]; [[simulationsmodell|Simulationsmodell]] (Kette und Tabelle der Sets); [[p-005-avians-physik-in-fixedupdate-einhaengen|P-005]]. Avian 0.8 im Quellcode prüfen: wie `PhysicsPlugins` einen Schedule bekommt und welche Sets es gibt (`~/.cargo/registry/src/*/avian3d-0.8.0/`).
-- **Tests zuerst:** Reihenfolge der Sets; ein Shape-Cast im Set Treffer sieht die Magier-Position desselben Ticks (dafür braucht der Test einen Kollider am Magier; eine Bewegung von Hand im Set Bewegung genügt).
+- **Erst klären:** nichts; ADR-0004, ADR-0030 und ADR-0031 sind angenommen.
+- **Dafür lesen:** die Zeile B-006 im [[backlog|Backlog]]; [[intent-steuerung|Intent & Steuerung]]; in [[einheiten|Einheiten]] die Tabelle „Kern und Zusätze“ (`Controller`); in [[faehigkeiten|Fähigkeiten & Belegung]] den Abschnitt „Regeln“ (`MAX_SLOTS`, Platzhalter 12). Code: `crates/mage_sim/src/{lib,schedule,mage}.rs`.
+- **Tests zuerst:** Latch-Garantien bei 0, 1 und mehreren Ticks pro Frame (ein Druck geht nie verloren, wird nie doppelt gezählt); `just_released`; ein Intent wirkt nur auf die Einheit, für die er geschrieben wurde.
 
 ## Hinweise für die nächste Sitzung
 
-- **Neu geplant (2026-11-15, vorgeschlagen):** Einheiten-Kern für Magier und Kreaturen ([[adr-0031-einheiten-magier-und-kreaturen|ADR-0031]], [[einheiten|Einheiten]]), Kampfzustand ([[adr-0032-kampfzustand|ADR-0032]]), Reittiere mit eigenem Leben (ADR-0029 überarbeitet). Für B-005 egal; ab B-006 (Intent-Puffer nach Einheit) und B-009 (Leben, Bewegung am Kern) braucht es Daniels Antwort zu ADR-0031. Neue Systeme sollen schon jetzt Kern-Components abfragen (`SimId`, `TeamId`), nicht `With<Mage>`.
-- Magier werden in `Startup` gespawnt; `headless_app` führt `Startup` schon aus, bevor es die App zurückgibt.
-- Nach jeder Aufgabe ohne Nachfrage `dev-danielb` pushen, CI abwarten, bei Grün `master` per Fast-Forward nachziehen (`AGENTS.md`).
-- `Resource` ist in Bevy 0.20 ein Subtrait von `Component`: Ein Typ kann nicht beides ableiten.
+- Frames mit 0 oder mehreren Ticks lassen sich mit `TimeUpdateStrategy::FixedTimesteps(0)` bzw. `(n)` für ein einzelnes `app.update()` nachstellen; `step_ticks` setzt das nicht zurück, also im Test danach wieder auf 1 setzen.
+- `MageIntent` ohne serde, bis der Snapshot (B-013) es braucht; `aim_dir` und `move_axis` werden schon hier geklemmt bzw. normalisiert, NaN wird verworfen ([[sicherheit|Sicherheit]]).
+- Bevy-Fehler „Resource does not exist“ zeigen Systemnamen nur mit `cargo test --features bevy/debug`.
+- Neue Systeme fragen Kern-Components ab (`SimId`, `TeamId`), nicht `With<Mage>`.

@@ -2,8 +2,9 @@
 //! benchmarks, the server and RL training (headless-integrationstest.md). Lives beside the
 //! simulation plugins, not in them.
 
-use bevy::app::App;
+use bevy::app::{App, TaskPoolPlugin};
 use bevy::time::{TimePlugin, TimeUpdateStrategy};
+use bevy::transform::TransformPlugin;
 
 use crate::MageSimPlugin;
 use crate::scenario::Scenario;
@@ -12,12 +13,22 @@ use crate::scenario::Scenario;
 ///
 /// Time never comes from a clock: every `App::update` advances it by exactly one fixed
 /// timestep, so it runs `FixedUpdate` exactly once. The very first update only starts the
-/// clock and runs no tick, so it happens here, before the app is handed out.
+/// clock and runs no tick, so it happens here, before the app is handed out, together with
+/// `Startup`.
 pub fn headless_app(scenario: Scenario) -> App {
     let mut app = App::new();
-    app.add_plugins((TimePlugin, MageSimPlugin))
-        .insert_resource(TimeUpdateStrategy::FixedTimesteps(1))
-        .insert_resource(scenario);
+    app.add_plugins((
+        TaskPoolPlugin::default(),
+        TimePlugin,
+        TransformPlugin,
+        MageSimPlugin,
+    ))
+    .insert_resource(TimeUpdateStrategy::FixedTimesteps(1))
+    .insert_resource(scenario);
+    // What `App::run` does before its first update; plugins such as Avian's set up resources
+    // in `Plugin::finish`.
+    app.finish();
+    app.cleanup();
     app.update();
     app
 }

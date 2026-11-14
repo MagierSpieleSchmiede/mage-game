@@ -11,7 +11,7 @@ Jede offene technische Frage bekommt hier einen Eintrag und eine eigene Seite na
 | [[p-002-observer-laufzeitpunkt-innerhalb-der-tick-kette\|P-002]] | Observer-Laufzeitpunkt innerhalb der Tick-Kette | entschieden (ADR-0014) |
 | [[p-003-cross-plattform-determinismus-fuer-echtes-pvp\|P-003]] | Cross-Plattform-Determinismus für echtes PvP | entschärft durch ADR-0017, offen bis M7 |
 | [[p-004-enum-diskriminanten-stabilitaet-fuer-netcode\|P-004]] | Enum-Diskriminanten-Stabilität für Netcode | offen |
-| [[p-005-avians-physik-in-fixedupdate-einhaengen\|P-005]] | Avians Physik in FixedUpdate einhängen und ordnen | offen, M1 |
+| [[p-005-avians-physik-in-fixedupdate-einhaengen\|P-005]] | Avians Physik in FixedUpdate einhängen und ordnen | erledigt (B-005) |
 | [[p-006-asset-ablage-und-grosse-binaerdateien\|P-006]] | Asset-Ablage und große Binärdateien | offen, vor dem ersten Asset |
 | [[p-007-friendly-fire-und-team-regeln\|P-007]] | Friendly Fire und Team-Regeln | entschieden (ADR-0027) |
 | [[p-008-mindest-hardware-und-leistungsbudget\|P-008]] | Mindest-Hardware und Leistungsbudget | offen, M4 |

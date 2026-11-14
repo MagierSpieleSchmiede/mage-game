@@ -6,7 +6,7 @@ title: "Simulationsmodell — die eine große Wette: eine deterministische Tick-
 **Invarianten (nicht verhandelbar; 10 bis 12 neu, vorgeschlagen):**
 
 1. Der gesamte Gameplay-Zustand liegt in Components und Ressourcen. Nichts in `Local<>`, in System-Closures oder in Präsentations-Entities.
-2. Die Simulation schreitet nur im `FixedUpdate` fort, in einer explizit geordneten Kette von `SystemSet`s: Intent → Werte → Casting → Bewegung → Physik → Treffer → Schaden → Sichtbarkeit → Aufräumen. Nichts hängt an impliziter Systemreihenfolge; Avians Physik wird ausdrücklich in `FixedUpdate` eingehängt und als Set Physik in diese Kette eingeordnet ([[p-005-avians-physik-in-fixedupdate-einhaengen|P-005]]).
+2. Die Simulation schreitet nur im `FixedUpdate` fort, in einer explizit geordneten Kette von `SystemSet`s: Intent → Werte → Casting → Bewegung → Physik → Treffer → Schaden → Sichtbarkeit → Aufräumen. Nichts hängt an impliziter Systemreihenfolge; Avians Physik wird ausdrücklich in `FixedUpdate` eingehängt und als Set Physik in diese Kette eingeordnet ([[p-005-avians-physik-in-fixedupdate-einhaengen|P-005]]). Im Code: `mage_sim::schedule::SimSet`, verkettet in `MageSimPlugin`.
 3. Cooldowns, Fuse-, Status- und Lebensdauern werden in fixen Ticks gezählt. Simulationscode liest niemals echte oder virtuelle Frame-Zeit.
 4. Zufall kommt ausschließlich aus einer einzigen geseedeten RNG-Ressource.
 5. Spieler und Zauber-Blueprints werden über stabile IDs identifiziert (`PlayerId`, `SpellId`), niemals über `Entity`, in allen Daten, die über ein Netzwerk gingen oder gespeichert würden. Jede Simulations-Entity trägt zusätzlich eine `SimId`: ein fortlaufender Zähler, beim Spawn vergeben, Teil des Snapshots.

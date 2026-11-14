@@ -9,7 +9,7 @@ Alles Gameplay läuft in einer headless-fähigen Simulation im `FixedUpdate` (Cr
 flowchart TD
   G["Tastatur und Maus, Controller, Touch"] --> A["Aktionen (Belegung)"]
   A --> HC["HumanController (Update)"]
-  HC --> BUF["InputBuffer (nach PlayerId)"]
+  HC --> BUF["InputBuffer (nach Einheit)"]
   KI["KI-Agent"] --> BUF
   AO["Add-on (Sandbox)"] --> BUF
   NET["Netzwerk (Server: Intents der Clients)"] --> S

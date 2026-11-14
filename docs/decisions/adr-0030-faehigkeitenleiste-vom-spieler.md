@@ -3,7 +3,7 @@ title: "ADR-0030 — Der Spieler stellt seine Fähigkeitenleiste und ihre Tasten
 ---
 # ADR-0030 — Der Spieler stellt seine Fähigkeitenleiste und ihre Tastenbelegung selbst zusammen
 
-**Status:** vorgeschlagen
+**Status:** angenommen (2026-11-15)
 
 **Kontext:** Spieler sollen selbst festlegen, welche Fähigkeiten sie haben und auf welchen Tasten sie liegen. Bisher waren es genau drei feste Slots (Bolt, Homing-Bolt, Feuerball). Eingabe läuft schon über Aktionen mit änderbarer Belegung ([[adr-0022-eingabe-ueber-aktionen|ADR-0022]]).
 
