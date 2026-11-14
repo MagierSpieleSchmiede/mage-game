@@ -17,7 +17,6 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 
 | Nr. | Aufgabe | Abhängig von | Tests (zuerst schreiben) | Status |
 | --- | --- | --- | --- | --- |
-| B-002 | CI: fmt, clippy, test auf Linux, Windows, macOS; `cargo check -p mage_sim` für wasm32, Android, iOS ([[plattformen\|Plattformen]]) | — | CI-Lauf grün auf allen Zielen | offen |
 | B-003 | Test-Support: Szenario-Builder (Teams, Spieler, Seed), headless App aus `mage_sim`, `step_ticks` ([[headless-integrationstest\|Headless-Integrationstest]]) | — | `step_ticks(n)` führt genau n fixe Ticks aus | offen |
 | B-004 | IDs: `SimId`-Zähler, `PlayerId`, `TeamId`, `SpellId`; Szenario spawnt Magier mit Teams ([[teams\|Teams]], [[serialisierung-ids\|Serialisierung & IDs]]) | B-003 | `SimId` fortlaufend und eindeutig; 2-gegen-2-Szenario hat vier Magier in zwei Teams | offen |
 | B-005 | Tick-Kette als `SystemSet`s inkl. Werte und Sichtbarkeit (leer), Avian in `FixedUpdate` als Set Physik ([[simulationsmodell\|Simulationsmodell]], [[p-005-avians-physik-in-fixedupdate-einhaengen\|P-005]]) | B-003 | Reihenfolge der Sets; ein Shape-Cast im Set Treffer sieht die Magier-Position desselben Ticks | offen |
@@ -56,7 +55,7 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 | Nr. | Aufgabe | Abhängig von | Tests (zuerst schreiben) | Status |
 | --- | --- | --- | --- | --- |
 | B-026 | Benchmarks vollständig, Bildzeit-Modus im Client, Referenzrechner festlegen ([[benchmarks\|Benchmarks]], [[p-008-mindest-hardware-und-leistungsbudget\|P-008]]) | B-014, B-021 | alle Szenarien messbar; Budgets eingetragen | offen |
-| B-027 | Desktop-Builds für Windows, Linux, macOS in CI ([[p-014-mobile-und-web-builds\|P-014]]) | B-002, B-021 | Artefakte für alle drei Systeme | offen |
+| B-027 | Desktop-Builds für Windows, Linux, macOS in CI ([[p-014-mobile-und-web-builds\|P-014]]) | B-021 | Artefakte für alle drei Systeme | offen |
 
 ## Später (wird zu Items, wenn der Milestone näher rückt)
 
@@ -72,7 +71,6 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 
 ```mermaid
 flowchart LR
-  B002["B-002 CI"]
   B003["B-003 Test-Support"]
   B003 --> B004["B-004 IDs, Teams"]
   B003 --> B005["B-005 Tick-Kette"]
@@ -105,6 +103,5 @@ flowchart LR
   B021 --> B025["B-025 Animation"]
   B014 --> B026["B-026 Benchmarks"]
   B021 --> B026
-  B002 --> B027["B-027 Desktop-Builds"]
-  B021 --> B027
+  B021 --> B027["B-027 Desktop-Builds"]
 ```
