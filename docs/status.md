@@ -8,18 +8,21 @@ title: "Status — Übergabe: was zuletzt erledigt wurde und was als Nächstes k
 
 ## Zuletzt erledigt
 
-**2026-11-14, B-003 (Branch `dev-danielb`):** `mage_sim` hat `TICKS_PER_SECOND` (60), `MageSimPlugin` (stellt den Fixed-Takt ein), `scenario::Scenario` mit Builder (Teams, Spieler pro Team, Seed; 2 bis 32 Teams, kein leeres Team) und `headless::{headless_app, step_ticks}`. Tests in `crates/mage_sim/tests/headless.rs`. Die Bevy-Migrationsleitfäden 0.18→0.20 sind gelesen; für die Simulation wichtig: `Resource` ist jetzt ein Subtrait von `Component` (ein Typ kann nicht beides ableiten), Observer heißen `On<Add<A>>` statt `On<Add, A>`, Lifecycle-Event `Replace` heißt `Discard`. ADR-0015 ist angenommen.
+**2026-11-15, Planung und B-004 (Branch `dev-danielb`):**
+
+- **Neue Vorgaben geplant** (alle *vorgeschlagen*): große Welt mit Interessenbereich ([[adr-0028-grosse-welt-mit-interessenbereich|ADR-0028]], [[welt|Welt]]), Reittiere am Boden und in der Luft ([[adr-0029-reittiere-als-bewegungsmodus|ADR-0029]], [[reittiere|Reittiere]]), vom Spieler deklarierte Fähigkeitenleiste und Belegung ([[adr-0030-faehigkeitenleiste-vom-spieler|ADR-0030]], [[faehigkeiten|Fähigkeiten & Belegung]]). Offene Fragen P-017 bis P-021, Milestones M10 und M11, Backlog-Item B-028.
+- **B-004:** `mage_sim::ids` (`SimId` u64 mit `SimIdCounter`, `PlayerId` u32, `TeamId` u8, `SpellId` u16) und `mage_sim::mage` (Marker `Mage`, `spawn_scenario_mages` beim Start). Tests in `crates/mage_sim/tests/ids.rs`.
 
 ## Nächste Aufgabe
 
-**B-004 — IDs: `SimId`-Zähler, `PlayerId`, `TeamId`, `SpellId`; das Szenario spawnt Magier mit Teams.**
+**B-005 — Tick-Kette als `SystemSet`s (Intent, Werte, Casting, Bewegung, Physik, Treffer, Schaden, Sichtbarkeit, Aufräumen), Avian in `FixedUpdate` als Set Physik.**
 
-- **Erst klären:** nichts; die nötigen ADRs (0006, 0013, 0015) sind angenommen.
-- **Dafür lesen:** die Zeile B-004 im [[backlog|Backlog]]; [[serialisierung-ids|Serialisierung & IDs]]; in [[teams|Teams]] den Abschnitt „Was gilt“; in [[simulationsmodell|Simulationsmodell]] die Invarianten 5 und 6. Code: `crates/mage_sim/src/scenario.rs` und `headless.rs`.
-- **Tests zuerst:** `SimId` fortlaufend und eindeutig; ein 2-gegen-2-Szenario hat vier Magier in zwei Teams.
+- **Erst klären:** nichts; das Set Sichtbarkeit bleibt leer (ADR-0018 ist noch vorgeschlagen). Ein Set *Welt* vor Intent kommt erst, wenn ADR-0028 angenommen ist.
+- **Dafür lesen:** die Zeile B-005 im [[backlog|Backlog]]; [[simulationsmodell|Simulationsmodell]] (Kette und Tabelle der Sets); [[p-005-avians-physik-in-fixedupdate-einhaengen|P-005]]. Avian 0.8 im Quellcode prüfen: wie `PhysicsPlugins` einen Schedule bekommt und welche Sets es gibt (`~/.cargo/registry/src/*/avian3d-0.8.0/`).
+- **Tests zuerst:** Reihenfolge der Sets; ein Shape-Cast im Set Treffer sieht die Magier-Position desselben Ticks (dafür braucht der Test einen Kollider am Magier; eine Bewegung von Hand im Set Bewegung genügt).
 
 ## Hinweise für die nächste Sitzung
 
-- `headless_app` macht schon ein Update (Uhr starten); wer beim Bauen der App spawnt, muss das in `Startup` oder vor diesem Update tun, sonst existieren die Magier erst nach dem ersten Tick.
-- IDs sollen serde-serialisierbar sein (ADR-0006); `serde` wäre dann die erste neue Abhängigkeit: Plattformen prüfen und im Commit begründen (`AGENTS.md`).
-- Solange nur Daniel arbeitet: auf `dev-danielb` committen, auf sein Wort direkt nach `master` übernehmen.
+- Magier werden in `Startup` gespawnt; `headless_app` führt `Startup` schon aus, bevor es die App zurückgibt.
+- Nach jeder Aufgabe ohne Nachfrage `dev-danielb` pushen, CI abwarten, bei Grün `master` per Fast-Forward nachziehen (`AGENTS.md`).
+- `Resource` ist in Bevy 0.20 ein Subtrait von `Component`: Ein Typ kann nicht beides ableiten.

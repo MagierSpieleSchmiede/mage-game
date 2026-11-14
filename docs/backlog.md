@@ -17,10 +17,9 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 
 | Nr. | Aufgabe | Abhängig von | Tests (zuerst schreiben) | Status |
 | --- | --- | --- | --- | --- |
-| B-004 | IDs: `SimId`-Zähler, `PlayerId`, `TeamId`, `SpellId`; Szenario spawnt Magier mit Teams ([[teams\|Teams]], [[serialisierung-ids\|Serialisierung & IDs]]) | — | `SimId` fortlaufend und eindeutig; 2-gegen-2-Szenario hat vier Magier in zwei Teams | offen |
 | B-005 | Tick-Kette als `SystemSet`s inkl. Werte und Sichtbarkeit (leer), Avian in `FixedUpdate` als Set Physik ([[simulationsmodell\|Simulationsmodell]], [[p-005-avians-physik-in-fixedupdate-einhaengen\|P-005]]) | — | Reihenfolge der Sets; ein Shape-Cast im Set Treffer sieht die Magier-Position desselben Ticks | offen |
-| B-006 | `MageIntent`, `InputBuffer`, Flanken-Protokoll, `IntentForTick`; Slots bis `MAX_SLOTS` ([[intent-steuerung\|Intent & Steuerung]], [[faehigkeiten\|Fähigkeiten & Belegung]]) | B-004 | Latch-Garantien bei 0, 1 und mehreren Ticks pro Frame; `just_released` | offen |
-| B-007 | Attribute: Basiswerte, Modifikatoren, Set Werte, `EffectiveAttributes`; Balance als Daten ([[attribute\|Attribute]]) | B-004, B-005 | Verrechnung, Stapelregeln, Ablauf in Ticks, Grenzen, Ganzzahligkeit, Reihenfolge nach Quelle | offen |
+| B-006 | `MageIntent`, `InputBuffer`, Flanken-Protokoll, `IntentForTick`; Slots bis `MAX_SLOTS` ([[intent-steuerung\|Intent & Steuerung]], [[faehigkeiten\|Fähigkeiten & Belegung]]) | — | Latch-Garantien bei 0, 1 und mehreren Ticks pro Frame; `just_released` | offen |
+| B-007 | Attribute: Basiswerte, Modifikatoren, Set Werte, `EffectiveAttributes`; Balance als Daten ([[attribute\|Attribute]]) | B-005 | Verrechnung, Stapelregeln, Ablauf in Ticks, Grenzen, Ganzzahligkeit, Reihenfolge nach Quelle | offen |
 | B-008 | Geseedete RNG-Ressource | — | gleicher Seed → gleiche Folge; eine Clippy-Regel (`disallowed_methods`) verbietet andere Zufallsquellen in `mage_sim` | offen |
 | B-009 | Magier: Leben, Mana in Tausendsteln, Regeneration, Cooldowns, Bewegung per `MoveAndSlide` mit effektivem Tempo ([[kampf-physik\|Kampf & Physik]]) | B-005, B-006, B-007 | Regeneration vor Ausgaben; Cooldown N = frühestens N Ticks später; Tempo-Modifikator ändert Weg pro Tick | offen |
 | B-011 | Bolt: Blueprint-Registry mit Zielfilter ([[adr-0027-zielfilter-pro-faehigkeit\|ADR-0027]]), Projectile, Spread, Damage, Impacts sammeln und sortiert auslösen, `DamageApplied` ([[zauber-datenmodell\|Zauber-Datenmodell]]) | B-008, B-009 | Spec-Test: Dummy verliert Leben, Zaubernder Mana; Cast wirkt im Tick der Eingabe ohne jede Präsentation | offen |
@@ -73,12 +72,10 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 
 ```mermaid
 flowchart LR
-  B004["B-004 IDs, Teams"]
   B005["B-005 Tick-Kette"]
   B008["B-008 RNG"]
-  B004 --> B006["B-006 Intent"]
-  B004 --> B007["B-007 Attribute"]
-  B005 --> B007
+  B006["B-006 Intent"]
+  B005 --> B007["B-007 Attribute"]
   B005 --> B009["B-009 Magier"]
   B006 --> B009
   B007 --> B009
