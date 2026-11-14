@@ -3,7 +3,7 @@ title: "ADR-0016 — Attribute mit Modifikatoren, pro Tick zu effektiven Werten 
 ---
 # ADR-0016 — Attribute mit Modifikatoren, pro Tick zu effektiven Werten verrechnet
 
-**Status:** vorgeschlagen
+**Status:** angenommen (2026-11-15)
 
 **Kontext:** Ein Spieler soll mehrere Eigenschaften haben, die sagen, wie stark und fähig er gerade ist (Tempo, Zauberkraft, Widerstand, Tarnung …), und die sich durch Effekte zeitweise ändern. Bisher war `Slow` ein Sonderfall mit eigener Abklinglogik.
 

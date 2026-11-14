@@ -24,7 +24,7 @@ Die eine Liste aller Architekturentscheidungen. Der **Stand** steht nur hier und
 | [[adr-0013-simid-statt-entity-index-fuer-jede\|ADR-0013]] | SimId statt Entity-Index für jede ergebnisrelevante Reihenfolge | angenommen |
 | [[adr-0014-impacts-sammeln-dann-sortiert-ausloesen\|ADR-0014]] | Impacts sammeln, dann sortiert auslösen | angenommen |
 | [[adr-0015-teams-statt-fester-zwei-spieler\|ADR-0015]] | Teams mit beliebig vielen Magiern statt eines festen Zwei-Spieler-Duells | angenommen (2026-11-14) |
-| [[adr-0016-attribute-mit-modifikatoren\|ADR-0016]] | Attribute mit Modifikatoren, pro Tick zu effektiven Werten verrechnet | **vorgeschlagen** |
+| [[adr-0016-attribute-mit-modifikatoren\|ADR-0016]] | Attribute mit Modifikatoren, pro Tick zu effektiven Werten verrechnet | angenommen (2026-11-15) |
 | [[adr-0017-rollback-mit-server-als-schiedsrichter\|ADR-0017]] | Rollback-Netcode, wo immer möglich; der Server ist Schiedsrichter | angenommen (2026-11-14) |
 | [[adr-0018-sichtbarkeit-als-simulationszustand\|ADR-0018]] | Sichtbarkeit ist Simulationszustand, pro Team berechnet | **vorgeschlagen** |
 | [[adr-0019-eine-beobachtungs-schnittstelle\|ADR-0019]] | Eine Beobachtungs-Schnittstelle für HUD, KI, Reinforcement Learning und Add-ons | **vorgeschlagen** |
@@ -44,4 +44,4 @@ Die eine Liste aller Architekturentscheidungen. Der **Stand** steht nur hier und
 
 ## Was offen ist
 
-Zehn vorgeschlagene ADRs warten auf Freigabe. Als Nächstes braucht Milestone 1 ADR-0016 (Attribute, B-007); ADR-0032 (Kampfzustand) wartet auf die Frage, ob man im Tod den Charakter ändern darf.
+Neun vorgeschlagene ADRs warten auf Freigabe. Milestone 1 braucht keine weitere; ADR-0018 (Sichtbarkeit) wird für M2 gebraucht. ADR-0032 (Kampfzustand) wartet auf die Frage, ob man im Tod den Charakter ändern darf.

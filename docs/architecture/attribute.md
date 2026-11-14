@@ -18,19 +18,19 @@ Jeder Magier hat mehrere Eigenschaften, die zusammen sagen, wie stark und fähig
 | Tarnung | wie schwer der Magier zu sehen ist | Unsichtbarkeit ([[sichtbarkeit\|Sichtbarkeit]]) |
 | Wahrnehmung | wie gut der Magier Getarnte entdeckt | Hellsicht |
 
-Der Satz ist erweiterbar: ein neues Attribut ist eine Enum-Variante, ein Basiswert in der Balance und eine Stelle, die den effektiven Wert liest.
+Der Satz ist erweiterbar: ein neues Attribut ist eine Enum-Variante, ein Basiswert in der Balance und eine Stelle, die den effektiven Wert liest. Im Code: `crates/mage_sim/src/attributes.rs`, Basiswerte und Grenzen in `balance.rs`; jede Einheit bringt über die Marker-Component `Unit` ihre Modifikatoren und `EffectiveAttributes` mit ([[einheiten|Einheiten]]).
 
 ## Wie gerechnet wird
 
 1. **Basiswerte** kommen aus der Balance-Ressource bzw. dem Blueprint der Kreatur; Ausrüstung wirkt später als Modifikator ohne Ablauf und darf nur außer Kampf gewechselt werden ([[adr-0032-kampfzustand|ADR-0032]]).
 2. **Modifikatoren** stehen in einer Liste am Magier: Attribut, additiv oder multiplikativ, Wert, Restdauer in Ticks, Quelle (`SimId`).
-3. Das Set **Werte** (direkt nach Intent) zählt Restdauern herunter, entfernt abgelaufene Modifikatoren und rechnet: *effektiv = (Basis + Σ additiv) × Π (1 + multiplikativ)*, geklemmt auf Unter- und Obergrenzen.
-4. Gerechnet wird **ganzzahlig in Tausendsteln**; die Reihenfolge der Modifikatoren ist nach `SimId` der Quelle festgelegt. So bleibt alles deterministisch.
+3. Das Set **Werte** (direkt nach Intent) entfernt abgelaufene Modifikatoren, rechnet *effektiv = (Basis + Σ additiv) × Π (1 + multiplikativ)*, geklemmt auf Unter- und Obergrenzen, und zählt danach die Restdauern herunter. Ein Modifikator mit Dauer N wirkt so in genau den N folgenden Ticks; ohne Dauer wirkt er, bis er entfernt wird (später Ausrüstung). Ein Faktor fällt nie unter null.
+4. Gerechnet wird **ganzzahlig in Tausendsteln**, jeder Faktor-Schritt wird auf ganze Tausendstel abgeschnitten; die Faktoren werden in der Reihenfolge der `SimId` ihrer Quelle angewendet. Die Reihenfolge zählt wirklich: 1,001 × 1,333 × 0,75 ergibt 1,000, umgekehrt 0,999. So bleibt alles deterministisch.
 5. Alle Systeme lesen nur `EffectiveAttributes`. Ein im Tick neu hinzugefügter Modifikator (etwa Slow aus dem Set Schaden) wirkt ab dem nächsten Tick.
 
 ## Stapelregeln
 
-Ein Effekt legt fest, ob er sich mit sich selbst stapelt oder nur die Dauer erneuert (Standard: erneuern, nicht stapeln). Gleiche Effekte verschiedener Quellen stapeln sich, bis zu einer Obergrenze in der Balance.
+Ein Effekt (`EffectId`) legt fest, ob er sich mit sich selbst stapelt oder nur die Dauer erneuert (Standard: erneuern, nicht stapeln). Gleiche Effekte verschiedener Quellen stapeln sich, bis zu einer Obergrenze in der Balance (`max_stacks`, Platzhalter 3); ein weiterer wird dann ignoriert.
 
 ## Wer die Werte sieht
 

@@ -17,9 +17,8 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 
 | Nr. | Aufgabe | Abhängig von | Tests (zuerst schreiben) | Status |
 | --- | --- | --- | --- | --- |
-| B-007 | Attribute: Basiswerte, Modifikatoren, Set Werte, `EffectiveAttributes`; Balance als Daten ([[attribute\|Attribute]]) | — | Verrechnung, Stapelregeln, Ablauf in Ticks, Grenzen, Ganzzahligkeit, Reihenfolge nach Quelle | offen |
 | B-008 | Geseedete RNG-Ressource | — | gleicher Seed → gleiche Folge; eine Clippy-Regel (`disallowed_methods`) verbietet andere Zufallsquellen in `mage_sim` | offen |
-| B-009 | Einheiten-Kern: Leben, Mana in Tausendsteln, Regeneration, Cooldowns, Bewegung per `MoveAndSlide` mit effektivem Tempo; für alle Einheiten, nicht nur Magier ([[einheiten\|Einheiten]]) ([[kampf-physik\|Kampf & Physik]]) | B-007 | Regeneration vor Ausgaben; Cooldown N = frühestens N Ticks später; Tempo-Modifikator ändert Weg pro Tick | offen |
+| B-009 | Einheiten-Kern: Leben, Mana in Tausendsteln, Regeneration, Cooldowns, Bewegung per `MoveAndSlide` mit effektivem Tempo; für alle Einheiten, nicht nur Magier ([[einheiten\|Einheiten]]) ([[kampf-physik\|Kampf & Physik]]) | — | Regeneration vor Ausgaben; Cooldown N = frühestens N Ticks später; Tempo-Modifikator ändert Weg pro Tick | offen |
 | B-011 | Bolt: Blueprint-Registry mit Zielfilter ([[adr-0027-zielfilter-pro-faehigkeit\|ADR-0027]]), Projectile, Spread, Damage, Impacts sammeln und sortiert auslösen, `DamageApplied` ([[zauber-datenmodell\|Zauber-Datenmodell]]) | B-008, B-009 | Spec-Test: Dummy verliert Leben, Zaubernder Mana; Cast wirkt im Tick der Eingabe ohne jede Präsentation | offen |
 | B-012 | 2-gegen-2 und Zielfilter | B-011 | Bolt fliegt durch einen Verbündeten und trifft den Gegner dahinter; ein Blueprint mit Filter „alle“ trifft den Verbündeten; Filter „Zaubernder“ trifft nur den Zaubernden | offen |
 | B-013 | Snapshot-Serialisierung und Determinismustest ([[determinismustest\|Determinismustest]]) | B-011 | zwei Läufe, byte-gleich; Test schlägt fehl, wenn eine Reihenfolge an `Entity` hängt | offen |
@@ -32,7 +31,7 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 | B-015 | Set Sichtbarkeit, Grundform: Sichtweite und Sichtlinie, noch ohne Tarnung ([[sichtbarkeit\|Sichtbarkeit]]) | B-012 | Gegner hinter Wand nicht sichtbar; eigenes Team immer sichtbar | offen |
 | B-016 | Beobachtung, Grundform: Ich, sichtbare Magier und Zauber ([[beobachtung\|Beobachtung]]) | B-015 | keine Entity ohne Team-Bit in der Beobachtung | offen |
 | B-017 | Homing-Bolt mit Zielwahl nach Team und Sichtbarkeit | B-011, B-015 | nächster sichtbarer Gegner; Zielverlust hinter Wand; Gleichstand nach `SimId` | offen |
-| B-018 | Slow als Attribut-Modifikator | B-007, B-011 | Tempo sinkt ab dem Folgetick; erneuter Slow setzt Dauer zurück | offen |
+| B-018 | Slow als Attribut-Modifikator | B-011 | Tempo sinkt ab dem Folgetick; erneuter Slow setzt Dauer zurück | offen |
 | B-019 | Feuerball: GroundArea, Fuse, Split, Fragmente, AreaDamage | B-011 | Zielpunkt geklemmt; Fuse in Ticks; Fragmente ab Folgetick; Hindernis schirmt Flächenschaden ab; Flächenschaden trifft auch Verbündete und den Zaubernden (Zielfilter) | offen |
 | B-029 | Kampfzustand: `CombatState` (außer Kampf, im Kampf, tot), Eintritt im Set Schaden, Austritt nach 300 Ticks im Set Aufräumen; Charakter-Änderung als geprüfter Befehl ([[einheiten\|Einheiten]]) | B-020, B-028, [[adr-0032-kampfzustand\|ADR-0032]] | Schaden setzt beide Seiten in den Kampf; 299 Ticks ohne Handlung noch im Kampf, 300 außer Kampf; Leiste ändern im Kampf abgelehnt, außer Kampf und im Tod angenommen | offen |
 | B-028 | Fähigkeitenleiste: `Loadout` pro Spieler im Szenario, Prüfung (erlaubt, höchstens `MAX_SLOTS`, keine doppelt), Casting liest Slot → `SpellId` aus der Leiste ([[faehigkeiten\|Fähigkeiten & Belegung]]) | B-011, [[adr-0030-faehigkeitenleiste-vom-spieler\|ADR-0030]] | ungültige Leiste wird abgelehnt; zwei Spieler mit vertauschten Leisten zaubern bei gleichem Slot verschiedene Zauber; leerer Slot wirkt nichts | offen |
@@ -73,8 +72,7 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 ```mermaid
 flowchart LR
   B008["B-008 RNG"]
-  B007["B-007 Attribute"]
-  B007 --> B009["B-009 Einheiten-Kern"]
+  B009["B-009 Einheiten-Kern"]
   B008 --> B011["B-011 Bolt"]
   B009 --> B011
   B011 --> B012["B-012 2-gegen-2"]
@@ -84,8 +82,7 @@ flowchart LR
   B015 --> B016["B-016 Beobachtung"]
   B015 --> B017["B-017 Homing"]
   B011 --> B017
-  B007 --> B018["B-018 Slow"]
-  B011 --> B018
+  B011 --> B018["B-018 Slow"]
   B011 --> B019["B-019 Feuerball"]
   B011 --> B020["B-020 Tod und Respawn"]
   B011 --> B028["B-028 Fähigkeitenleiste"]

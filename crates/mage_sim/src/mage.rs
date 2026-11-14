@@ -2,12 +2,16 @@
 
 use bevy::ecs::prelude::{Commands, Component, Res, ResMut};
 
+use crate::attributes::{BaseAttributes, EffectiveAttributes};
+use crate::balance::Balance;
 use crate::ids::{PlayerId, SimIdCounter, TeamId};
 use crate::intent::Controller;
 use crate::scenario::Scenario;
+use crate::unit::Unit;
 
 /// Marks a mage. Carries no visuals; the presentation reacts to it (invariant 6).
 #[derive(Component, Debug, Default)]
+#[require(Unit)]
 pub struct Mage;
 
 /// Spawns one mage per player of the scenario, team by team. Players are numbered in that
@@ -15,6 +19,7 @@ pub struct Mage;
 pub fn spawn_scenario_mages(
     mut commands: Commands,
     scenario: Res<Scenario>,
+    balance: Res<Balance>,
     mut sim_ids: ResMut<SimIdCounter>,
 ) {
     let mut next_player = 0;
@@ -28,6 +33,8 @@ pub fn spawn_scenario_mages(
                 player,
                 team,
                 Controller::Player(player),
+                BaseAttributes(balance.unit_base),
+                EffectiveAttributes(balance.unit_base),
             ));
             next_player += 1;
         }

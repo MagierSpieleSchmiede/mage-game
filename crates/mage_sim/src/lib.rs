@@ -9,17 +9,22 @@ use bevy::app::{App, FixedUpdate, Plugin, Startup};
 use bevy::ecs::prelude::{IntoScheduleConfigs, resource_exists};
 use bevy::time::{Fixed, Time};
 
+use crate::attributes::update_attributes;
+use crate::balance::Balance;
 use crate::ids::SimIdCounter;
 use crate::intent::{InputBuffer, freeze_intents};
 use crate::scenario::Scenario;
 use crate::schedule::SimSet;
 
+pub mod attributes;
+pub mod balance;
 pub mod headless;
 pub mod ids;
 pub mod intent;
 pub mod mage;
 pub mod scenario;
 pub mod schedule;
+pub mod unit;
 
 /// Simulation ticks per second, on every machine and on the server (ADR-0001, ADR-0008).
 pub const TICKS_PER_SECOND: u32 = 60;
@@ -64,6 +69,8 @@ impl Plugin for MageSimPlugin {
             )
             .init_resource::<SimIdCounter>()
             .init_resource::<InputBuffer>()
+            .init_resource::<Balance>()
+            .add_systems(FixedUpdate, update_attributes.in_set(SimSet::Values))
             .add_systems(FixedUpdate, freeze_intents.in_set(SimSet::Intent))
             .add_systems(
                 Startup,

@@ -32,6 +32,10 @@ pub struct PlayerId(pub u32);
 #[derive(Component, Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct TeamId(pub u8);
 
+/// Identity of an effect, e.g. Slow; modifiers of the same effect follow its stacking rule.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub struct EffectId(pub u16);
+
 /// Which AI behaviour steers a unit (ADR-0031).
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct BehaviorId(pub u16);
