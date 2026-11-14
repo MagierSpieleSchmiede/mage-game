@@ -3,10 +3,10 @@ title: "Simulationsmodell — die eine große Wette: eine deterministische Tick-
 ---
 # Simulationsmodell — die eine große Wette: eine deterministische Tick-Kette
 
-**Invarianten (nicht verhandelbar):**
+**Invarianten (nicht verhandelbar; 10 bis 12 neu, vorgeschlagen):**
 
 1. Der gesamte Gameplay-Zustand liegt in Components und Ressourcen. Nichts in `Local<>`, in System-Closures oder in Präsentations-Entities.
-2. Die Simulation schreitet nur im `FixedUpdate` fort, in einer explizit geordneten Kette von `SystemSet`s: Intent → Casting → Bewegung → Physik → Treffer → Schaden → Aufräumen. Nichts hängt an impliziter Systemreihenfolge; Avians Physik wird ausdrücklich in `FixedUpdate` eingehängt und als Set Physik in diese Kette eingeordnet ([[p-005-avians-physik-in-fixedupdate-einhaengen|P-005]]).
+2. Die Simulation schreitet nur im `FixedUpdate` fort, in einer explizit geordneten Kette von `SystemSet`s: Intent → Werte → Casting → Bewegung → Physik → Treffer → Schaden → Sichtbarkeit → Aufräumen. Nichts hängt an impliziter Systemreihenfolge; Avians Physik wird ausdrücklich in `FixedUpdate` eingehängt und als Set Physik in diese Kette eingeordnet ([[p-005-avians-physik-in-fixedupdate-einhaengen|P-005]]).
 3. Cooldowns, Fuse-, Status- und Lebensdauern werden in fixen Ticks gezählt. Simulationscode liest niemals echte oder virtuelle Frame-Zeit.
 4. Zufall kommt ausschließlich aus einer einzigen geseedeten RNG-Ressource.
 5. Spieler und Zauber-Blueprints werden über stabile IDs identifiziert (`PlayerId`, `SpellId`), niemals über `Entity`, in allen Daten, die über ein Netzwerk gingen oder gespeichert würden. Jede Simulations-Entity trägt zusätzlich eine `SimId`: ein fortlaufender Zähler, beim Spawn vergeben, Teil des Snapshots.
@@ -14,27 +14,34 @@ title: "Simulationsmodell — die eine große Wette: eine deterministische Tick-
 7. Die Simulations-Plugins laufen headless, ohne Fenster und ohne Renderer.
 8. Schaden, Mana-Verbrauch und Tod laufen jeweils durch exakt einen Codepfad: Schaden durch den `DamageApplied`-Handler, Tod durch den `MageDied`-Handler, Mana-Verbrauch durch das Casting-System.
 9. Determinismus: gleicher Startzustand, gleiche Intent-Sequenz und gleicher Seed ergeben auf derselben Plattform- und Compiler-Konfiguration einen bit-identischen Endzustand. Wo Ergebnisse von Iterationsreihenfolge abhängen, wird nach `SimId` sortiert, niemals nach Entity-Index, weil Entities nach einem Rollback-Restore neue Indizes bekommen ([[adr-0013-simid-statt-entity-index-fuer-jede|ADR-0013]]).
+10. Sichtbarkeit ist Simulationszustand. Alles, was ein Spieler, eine KI, ein Add-on oder ein Client erfährt, geht durch die [[beobachtung|Beobachtung]] und deren Sichtbarkeitsfilter ([[adr-0018-sichtbarkeit-als-simulationszustand|ADR-0018]], [[adr-0019-eine-beobachtungs-schnittstelle|ADR-0019]]).
+11. Die Simulation kennt keine Texte, keine Animationen und keine Eingabegeräte. Fähigkeiten wirken nach Ticks, nie nach Animationen ([[adr-0021-animation-ist-reine-praesentation|ADR-0021]]).
+12. Systeme lesen Eigenschaften eines Magiers nur aus `EffectiveAttributes`, nie aus Basiswerten oder einzelnen Effekten ([[adr-0016-attribute-mit-modifikatoren|ADR-0016]]).
 
 **Die Kette und was jedes Set tut:**
 
 ```mermaid
 flowchart LR
-  A["Intent"] --> B["Casting"]
+  A["Intent"] --> W["Werte"]
+  W --> B["Casting"]
   B --> C["Bewegung"]
   C --> D["Physik (Avian)"]
   D --> E["Treffer"]
   E --> F["Schaden"]
-  F --> G["Aufräumen"]
+  F --> V["Sichtbarkeit"]
+  V --> G["Aufräumen"]
 ```
 
 | Set | Verantwortung |
 | --- | --- |
 | Intent | Für jeden Magier den Intent dieses Ticks in eine `IntentForTick`-Component einfrieren: `pressed` aus den Latch-Zählern des `InputBuffer` ableiten, `just_released` aus dem Vor-Tick-Zustand, Latches zurücksetzen. Bei einer Rollback-Neuberechnung liest dieses Set stattdessen aus der Intent-Historie und fasst den Puffer nicht an |
+| Werte | Restdauern der Attribut-Modifikatoren herunterzählen, abgelaufene entfernen, `EffectiveAttributes` neu berechnen ([[attribute|Attribute]]) |
 | Casting | Cooldown-Ticks dekrementieren, Mana regenerieren (vor allen Ausgaben desselben Ticks), Cast-Anforderungen prüfen (Flanke, Mana, Cooldown), Mana abziehen, Cooldown setzen, Zauber aus dem Blueprint spawnen und on-cast-Modifikatoren anwenden (Spread) |
 | Bewegung | Intent auf kinematische Magier-Bewegung abbilden (Aufruf von Avians `MoveAndSlide`), danach per-Tick-Modifikatoren (Homing inklusive LOS-Raycast gegen die statischen Arena-Kollider), danach Projektile entlang ihrer Segmente bewegen und Fuses herunterzählen |
 | Physik | Avian-Schritt: überträgt die neuen Positionen der kinematischen Magier-Kollider in die Spatial-Query-Struktur, damit das Set Treffer gegen den Stand dieses Ticks castet. Es gibt keine dynamischen Körper, der Solver hat nichts zu lösen |
 | Treffer | Shape-Casts über die Travel-Segmente des Ticks auswerten, abgelaufene Fuses feststellen; jeder Impact wird nur gesammelt (`PendingImpacts`), noch nichts wird angewendet |
-| Schaden | Gesammelte Impacts nach `SimId` des Zaubers sortieren und in dieser Reihenfolge `SpellImpact` auslösen; die Observer-Kette `SpellImpact` → Effekte → `DamageApplied` → HP → `MageDied` läuft vollständig in diesem Set ([[adr-0014-impacts-sammeln-dann-sortiert-ausloesen|ADR-0014]]). Statuseffekte (Slow) klingen pro Tick ab |
+| Schaden | Gesammelte Impacts nach `SimId` des Zaubers sortieren und in dieser Reihenfolge `SpellImpact` auslösen; die Observer-Kette `SpellImpact` → Effekte → `DamageApplied` → HP → `MageDied` läuft vollständig in diesem Set ([[adr-0014-impacts-sammeln-dann-sortiert-ausloesen|ADR-0014]]). Effekte wie Slow fügen hier Attribut-Modifikatoren hinzu; sie wirken ab dem nächsten Tick über das Set Werte |
+| Sichtbarkeit | `VisibleTo` jeder Entity pro Team neu berechnen: Sichtweite, Sichtlinie, Tarnung gegen Wahrnehmung, Enthüllung ([[sichtbarkeit|Sichtbarkeit]]) |
 | Aufräumen | getroffene und abgelaufene Zauber despawnen, Respawn-Timer toter Magier fortschreiben und Respawn ausführen |
 
 Projektile sind **keine** Physik-Körper: Sie werden im Set Bewegung bewegt und im Set Treffer per Shape-Cast geprüft, daher kann die Rollback-Schicht später den kompletten simulationsrelevanten Zustand in eigenen Components snapshotten, ohne Physikinterna zu berühren ([[adr-0003-kinematik-statt-dynamischer-rigidbodies|ADR-0003]]).

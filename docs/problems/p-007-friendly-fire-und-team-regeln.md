@@ -1,0 +1,8 @@
+---
+title: "P-007 — Friendly Fire und Team-Regeln"
+---
+# P-007 — Friendly Fire und Team-Regeln
+
+Mit Teams ([[adr-0015-teams-statt-fester-zwei-spieler|ADR-0015]]) muss feststehen, ob eigene Zauber Teammitglieder treffen: Projektile (fliegen sie durch Verbündete hindurch oder schlagen sie dort ein, ohne Schaden?), Flächenschaden des Feuerballs, Split-Fragmente, Slow. Das betrifft Trefferprüfung, Schadenspfad und Balance; die Antwort kann je Spielmodus verschieden sein.
+
+Nächster Schritt: vor dem 2-gegen-2-Test in M1 entscheiden. Vorschlag für den Prototyp: Projektile fliegen durch Verbündete, Flächenschaden und Effekte treffen nur Gegner; ein Schalter `friendly_fire` in der Balance-Ressource für spätere Modi. Als ADR festhalten.

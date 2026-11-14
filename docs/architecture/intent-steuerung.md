@@ -31,9 +31,9 @@ pub struct BufferedInput {
 
 **Das Flanken-Protokoll** löst das Problem, dass Frames null oder mehrere fixe Ticks ausführen können:
 
-- Der `HumanController` (Update, Präsentation) tastet Tastatur und Maus ab und schreibt in den `InputBuffer`. `move_axis`, `aim_dir` und `held` sind Stichproben: der letzte Wert gewinnt, nichts wird aufsummiert.
+- Der `HumanController` (Update, Präsentation) liest Aktionen (aus Tastatur und Maus, Controller oder Touch, siehe [[eingabegeraete|Eingabegeräte]]) und schreibt in den `InputBuffer`. `move_axis`, `aim_dir` und `held` sind Stichproben: der letzte Wert gewinnt, nichts wird aufsummiert.
 - Druckereignisse werden gezählt: `press_count[i] += 1` (saturierend), je Ereignis, unabhängig von Tickgrenzen.
 - Im Set Intent friert die Simulation den Puffer zu einem `MageIntent` ein: `pressed = press_count > 0`, danach wird `press_count` auf 0 gesetzt. `just_released = held_prev && !held` leitet sie aus dem Intent des Vorticks ab.
 - Garantie: Ein Druck geht nie verloren (0 Ticks im Frame: der Latch überlebt bis zum nächsten Tick) und wird nie dupliziert (mehrere Ticks im Frame: nur der erste konsumiert ihn).
 
-Wer den Intent erzeugt, ist der Simulation egal: Mensch, KI, Netzwerk-Replay oder Test. Der Dummy-Gegner ist ein vollwertiger Magier mit einem Intent, der einfach leer bleibt. Netzwerk und Rollback liefern fertige `MageIntent`-Werte pro Tick und umgehen den Puffer ganz.
+Wer den Intent erzeugt, ist der Simulation egal: Mensch, KI ([[ki-und-rl|KI & RL]]), Add-on ([[add-ons|Add-ons]]), Netzwerk-Replay oder Test. Der Dummy-Gegner ist ein vollwertiger Magier mit einem Intent, der einfach leer bleibt. Auf dem Server kommen die Intents über das Netzwerk und umgehen den Puffer ganz ([[netzwerk|Netzwerk]]). Die Slot-Arrays (`held`, `pressed`) haben im Prototyp drei Einträge; mehr Slots sind eine Konstante, keine Umstellung.

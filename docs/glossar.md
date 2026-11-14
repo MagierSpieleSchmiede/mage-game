@@ -23,3 +23,20 @@ title: "Glossar"
 | Rollback | Netcode-Ansatz: Snapshots des Simulationszustands, Zurückspulen und Neuausführen ab einem Tick |
 | ADR | Architecture Decision Record; nummerierte Entscheidung mit verworfener Alternative |
 | P-Log | Problem-Log; nummerierte offene Fragen mit nächstem Schritt |
+| Team / TeamId | Gruppe von Magiern, die zusammen spielen; „Gegner“ heißt immer: anderes Team |
+| Szenario | Beschreibung einer Runde: Teams, Spieler, Arena, Seed; gemeinsam für Tests, Benchmarks, KI und Lobby |
+| Attribut | Eigenschaft eines Magiers (Tempo, Zauberkraft, Tarnung …); Basiswert plus Modifikatoren ergibt den effektiven Wert |
+| Attribut-Modifikator | zeitlich begrenzte additive oder multiplikative Änderung eines Attributs, z. B. Slow |
+| VisibleTo | Bitmaske je Entity: welche Teams sie gerade sehen |
+| Tarnung / Wahrnehmung | Attribute, die über Sichtbarkeit entscheiden; Unsichtbarkeit erhöht die Tarnung |
+| Enthüllung | kurze Zeit, in der ein Magier unabhängig von Tarnung sichtbar ist (nach Zaubern oder Schaden) |
+| Beobachtung (Observation) | alles, was ein Spieler in einem Tick wissen darf; einzige Leseschnittstelle für HUD, KI, Add-ons, Netzwerk |
+| Aktion | geräteunabhängige Eingabe (Bewegen, Zauber 1 …), auf Tasten, Sticks oder Touch belegbar |
+| Fluent | Format für übersetzte Texte (`.ftl`), kann Mehrzahl und Variablen |
+| Server-autoritativ | nur der Server entscheidet, was passiert; Clients schicken Intents |
+| Client-Vorhersage | Client simuliert den eigenen Magier sofort, ohne auf den Server zu warten |
+| Reconciliation (Abgleich) | Client setzt bei Abweichung auf den Server-Stand zurück und simuliert eigene Eingaben neu |
+| Interest Management | Server schickt jedem Client nur, was dessen Team sehen darf |
+| Add-on | Spieler-Erweiterung in einer Sandbox: liest die Beobachtung, schlägt Intents vor |
+| RL (Reinforcement Learning) | Lernverfahren, bei dem Agenten durch Belohnungen aus vielen Spielen lernen |
+| Backlog-Item (B-nnn) | konkrete nächste Aufgabe mit Abhängigkeiten und Tests, im Backlog |

@@ -9,7 +9,7 @@ Diese Anleitung bringt dich von null bis zum ersten eigenen Beitrag. Danach geht
 
 ## 1. Worum es geht
 
-**Mage Game** ist ein 3D-Arena-Duellspiel in Rust: zwei Magier, freie Bewegung, Third-Person-Zielen, modulare Zauber (Bolt, Homing-Bolt, Feuerball). Alles, was wir planen und entscheiden, steht im **Vault** – einer Sammlung von Markdown-Seiten, die du mit Obsidian liest. Der Code und der Vault liegen zusammen in **einem** GitHub-Repository.
+**Mage Game** ist ein 3D-Arena-Spiel in Rust: Teams von Magiern, freie Bewegung, Third-Person-Zielen, modulare Zauber (Bolt, Homing-Bolt, Feuerball). Alles, was wir planen und entscheiden, steht im **Vault** – einer Sammlung von Markdown-Seiten, die du mit Obsidian liest. Der Code und der Vault liegen zusammen in **einem** GitHub-Repository.
 
 ## 2. Die Werkzeuge auf einen Blick
 

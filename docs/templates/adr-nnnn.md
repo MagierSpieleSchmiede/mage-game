@@ -11,6 +11,8 @@ title: "ADR-nnnn — <Entscheidung in einem Satz>"
 ---
 # ADR-nnnn — <Entscheidung in einem Satz>
 
+**Status:** vorgeschlagen
+
 **Kontext:** <Zwangslage, die die Entscheidung erzwingt>
 
 **Entscheidung:** <Was gilt>

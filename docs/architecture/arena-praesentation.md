@@ -13,6 +13,8 @@ title: "Arena & Präsentation — Greybox, Kamera, Render-Target, HUD"
 
 **Interpolation:** Die Präsentation hält pro Simulations-Entity eine gerenderte Kopie des Transforms und interpoliert zwischen dem letzten und dem aktuellen fixen Tick anhand des Interpolationsanteils, den Bevy für `FixedUpdate` bereitstellt. Die Simulation selbst bleibt davon unberührt.
 
-**HUD:** Gesundheit und Mana beider Magier sowie der Cooldown-Zustand jedes Slots, als Reaktion auf Health-, Mana- und Cooldown-Components. Das HUD fragt nie Eingaben ab.
+**HUD:** Eigenes Leben, Mana, aktive Effekte und der Cooldown-Zustand jedes Slots; Leben der sichtbaren Mitspieler und Gegner in Teamfarben. Das HUD liest ausschließlich die [[beobachtung|Beobachtung]] des eigenen Spielers, fragt nie Eingaben ab und zeigt nur Texte aus der [[lokalisierung|Lokalisierung]].
 
-**Steuerung (konkret):** WASD Bewegung, Maus Kamera und Ziel, Slots auf Tasten 1/2/3 (Bolt, Homing-Bolt, Feuerball), optional später Sprung oder Dash als vierte Aktion. Die gleiche Tabelle steht im README.
+**Animation:** Reine Präsentation ([[adr-0021-animation-ist-reine-praesentation|ADR-0021]]). Die Simulation entscheidet nach Ticks, wann ein Zauber wirkt; die Animation startet beim Cast, passt ihre Geschwindigkeit an eine eventuelle Wirkzeit an und wird jederzeit abgebrochen oder überblendet, wenn die Simulation etwas Neues tut. Keine Animations-Events lösen Gameplay aus, keine Root Motion bewegt Simulations-Entities. Bis zur Asset-Pipeline genügen einfache prozedurale Bewegungen (Wippen, Ausholen) an der Greybox-Figur.
+
+**Steuerung:** Tastatur und Maus sowie Controller, auf Mobilgeräten Touch; alle über Aktionen mit änderbarer Belegung. Standardbelegung auf [[eingabegeraete|Eingabegeräte]]; die gleiche Tabelle steht im README. Optional später Sprung oder Dash als weitere Aktion.

@@ -55,7 +55,7 @@ Für den Einstieg reichen die offiziellen Tutorials auf blender.org und das Mode
 
 Wofür wir es nutzen:
 
-- **Konzeptbilder und Moodboards:** Eine grob gestellte Szene (Arena, zwei Magier, Kamerawinkel) in verschiedene Stile rendern lassen, um den Look zu finden.
+- **Konzeptbilder und Moodboards:** Eine grob gestellte Szene (Arena, Magier zweier Teams, Kamerawinkel) in verschiedene Stile rendern lassen, um den Look zu finden.
 - **Varianten:** Dieselbe Magier-Pose in fünf Farbpaletten, derselbe Feuerball in drei Größen.
 - **Bild zu 3D:** Aus einem Konzeptbild ein grobes 3D-Modell erzeugen. Das ist ein **Startpunkt**, kein fertiges Asset: Solche Modelle haben zu viele Polygone und unsaubere Geometrie. Sie gehen immer durch Blender (vereinfachen, Maßstab, Ursprung, Materialien) nach den Regeln oben.
 
