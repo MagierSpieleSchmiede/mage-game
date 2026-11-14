@@ -8,19 +8,19 @@ title: "Status — Übergabe: was zuletzt erledigt wurde und was als Nächstes k
 
 ## Zuletzt erledigt
 
-**2026-11-15, B-005 (Branch `dev-danielb`):** Die Tick-Kette steht: `mage_sim::schedule::SimSet` (Intent, Values, Casting, Movement, Physics, Hits, Damage, Visibility, Cleanup), verkettet in `FixedUpdate`; Avian läuft im Set Physics. Ein Shape-Cast im Set Hits sieht Positionen desselben Ticks; mit Avians Standard-Schedule tat er das nicht (P-005 erledigt). `headless_app` hat jetzt `TaskPoolPlugin`, `TransformPlugin`, `finish()`/`cleanup()`. Tests in `crates/mage_sim/tests/tick_chain.rs`. Davor angenommen: ADR-0030 (Fähigkeitenleiste) und ADR-0031 (Einheiten).
+**2026-11-15, B-006 (Branch `dev-danielb`):** `mage_sim::intent` mit `MAX_SLOTS` (12), `MageIntent`, `IntentForTick`, `Controller`, `InputBuffer` (nach `SimId`, Latch-Zähler) und `freeze_intents` im Set Intent, inklusive Bereinigung ungültiger Eingaben. Magier haben `Controller::Player`. 11 Tests in `crates/mage_sim/tests/intent.rs`.
 
 ## Nächste Aufgabe
 
-**B-006 — `MageIntent`, `InputBuffer` nach `SimId` der gesteuerten Einheit, `Controller` (Spieler oder KI), Flanken-Protokoll, `IntentForTick`; Slots bis `MAX_SLOTS`.**
+**B-008 — Geseedete RNG-Ressource.** (B-007 Attribute käme vorher, baut aber auf [[adr-0016-attribute-mit-modifikatoren|ADR-0016]], die noch vorgeschlagen ist; Daniel ist gefragt.)
 
-- **Erst klären:** nichts; ADR-0004, ADR-0030 und ADR-0031 sind angenommen.
-- **Dafür lesen:** die Zeile B-006 im [[backlog|Backlog]]; [[intent-steuerung|Intent & Steuerung]]; in [[einheiten|Einheiten]] die Tabelle „Kern und Zusätze“ (`Controller`); in [[faehigkeiten|Fähigkeiten & Belegung]] den Abschnitt „Regeln“ (`MAX_SLOTS`, Platzhalter 12). Code: `crates/mage_sim/src/{lib,schedule,mage}.rs`.
-- **Tests zuerst:** Latch-Garantien bei 0, 1 und mehreren Ticks pro Frame (ein Druck geht nie verloren, wird nie doppelt gezählt); `just_released`; ein Intent wirkt nur auf die Einheit, für die er geschrieben wurde.
+- **Erst klären:** nichts; [[adr-0009-eine-geseedete-rng-ressource-statt-verstreuter|ADR-0009]] ist angenommen.
+- **Dafür lesen:** die Zeile B-008 im [[backlog|Backlog]]; ADR-0009; [[determinismus|Determinismus]]. Code: `crates/mage_sim/src/{lib,scenario}.rs` (der Seed steht im `Scenario`).
+- **Tests zuerst:** gleicher Seed → gleiche Folge, anderer Seed → andere Folge; eine Clippy-Regel (`disallowed_methods`/`disallowed_types` in `clippy.toml`) verbietet andere Zufallsquellen in `mage_sim`, nachgewiesen durch einen absichtlichen Verstoß, der Clippy rot macht.
 
 ## Hinweise für die nächste Sitzung
 
-- Frames mit 0 oder mehreren Ticks lassen sich mit `TimeUpdateStrategy::FixedTimesteps(0)` bzw. `(n)` für ein einzelnes `app.update()` nachstellen; `step_ticks` setzt das nicht zurück, also im Test danach wieder auf 1 setzen.
-- `MageIntent` ohne serde, bis der Snapshot (B-013) es braucht; `aim_dir` und `move_axis` werden schon hier geklemmt bzw. normalisiert, NaN wird verworfen ([[sicherheit|Sicherheit]]).
-- Bevy-Fehler „Resource does not exist“ zeigen Systemnamen nur mit `cargo test --features bevy/debug`.
+- RNG: Eine neue Abhängigkeit (etwa `rand_chacha`) braucht eine Begründung und Plattformprüfung; ein kleiner eigener Generator (z. B. SplitMix64 oder Xoshiro, ein Dutzend Zeilen, ganzzahlig) wäre plattformübergreifend bit-gleich und ohne Abhängigkeit. Entscheidung im Commit begründen.
+- Frames mit 0 oder mehreren Ticks: `TimeUpdateStrategy::FixedTimesteps(n)` für ein `app.update()`, danach wieder 1 (siehe `tests/intent.rs`, `frame`).
+- Wer eine Quelldatei mit `mv` zurückspielt, muss sie danach `touch`en, sonst baut Cargo nicht neu.
 - Neue Systeme fragen Kern-Components ab (`SimId`, `TeamId`), nicht `With<Mage>`.

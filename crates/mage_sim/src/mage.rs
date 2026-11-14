@@ -3,6 +3,7 @@
 use bevy::ecs::prelude::{Commands, Component, Res, ResMut};
 
 use crate::ids::{PlayerId, SimIdCounter, TeamId};
+use crate::intent::Controller;
 use crate::scenario::Scenario;
 
 /// Marks a mage. Carries no visuals; the presentation reacts to it (invariant 6).
@@ -20,7 +21,14 @@ pub fn spawn_scenario_mages(
     for (team, &size) in scenario.team_sizes().iter().enumerate() {
         let team = TeamId(u8::try_from(team).expect("a scenario has at most 32 teams"));
         for _ in 0..size {
-            commands.spawn((Mage, sim_ids.allocate(), PlayerId(next_player), team));
+            let player = PlayerId(next_player);
+            commands.spawn((
+                Mage,
+                sim_ids.allocate(),
+                player,
+                team,
+                Controller::Player(player),
+            ));
             next_player += 1;
         }
     }

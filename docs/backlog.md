@@ -17,10 +17,9 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 
 | Nr. | Aufgabe | Abhängig von | Tests (zuerst schreiben) | Status |
 | --- | --- | --- | --- | --- |
-| B-006 | `MageIntent`, `InputBuffer` nach `SimId` der gesteuerten Einheit, `Controller` (Spieler oder KI), Flanken-Protokoll, `IntentForTick`; Slots bis `MAX_SLOTS` ([[einheiten\|Einheiten]]) ([[intent-steuerung\|Intent & Steuerung]], [[faehigkeiten\|Fähigkeiten & Belegung]]) | — | Latch-Garantien bei 0, 1 und mehreren Ticks pro Frame; `just_released` | offen |
 | B-007 | Attribute: Basiswerte, Modifikatoren, Set Werte, `EffectiveAttributes`; Balance als Daten ([[attribute\|Attribute]]) | — | Verrechnung, Stapelregeln, Ablauf in Ticks, Grenzen, Ganzzahligkeit, Reihenfolge nach Quelle | offen |
 | B-008 | Geseedete RNG-Ressource | — | gleicher Seed → gleiche Folge; eine Clippy-Regel (`disallowed_methods`) verbietet andere Zufallsquellen in `mage_sim` | offen |
-| B-009 | Einheiten-Kern: Leben, Mana in Tausendsteln, Regeneration, Cooldowns, Bewegung per `MoveAndSlide` mit effektivem Tempo; für alle Einheiten, nicht nur Magier ([[einheiten\|Einheiten]]) ([[kampf-physik\|Kampf & Physik]]) | B-006, B-007 | Regeneration vor Ausgaben; Cooldown N = frühestens N Ticks später; Tempo-Modifikator ändert Weg pro Tick | offen |
+| B-009 | Einheiten-Kern: Leben, Mana in Tausendsteln, Regeneration, Cooldowns, Bewegung per `MoveAndSlide` mit effektivem Tempo; für alle Einheiten, nicht nur Magier ([[einheiten\|Einheiten]]) ([[kampf-physik\|Kampf & Physik]]) | B-007 | Regeneration vor Ausgaben; Cooldown N = frühestens N Ticks später; Tempo-Modifikator ändert Weg pro Tick | offen |
 | B-011 | Bolt: Blueprint-Registry mit Zielfilter ([[adr-0027-zielfilter-pro-faehigkeit\|ADR-0027]]), Projectile, Spread, Damage, Impacts sammeln und sortiert auslösen, `DamageApplied` ([[zauber-datenmodell\|Zauber-Datenmodell]]) | B-008, B-009 | Spec-Test: Dummy verliert Leben, Zaubernder Mana; Cast wirkt im Tick der Eingabe ohne jede Präsentation | offen |
 | B-012 | 2-gegen-2 und Zielfilter | B-011 | Bolt fliegt durch einen Verbündeten und trifft den Gegner dahinter; ein Blueprint mit Filter „alle“ trifft den Verbündeten; Filter „Zaubernder“ trifft nur den Zaubernden | offen |
 | B-013 | Snapshot-Serialisierung und Determinismustest ([[determinismustest\|Determinismustest]]) | B-011 | zwei Läufe, byte-gleich; Test schlägt fehl, wenn eine Reihenfolge an `Entity` hängt | offen |
@@ -44,7 +43,7 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 | Nr. | Aufgabe | Abhängig von | Tests (zuerst schreiben) | Status |
 | --- | --- | --- | --- | --- |
 | B-021 | Client-Grundgerüst: Greybox-Arena, Low-Res-Target, Interpolation, Teamfarben ([[arena-praesentation\|Arena & Präsentation]]) | B-016 | Client-App startet ohne Fenster im Test; Visuals erscheinen an Marker-Entities | offen |
-| B-022 | Eingabe über Aktionen (Tastatur/Maus, Controller), Kamera und `aim_dir`; Crate-Frage ([[eingabegeraete\|Eingabegeräte]], [[p-011-eingabe-crate-und-zielhilfe\|P-011]]) | B-006, B-021 | gleiche Aktion von Tastatur und Controller ergibt gleichen Intent; Umbelegung wirkt | offen |
+| B-022 | Eingabe über Aktionen (Tastatur/Maus, Controller), Kamera und `aim_dir`; Crate-Frage ([[eingabegeraete\|Eingabegeräte]], [[p-011-eingabe-crate-und-zielhilfe\|P-011]]) | B-021 | gleiche Aktion von Tastatur und Controller ergibt gleichen Intent; Umbelegung wirkt | offen |
 | B-023 | Lokalisierung Englisch und Deutsch; Integrationsfrage ([[lokalisierung\|Lokalisierung]], [[p-012-fluent-integration\|P-012]]) | B-021 | jeder Schlüssel in jeder Sprache; jeder verwendete Schlüssel definiert | offen |
 | B-024 | HUD aus der Beobachtung | B-016, B-023 | HUD zeigt nur Beobachtungsdaten; deutscher Text läuft nicht über | offen |
 | B-025 | Animation entkoppelt (prozedural an der Greybox) ([[adr-0021-animation-ist-reine-praesentation\|ADR-0021]]) | B-021 | Cast wirkt im selben Tick, ob Animation läuft oder nicht; Animation bricht bei neuem Cast ab | offen |
@@ -74,10 +73,8 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 ```mermaid
 flowchart LR
   B008["B-008 RNG"]
-  B006["B-006 Intent"]
   B007["B-007 Attribute"]
-  B006 --> B009["B-009 Einheiten-Kern"]
-  B007 --> B009
+  B007 --> B009["B-009 Einheiten-Kern"]
   B008 --> B011["B-011 Bolt"]
   B009 --> B011
   B011 --> B012["B-012 2-gegen-2"]
@@ -95,8 +92,7 @@ flowchart LR
   B020 --> B029["B-029 Kampfzustand"]
   B028 --> B029
   B016 --> B021["B-021 Client"]
-  B006 --> B022["B-022 Eingabe"]
-  B021 --> B022
+  B021 --> B022["B-022 Eingabe"]
   B021 --> B023["B-023 Sprachen"]
   B016 --> B024["B-024 HUD"]
   B023 --> B024

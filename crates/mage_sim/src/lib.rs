@@ -10,11 +10,13 @@ use bevy::ecs::prelude::{IntoScheduleConfigs, resource_exists};
 use bevy::time::{Fixed, Time};
 
 use crate::ids::SimIdCounter;
+use crate::intent::{InputBuffer, freeze_intents};
 use crate::scenario::Scenario;
 use crate::schedule::SimSet;
 
 pub mod headless;
 pub mod ids;
+pub mod intent;
 pub mod mage;
 pub mod scenario;
 pub mod schedule;
@@ -61,6 +63,8 @@ impl Plugin for MageSimPlugin {
                     .in_set(SimSet::Physics),
             )
             .init_resource::<SimIdCounter>()
+            .init_resource::<InputBuffer>()
+            .add_systems(FixedUpdate, freeze_intents.in_set(SimSet::Intent))
             .add_systems(
                 Startup,
                 mage::spawn_scenario_mages.run_if(resource_exists::<Scenario>),

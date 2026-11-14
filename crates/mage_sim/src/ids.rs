@@ -32,6 +32,10 @@ pub struct PlayerId(pub u32);
 #[derive(Component, Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct TeamId(pub u8);
 
+/// Which AI behaviour steers a unit (ADR-0031).
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub struct BehaviorId(pub u16);
+
 /// Key of a spell blueprint in the registry (zauber-datenmodell.md).
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SpellId(pub u16);
