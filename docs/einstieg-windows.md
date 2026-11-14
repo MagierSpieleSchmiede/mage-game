@@ -1,3 +1,6 @@
+---
+title: "Mage Game – Einstieg für Mitwirkende (Windows)"
+---
 # Mage Game – Einstieg für Mitwirkende (Windows)
 
 Nov 14, 2026 · @Daniel
@@ -35,10 +38,10 @@ Die Begriffe, die du ständig hören wirst:
 - **Repository (Repo):** das Projekt mit seiner ganzen Geschichte.
 - **Clone:** das Repo einmalig auf deinen PC holen.
 - **Commit:** ein gespeicherter Schnappschuss deiner Änderungen, mit kurzer Beschreibung.
-- **Branch:** ein eigener Arbeitszweig, auf dem du ungestört etwas ausprobierst, ohne `main` (den Hauptstand) zu verändern.
+- **Branch:** ein eigener Arbeitszweig, auf dem du ungestört etwas ausprobierst, ohne `master` (den Hauptstand) zu verändern.
 - **Push:** deine Commits zu GitHub hochladen.
 - **Pull:** die Änderungen der anderen herunterladen.
-- **Pull Request (PR):** die Bitte „bitte übernehmt meinen Branch in `main`“. Hier wird geschaut, kommentiert und dann zusammengeführt (**Merge**).
+- **Pull Request (PR):** die Bitte „bitte übernehmt meinen Branch in `master`“. Hier wird geschaut, kommentiert und dann zusammengeführt (**Merge**).
 - **Merge-Konflikt:** zwei Leute haben dieselbe Stelle geändert; Git fragt, welche Version gelten soll.
 
 ## 4. Einmalige Einrichtung
@@ -113,9 +116,11 @@ cargo test
 
 Obsidian starten → *Open folder as vault* → den Ordner `docs` im Projekt wählen. Fertig: Jede Seite ist eine normale `.md`-Datei im Repo, und Änderungen daran laufen genauso über Git wie Code.
 
+Zum reinen Lesen gibt es den Vault auch als Webseite: <https://magierspieleschmiede.github.io/mage-game/>. Sie wird nach jedem Merge in `master` automatisch neu gebaut.
+
 ## 5. Der Arbeitsablauf – jedes Mal
 
-1. **Aktualisieren:** In GitHub Desktop auf `main` wechseln und *Fetch origin* → *Pull origin* klicken.
+1. **Aktualisieren:** In GitHub Desktop auf `master` wechseln und *Fetch origin* → *Pull origin* klicken.
 2. **Branch anlegen:** *Current branch → New branch*, sprechender Name wie `feuerball-split` oder `vault-balance-mana`.
 3. **Arbeiten:** Code in VS Code, Vault in Obsidian ändern.
 4. **Committen:** GitHub Desktop zeigt alle Änderungen. Unten links eine kurze Beschreibung („Split-Fragmente parallel zur Fläche“) eintragen → *Commit*. Lieber oft kleine Commits als einen riesigen.
@@ -125,7 +130,7 @@ Obsidian starten → *Open folder as vault* → den Ordner `docs` im Projekt wä
 
 **Die drei goldenen Regeln:**
 
-- Nie direkt auf `main` arbeiten – immer ein eigener Branch.
+- Nie direkt auf `master` arbeiten – immer ein eigener Branch.
 - Vor dem Start immer erst pullen.
 - Bevor du einen PR für Code abschickst: `cargo test` muss grün sein.
 
@@ -143,7 +148,7 @@ Obsidian starten → *Open folder as vault* → den Ordner `docs` im Projekt wä
 | `cargo` oder `git` unbekannt | PowerShell neu öffnen; notfalls PC neu starten. |
 | Push wird abgelehnt (*rejected*) | Erst *Pull* machen, dann erneut pushen. |
 | Merge-Konflikt | Keine Panik. GitHub Desktop zeigt die betroffene Datei; in VS Code für jede Stelle „Accept Current“, „Accept Incoming“ oder beides wählen, speichern, committen. Im Zweifel fragen. |
-| Versehentlich auf `main` gearbeitet | Nicht committen. *Current branch → New branch* – deine Änderungen wandern mit. |
+| Versehentlich auf `master` gearbeitet | Nicht committen. *Current branch → New branch* – deine Änderungen wandern mit. |
 | Alles kaputt, ich will zurück | Datei in GitHub Desktop rechtsklicken → *Discard changes*. Was committet ist, geht nicht verloren. |
 | Erster Build hängt ewig | Normal. Beim zweiten Mal ist es schnell. |
 

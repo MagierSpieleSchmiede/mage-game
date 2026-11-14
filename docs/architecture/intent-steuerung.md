@@ -1,0 +1,39 @@
+---
+title: "Intent & Steuerung — MageIntent, InputBuffer, das Flanken-Protokoll"
+---
+# Intent & Steuerung — MageIntent, InputBuffer, das Flanken-Protokoll
+
+Zwei Datentypen, bewusst getrennt: `MageIntent` ist das, was die Simulation pro Tick konsumiert und was später über das Netz geht. Der `InputBuffer` ist der Akkumulator, in den lokale Intent-Produzenten zwischen den Ticks schreiben. Der Latch-Zähler lebt nur im Puffer, nie im Intent ([[adr-0004-latch-zaehler-fuer-flanken|ADR-0004]]).
+
+```rust
+/// Per-Tick-Daten. Serde-serialisierbar. Keine Entity-, keine Kamerareferenz.
+pub struct MageIntent {
+    /// Normalisierte Bewegungsachse in der Bodenebene, bereits weltseitig gedreht.
+    pub move_axis: Vec2,
+    /// Zielrichtung im Weltraum, normalisiert.
+    pub aim_dir: Vec3,
+    /// Slot 1 bis 3: Taste in diesem Tick gehalten.
+    pub held: [bool; 3],
+    /// Slot 1 bis 3: Taste seit dem letzten Tick mindestens einmal gedrückt.
+    pub pressed: [bool; 3],
+}
+
+/// Eintrag im InputBuffer (Ressource, nach PlayerId).
+/// Wird in Update beschrieben und im Set Intent konsumiert.
+pub struct BufferedInput {
+    pub move_axis: Vec2,
+    pub aim_dir: Vec3,
+    pub held: [bool; 3],
+    /// Latch: Druckereignisse seit dem letzten konsumierten Tick (saturierend).
+    pub press_count: [u8; 3],
+}
+```
+
+**Das Flanken-Protokoll** löst das Problem, dass Frames null oder mehrere fixe Ticks ausführen können:
+
+- Der `HumanController` (Update, Präsentation) tastet Tastatur und Maus ab und schreibt in den `InputBuffer`. `move_axis`, `aim_dir` und `held` sind Stichproben: der letzte Wert gewinnt, nichts wird aufsummiert.
+- Druckereignisse werden gezählt: `press_count[i] += 1` (saturierend), je Ereignis, unabhängig von Tickgrenzen.
+- Im Set Intent friert die Simulation den Puffer zu einem `MageIntent` ein: `pressed = press_count > 0`, danach wird `press_count` auf 0 gesetzt. `just_released = held_prev && !held` leitet sie aus dem Intent des Vorticks ab.
+- Garantie: Ein Druck geht nie verloren (0 Ticks im Frame: der Latch überlebt bis zum nächsten Tick) und wird nie dupliziert (mehrere Ticks im Frame: nur der erste konsumiert ihn).
+
+Wer den Intent erzeugt, ist der Simulation egal: Mensch, KI, Netzwerk-Replay oder Test. Der Dummy-Gegner ist ein vollwertiger Magier mit einem Intent, der einfach leer bleibt. Netzwerk und Rollback liefern fertige `MageIntent`-Werte pro Tick und umgehen den Puffer ganz.
