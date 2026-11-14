@@ -122,21 +122,19 @@ Zum reinen Lesen gibt es den Vault auch als Webseite: <https://magierspieleschmi
 
 ## 5. Der Arbeitsablauf – jedes Mal
 
-> **Solange wir planen** (vor Milestone 1, siehe [[status|Status]]), arbeiten alle direkt auf `master`: pullen, ändern, committen, pushen. Kleine Commits, vor jedem Start pullen. Branches und Pull Requests wie unten beschrieben gelten **ab Beginn der Implementierung**; das wird im Chat angesagt.
+> **Seit Beginn der Implementierung** arbeitet niemand mehr direkt auf `master`. Leg dir einmal deinen eigenen Branch `dev-<dein-name>` an (GitHub Desktop: *Current Branch → New Branch*) und arbeite dort; nach `master` kommt alles per Pull Request, gemergt wird, wenn Daniel es sagt. Kleine Commits, vor jedem Start pullen.
 
-Ab der Implementierung:
-
-1. **Aktualisieren:** In GitHub Desktop auf `master` wechseln und *Fetch origin* → *Pull origin* klicken.
-2. **Branch anlegen:** *Current branch → New branch*, sprechender Name wie `feuerball-split` oder `vault-balance-mana`.
+1. **Aktualisieren:** In GitHub Desktop auf deinen Branch `dev-<dein-name>` wechseln, *Fetch origin* klicken und mit *Branch → Update from master* den neuesten Stand von `master` hereinholen.
+2. **Branch (nur beim ersten Mal):** *Current branch → New branch* → `dev-<dein-name>`, von `master` aus.
 3. **Arbeiten:** Code in VS Code, Vault in Obsidian ändern.
 4. **Committen:** GitHub Desktop zeigt alle Änderungen. Unten links eine kurze Beschreibung („Split-Fragmente parallel zur Fläche“) eintragen → *Commit*. Lieber oft kleine Commits als einen riesigen.
 5. **Pushen:** *Publish branch* bzw. *Push origin*.
 6. **Pull Request:** *Create Pull Request* öffnet GitHub im Browser. Kurz beschreiben, was und warum, dann abschicken.
-7. **Review & Merge:** Jemand schaut drüber, kommentiert, und wenn alles passt, wird gemergt. Danach den Branch löschen und wieder bei Schritt 1 anfangen.
+7. **Review & Merge:** Jemand schaut drüber, kommentiert, und wenn alles passt, wird gemergt. Dein Branch bleibt; weiter geht es bei Schritt 1.
 
 **Die drei goldenen Regeln:**
 
-- Ab der Implementierung nie direkt auf `master` arbeiten – immer ein eigener Branch.
+- Nie direkt auf `master` arbeiten – immer auf deinem eigenen Branch.
 - Vor dem Start immer erst pullen.
 - Bevor du Code abschickst: `cargo test` muss grün sein.
 

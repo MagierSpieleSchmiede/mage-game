@@ -3,19 +3,19 @@ title: "Projektstruktur — Workspace, Crates und Plugins, und warum es sie gibt
 ---
 # Projektstruktur — Workspace, Crates und Plugins, und warum es sie gibt
 
-Das Repo wird ein Cargo-Workspace ([[adr-0020-simulation-als-eigene-crate|ADR-0020]]). Die Grenze zwischen Simulation und Präsentation ist eine Crate-Grenze: Der Compiler verhindert, dass die Simulation Fenster, Renderer, Texte oder Eingabegeräte kennt.
+Das Repo ist ein Cargo-Workspace ([[adr-0020-simulation-als-eigene-crate|ADR-0020]]); die Crates liegen unter `crates/`, Versionen der Abhängigkeiten stehen einmal im Wurzel-`Cargo.toml`, Features wählt jede Crate selbst. Die Grenze zwischen Simulation und Präsentation ist eine Crate-Grenze: Der Compiler verhindert, dass die Simulation Fenster, Renderer, Texte oder Eingabegeräte kennt.
 
 ## Crates
 
 | Crate | Art | Inhalt | Ab |
 | --- | --- | --- | --- |
-| `mage_sim` | Bibliothek | alle Simulations-Plugins, Beobachtung, Szenarien, Snapshots; Bevy ohne Fenster/Render/Audio, Avian ohne Debug-Darstellung | M1 |
-| `mage_client` | Programm | das Spiel: Präsentation, Eingabe, HUD, Lokalisierung, Animation | M1 (leer), M3 |
+| `mage_sim` | Bibliothek | alle Simulations-Plugins, Beobachtung, Szenarien, Snapshots; Bevy ohne Default-Features (nur `std`), Avian nur mit `3d` und `parry-f32` (ohne `parallel` und Debug-Darstellung); der Test `tests/no_render_dependencies.rs` hält das fest | M1 (angelegt) |
+| `mage_client` | Programm | das Spiel: Präsentation, Eingabe, HUD, Lokalisierung, Animation | M1 (angelegt, leer), M3 |
 | `mage_server` | Programm | headless Server mit Netzwerk | M7 |
 | RL-Brücke | Bibliothek | Umgebung für Reinforcement Learning ([[p-013-rl-bruecke\|P-013]]) | M6 |
 | Add-on-Host | Bibliothek | Sandbox und Schnittstelle für Add-ons | M8 |
 
-Benchmarks liegen in `mage_sim/benches/` (Simulation) und als Szenario-Modus im Client (Bildzeit), siehe [[benchmarks|Benchmarks]].
+Benchmarks liegen in `crates/mage_sim/benches/` (Simulation) und als Szenario-Modus im Client (Bildzeit), siehe [[benchmarks|Benchmarks]].
 
 ## Plugins in `mage_sim` (Simulation)
 

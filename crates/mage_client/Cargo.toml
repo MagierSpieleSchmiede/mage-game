@@ -1,0 +1,10 @@
+[package]
+name = "mage_client"
+description = "The game client of Mage Game: presentation, input, HUD, localisation"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+mage_sim.workspace = true

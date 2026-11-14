@@ -8,3 +8,4 @@ Was in M1 erledigt wurde, in der Reihenfolge des Abschlusses. Ein Satz pro Backl
 | Item | Erledigt am | Ergebnis |
 | --- | --- | --- |
 | B-010 | 2026-11-14 | Friendly Fire wird pro Fähigkeit über einen Zielfilter entschieden ([[adr-0027-zielfilter-pro-faehigkeit\|ADR-0027]]); P-007 geschlossen. |
+| B-001 | 2026-11-14 | Workspace mit `crates/mage_sim` (Bevy nur `std`, Avian nur `3d` und `parry-f32`) und `crates/mage_client` (leer); ein Test prüft per `cargo tree` für alle Ziele, dass `mage_sim` keine Fenster-, Render- oder Audio-Crate erreicht und auf `bevy_ecs` und `avian3d` baut. `mage_sim` baut für `wasm32-unknown-unknown`. |

@@ -28,15 +28,15 @@ Die eine Liste aller Architekturentscheidungen. Der **Stand** steht nur hier und
 | [[adr-0017-rollback-mit-server-als-schiedsrichter\|ADR-0017]] | Rollback-Netcode, wo immer möglich; der Server ist Schiedsrichter | angenommen (2026-11-14) |
 | [[adr-0018-sichtbarkeit-als-simulationszustand\|ADR-0018]] | Sichtbarkeit ist Simulationszustand, pro Team berechnet | **vorgeschlagen** |
 | [[adr-0019-eine-beobachtungs-schnittstelle\|ADR-0019]] | Eine Beobachtungs-Schnittstelle für HUD, KI, Reinforcement Learning und Add-ons | **vorgeschlagen** |
-| [[adr-0020-simulation-als-eigene-crate\|ADR-0020]] | Cargo-Workspace mit der Simulation als eigener Crate ohne Render-Abhängigkeiten | **vorgeschlagen** |
+| [[adr-0020-simulation-als-eigene-crate\|ADR-0020]] | Cargo-Workspace mit der Simulation als eigener Crate ohne Render-Abhängigkeiten | angenommen (2026-11-14) |
 | [[adr-0021-animation-ist-reine-praesentation\|ADR-0021]] | Animation ist reine Präsentation; Fähigkeiten laufen nach Ticks | **vorgeschlagen** |
 | [[adr-0022-eingabe-ueber-aktionen\|ADR-0022]] | Eingabe über Aktionen statt über Tasten (Tastatur und Maus, Controller, Touch) | **vorgeschlagen** |
 | [[adr-0023-texte-ueber-fluent-schluessel\|ADR-0023]] | Alle Texte über Fluent-Schlüssel; Englisch und Deutsch von Anfang an | **vorgeschlagen** |
 | [[adr-0024-plattformneutralitaet\|ADR-0024]] | Plattformneutralität: keine Entscheidung, die eine Zielplattform ausschließt | **vorgeschlagen** |
 | [[adr-0025-add-ons-als-intent-produzenten\|ADR-0025]] | Add-ons lesen nur die Beobachtung und schreiben nur Intents, in einer Sandbox | **vorgeschlagen** |
-| [[adr-0026-tests-zuerst\|ADR-0026]] | Tests zuerst: jede Funktion beginnt mit einem fehlschlagenden Test | **vorgeschlagen** |
+| [[adr-0026-tests-zuerst\|ADR-0026]] | Tests zuerst: jede Funktion beginnt mit einem fehlschlagenden Test | angenommen (2026-11-14) |
 | [[adr-0027-zielfilter-pro-faehigkeit\|ADR-0027]] | Friendly Fire wird pro Fähigkeit über einen Zielfilter entschieden | angenommen |
 
 ## Was offen ist
 
-Die elf vorgeschlagenen ADRs warten auf Freigabe. Für den Start von Milestone 1 werden zuerst ADR-0020 (Workspace, B-001), ADR-0026 (Tests zuerst), ADR-0015 (Teams, B-004) und ADR-0016 (Attribute, B-007) gebraucht; siehe [[status|Status]].
+Neun vorgeschlagene ADRs warten auf Freigabe. Als Nächstes braucht Milestone 1 ADR-0024 (Plattformen, B-002), ADR-0015 (Teams, B-004) und ADR-0016 (Attribute, B-007); siehe [[status|Status]].

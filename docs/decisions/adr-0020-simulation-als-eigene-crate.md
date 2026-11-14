@@ -3,7 +3,7 @@ title: "ADR-0020 — Cargo-Workspace mit der Simulation als eigener Crate ohne R
 ---
 # ADR-0020 — Cargo-Workspace mit der Simulation als eigener Crate ohne Render-Abhängigkeiten
 
-**Status:** vorgeschlagen
+**Status:** angenommen (2026-11-14, mit Daniels Start der Implementierung)
 
 **Kontext:** Dieselbe Simulation soll im Spiel-Client, auf dem Server, im RL-Training (viele Instanzen, schneller als Echtzeit), in Benchmarks und auf allen Plattformen inklusive Web laufen. Die Trennung Simulation/Präsentation war bisher nur eine Konvention zwischen Plugins in einer Crate.
 

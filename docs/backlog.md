@@ -17,10 +17,7 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 
 | Nr. | Aufgabe | Abhängig von | Tests (zuerst schreiben) | Status |
 | --- | --- | --- | --- | --- |
-| B-001 | Cargo-Workspace mit `mage_sim` (Bibliothek, Bevy ohne Fenster/Render/Audio, Avian ohne Debug) und `mage_client` (leeres Programm) anlegen ([[adr-0020-simulation-als-eigene-crate\|ADR-0020]], [[projektstruktur\|Projektstruktur]]) | — | `cargo test` läuft im Workspace; ein Test stellt sicher, dass `mage_sim` keine Render-Crate im Abhängigkeitsbaum hat | offen |
-| B-002 | CI: fmt, clippy, test auf Linux, Windows, macOS; `cargo check -p mage_sim` für wasm32, Android, iOS ([[plattformen\|Plattformen]]) | B-001 | CI-Lauf grün auf allen Zielen | offen |
-| B-003 | Test-Support: Szenario-Builder (Teams, Spieler, Seed), headless App aus `mage_sim`, `step_ticks` ([[headless-integrationstest\|Headless-Integrationstest]]) | B-001 | `step_ticks(n)` führt genau n fixe Ticks aus | offen |
-| B-004 | IDs: `SimId`-Zähler, `PlayerId`, `TeamId`, `SpellId`; Szenario spawnt Magier mit Teams ([[teams\|Teams]], [[serialisierung-ids\|Serialisierung & IDs]]) | B-003 | `SimId` fortlaufend und eindeutig; 2-gegen-2-Szenario hat vier Magier in zwei Teams | offen |
+| B-002 | CI: fmt, clippy, test auf Linux, Windows, macOS; `cargo check -p mage_sim` für wasm32, Android, iOS ([[plattformen\|Plattformen]]) | B-003 | Test-Support: Szenario-Builder (Teams, Spieler, Seed), headless App aus `mage_sim`, `step_ticks` ([[headless-integrationstest\|Headless-Integrationstest]]) | B-004 | IDs: `SimId`-Zähler, `PlayerId`, `TeamId`, `SpellId`; Szenario spawnt Magier mit Teams ([[teams\|Teams]], [[serialisierung-ids\|Serialisierung & IDs]]) | B-003 | `SimId` fortlaufend und eindeutig; 2-gegen-2-Szenario hat vier Magier in zwei Teams | offen |
 | B-005 | Tick-Kette als `SystemSet`s inkl. Werte und Sichtbarkeit (leer), Avian in `FixedUpdate` als Set Physik ([[simulationsmodell\|Simulationsmodell]], [[p-005-avians-physik-in-fixedupdate-einhaengen\|P-005]]) | B-003 | Reihenfolge der Sets; ein Shape-Cast im Set Treffer sieht die Magier-Position desselben Ticks | offen |
 | B-006 | `MageIntent`, `InputBuffer`, Flanken-Protokoll, `IntentForTick` ([[intent-steuerung\|Intent & Steuerung]]) | B-004 | Latch-Garantien bei 0, 1 und mehreren Ticks pro Frame; `just_released` | offen |
 | B-007 | Attribute: Basiswerte, Modifikatoren, Set Werte, `EffectiveAttributes`; Balance als Daten ([[attribute\|Attribute]]) | B-004, B-005 | Verrechnung, Stapelregeln, Ablauf in Ticks, Grenzen, Ganzzahligkeit, Reihenfolge nach Quelle | offen |
@@ -73,8 +70,8 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 
 ```mermaid
 flowchart LR
-  B001["B-001 Workspace"] --> B002["B-002 CI"]
-  B001 --> B003["B-003 Test-Support"]
+  B002["B-002 CI"]
+  B003["B-003 Test-Support"]
   B003 --> B004["B-004 IDs, Teams"]
   B003 --> B005["B-005 Tick-Kette"]
   B003 --> B008["B-008 RNG"]

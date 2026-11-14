@@ -1,0 +1,14 @@
+[package]
+name = "mage_sim"
+description = "The deterministic, headless tick simulation of Mage Game"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+# No windowing, rendering, audio or threads: the simulation must run headless and build for
+# wasm32 (ADR-0020, ADR-0024). Avian without `parallel` (threads) and without `debug-plugin`
+# (rendering); only what static colliders, spatial queries and MoveAndSlide need (ADR-0003).
+avian3d = { workspace = true, features = ["3d", "parry-f32"] }
+bevy = { workspace = true, features = ["std"] }

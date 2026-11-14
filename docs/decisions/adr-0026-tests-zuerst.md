@@ -3,7 +3,7 @@ title: "ADR-0026 — Tests zuerst: jede Funktion beginnt mit einem fehlschlagend
 ---
 # ADR-0026 — Tests zuerst: jede Funktion beginnt mit einem fehlschlagenden Test
 
-**Status:** vorgeschlagen
+**Status:** angenommen (2026-11-14, mit Daniels Start der Implementierung)
 
 **Kontext:** Ein großer Teil des Codes wird von KI-Agenten geschrieben. Ohne vorher festgelegte Erwartung lässt sich schwer prüfen, ob Code tut, was er soll, und Agenten neigen dazu, Tests an den Code anzupassen statt umgekehrt.
 
