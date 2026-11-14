@@ -1,3 +1,5 @@
+![Stil-Vorbild: ein Magier mit leuchtendem Stab bei Nacht, Vollmond über einem See](docs/gestaltung/bilder/vorbild.jpg)
+
 # Mage Game
 
 **Ein stilisiertes 3D-Arena-Duellspiel in Rust: zwei Magier, freie Bewegung, modulare Zauber.**

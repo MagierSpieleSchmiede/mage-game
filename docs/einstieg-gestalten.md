@@ -17,6 +17,10 @@ Der Prototyp läuft bewusst mit **Greybox**: graue Blöcke statt fertiger Grafik
 
 ## 2. Der Stil: Low-Res mit harten Pixeln
 
+Unser Stil-Vorbild ist eine nächtliche Pixel-Fantasy-Szene: Nachtblau und Violett, warmes Laternenlicht, leuchtende Magie. Was wir daraus übernehmen, steht auf [[stil-vorbild|Stil-Vorbild]].
+
+![[vorbild.jpg|Stil-Vorbild: Magier mit leuchtendem Stab bei Nacht, Vollmond über einem See]]
+
 Das Spiel rendert die 3D-Szene in **niedriger Auflösung** (etwa ein Drittel der Fensterhöhe) und skaliert sie mit harten Pixelkanten hoch ([[adr-0011-low-res-render-target-mit-nearest|ADR-0011]]). Daraus folgt für die Gestaltung:
 
 - **Klare Silhouetten** schlagen feine Details; was kleiner als ein paar Pixel ist, verschwindet.

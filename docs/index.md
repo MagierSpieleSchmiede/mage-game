@@ -4,6 +4,8 @@ description: Ein stilisiertes 3D-Arena-Duellspiel in Rust mit Bevy und Avian —
 ---
 # Mage Game
 
+![[vorbild.jpg|Stil-Vorbild: ein Magier mit leuchtendem Kristallstab bei Nacht, Vollmond über einem See mit Burg und Dorf]]
+
 **Mage Game** ist ein stilisiertes 3D-Arena-Duellspiel in Rust (Bevy 0.20, Avian 0.8). Spieler steuern Magier mit freier 3D-Bewegung, Third-Person-Zielen und modularen, anpassbaren Zaubern; später kommen PvP mit Rollback-Netcode und KI-Gegner. Dieser Vault dokumentiert den fundamentalen Prototyp: Spezifikation, Architektur, Entscheidungen, Teststrategie und offene Probleme, eine Seite pro Thema.
 
 > [!info] Status — Vault v1.1 (2026-11-14)
@@ -32,5 +34,6 @@ description: Ein stilisiertes 3D-Arena-Duellspiel in Rust mit Bevy und Avian —
 | Planung | [[status\|Status]] · [[roadmap\|Roadmap & Milestones]] · [[erweiterungspunkte\|Erweiterungspunkte]] |
 | Probleme | [[problem-log\|Problem-Log]] (P-001 bis P-006) |
 | Konventionen | [[konventionen\|Konventionen]] · [[adr-nnnn\|ADR-Vorlage]] · [[p-nnn\|P-Vorlage]] |
+| Gestaltung | [[stil-vorbild\|Stil-Vorbild]] · [[einstieg-gestalten\|Gestalten]] |
 | Glossar | [[glossar\|Glossar]] — Begriffe von Intent bis Rollback |
 | Mitmachen | [[einstieg-windows\|Einstieg für Mitwirkende (Windows)]] · [[einstieg-ki-agenten\|KI-Agenten]] · [[einstieg-gestalten\|Gestalten]] |
