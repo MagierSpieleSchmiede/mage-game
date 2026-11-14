@@ -17,4 +17,4 @@ title: "Arena & Präsentation — Greybox, Kamera, Render-Target, HUD"
 
 **Animation:** Reine Präsentation ([[adr-0021-animation-ist-reine-praesentation|ADR-0021]]). Die Simulation entscheidet nach Ticks, wann ein Zauber wirkt; die Animation startet beim Cast, passt ihre Geschwindigkeit an eine eventuelle Wirkzeit an und wird jederzeit abgebrochen oder überblendet, wenn die Simulation etwas Neues tut. Keine Animations-Events lösen Gameplay aus, keine Root Motion bewegt Simulations-Entities. Bis zur Asset-Pipeline genügen einfache prozedurale Bewegungen (Wippen, Ausholen) an der Greybox-Figur.
 
-**Steuerung:** Tastatur und Maus sowie Controller, auf Mobilgeräten Touch; alle über Aktionen mit änderbarer Belegung. Standardbelegung auf [[eingabegeraete|Eingabegeräte]]; die gleiche Tabelle steht im README. Optional später Sprung oder Dash als weitere Aktion.
+**Steuerung:** über Aktionen mit änderbarer Belegung, siehe [[eingabegeraete|Eingabegeräte]]. Optional später Sprung oder Dash als weitere Aktion.

@@ -19,4 +19,4 @@ M1 bis M4 sind der Prototyp ([[spec-001-prototype|Spec 001]]). Danach kommen die
 
 Die Reihenfolge ab M5 ist ein Vorschlag; KI (M6) kommt vor dem Netzwerk, weil sie nur die Beobachtung braucht und früh Spielpartner und Balance-Daten liefert.
 
-Implementation-Logs („Milestone N — Implementation Log“, `milestones/mN-implementation-log.md`) werden je Milestone ergänzt, sobald gebaut wird. Erledigte Backlog-Items wandern dorthin.
+Was erledigt ist, steht im Implementation-Log des Milestones (derzeit [[m1-implementation-log|M1]]); wie es geführt wird, in den [[konventionen|Konventionen]].

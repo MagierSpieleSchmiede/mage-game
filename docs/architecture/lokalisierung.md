@@ -3,7 +3,7 @@ title: "Lokalisierung — Englisch und Deutsch, alle Texte über Schlüssel"
 ---
 # Lokalisierung — Englisch und Deutsch, alle Texte über Schlüssel
 
-Das Spiel läuft mindestens auf Englisch und Deutsch. Weitere Sprachen sind ein Ordner mehr. Entschieden in [[adr-0023-texte-ueber-fluent-schluessel|ADR-0023]] (vorgeschlagen).
+Das Spiel läuft mindestens auf Englisch und Deutsch. Weitere Sprachen sind ein Ordner mehr. Entschieden in [[adr-0023-texte-ueber-fluent-schluessel|ADR-0023]].
 
 ## Regeln
 

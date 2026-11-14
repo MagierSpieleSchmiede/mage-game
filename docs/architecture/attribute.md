@@ -3,7 +3,7 @@ title: "Attribute — wie stark und fähig ein Magier gerade ist"
 ---
 # Attribute — wie stark und fähig ein Magier gerade ist
 
-Jeder Magier hat mehrere Eigenschaften, die zusammen sagen, wie stark und fähig er **in diesem Moment** ist. Effekte ändern sie zeitweise. Entschieden in [[adr-0016-attribute-mit-modifikatoren|ADR-0016]] (vorgeschlagen).
+Jeder Magier hat mehrere Eigenschaften, die zusammen sagen, wie stark und fähig er **in diesem Moment** ist. Effekte ändern sie zeitweise. Entschieden in [[adr-0016-attribute-mit-modifikatoren|ADR-0016]].
 
 ## Die Attribute (erster Satz)
 
@@ -11,7 +11,7 @@ Jeder Magier hat mehrere Eigenschaften, die zusammen sagen, wie stark und fähig
 | --- | --- | --- |
 | Lebenspunkte (max.) | Obergrenze der Gesundheit | Schild-Zauber +20 % |
 | Mana (max.) und Mana-Regeneration | wie viel und wie schnell gezaubert werden kann | Erschöpfung −50 % Regeneration |
-| Bewegungstempo | Geschwindigkeit von `MoveAndSlide` | Slow −40 % |
+| Bewegungstempo | Geschwindigkeit von `MoveAndSlide` | Slow −50 % |
 | Zauberkraft | Faktor auf ausgeteilten Schaden | Ermächtigung +25 % |
 | Widerstand | Faktor auf erlittenen Schaden | Schwäche −20 % |
 | Zaubertempo | Faktor auf Cooldowns und Wirkzeiten | Eile +30 % |

@@ -11,4 +11,4 @@ title: "ADR-0015 — Teams mit beliebig vielen Magiern statt eines festen Zwei-S
 
 **Verworfene Alternative:** Zwei feste Spieler jetzt, Teams später nachrüsten. Verworfen, weil „der Gegner“ sich sonst in Zielwahl, HUD, Sichtbarkeit, Netzwerk und KI festsetzt und jede Stelle später angefasst werden müsste.
 
-**Konsequenzen:** Zielwahl braucht eine deterministische Regel (nächster sichtbarer Gegner, Gleichstand nach `SimId`). Ob Flächenschaden das eigene Team trifft, ist offen ([[p-007-friendly-fire-und-team-regeln|P-007]]). Kosten der Sichtbarkeits- und Trefferprüfung wachsen mit der Spielerzahl und werden gemessen ([[benchmarks|Benchmarks]]).
+**Konsequenzen:** Zielwahl braucht eine deterministische Regel (nächster sichtbarer Gegner, Gleichstand nach `SimId`). Ob Zauber das eigene Team treffen, entscheidet jede Fähigkeit über ihren Zielfilter ([[adr-0027-zielfilter-pro-faehigkeit|ADR-0027]]). Kosten der Sichtbarkeits- und Trefferprüfung wachsen mit der Spielerzahl und werden gemessen ([[benchmarks|Benchmarks]]).

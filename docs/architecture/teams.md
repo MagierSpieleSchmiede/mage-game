@@ -3,7 +3,7 @@ title: "Teams — zwei oder mehr Teams mit beliebig vielen Magiern"
 ---
 # Teams — zwei oder mehr Teams mit beliebig vielen Magiern
 
-Mage Game ist kein festes Duell: Eine Runde hat zwei oder mehr Teams, jedes mit einem oder mehreren Magiern (1-gegen-1, 2-gegen-2, 3-gegen-3-gegen-3 …). Entschieden in [[adr-0015-teams-statt-fester-zwei-spieler|ADR-0015]] (vorgeschlagen).
+Mage Game ist kein festes Duell: Eine Runde hat zwei oder mehr Teams, jedes mit einem oder mehreren Magiern (1-gegen-1, 2-gegen-2, 3-gegen-3-gegen-3 …). Entschieden in [[adr-0015-teams-statt-fester-zwei-spieler|ADR-0015]].
 
 ## Was gilt
 

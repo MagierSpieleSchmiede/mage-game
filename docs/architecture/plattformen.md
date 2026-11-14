@@ -3,7 +3,7 @@ title: "Plattformen — Desktop, Mobile und, wenn machbar, Web"
 ---
 # Plattformen — Desktop, Mobile und, wenn machbar, Web
 
-Mage Game soll auf Windows, Linux und macOS laufen, auf Android und iOS, und im Browser, wenn das ohne größere Probleme geht. Keine Entscheidung darf eine dieser Plattformen ausschließen ([[adr-0024-plattformneutralitaet|ADR-0024]], vorgeschlagen).
+Mage Game soll auf Windows, Linux und macOS laufen, auf Android und iOS, und im Browser, wenn das ohne größere Probleme geht. Keine Entscheidung darf eine dieser Plattformen ausschließen ([[adr-0024-plattformneutralitaet|ADR-0024]]).
 
 ## Stufen
 

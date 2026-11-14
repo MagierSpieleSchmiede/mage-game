@@ -6,29 +6,28 @@ Du arbeitest an **Mage Game**, einem stilisierten 3D-Arena-Spiel in Rust mit Bev
 
 ## Stand
 
-**Implementierung noch nicht begonnen.** `src/main.rs` ist ein Platzhalter. Nächster Schritt laut Vault: Milestone 1 — Walking Skeleton, Aufgaben im Backlog (`docs/backlog.md`). Fang nicht ungefragt mit Code an; Daniel gibt den Start frei. ADR-0015 bis ADR-0026 sind *vorgeschlagen* (außer ADR-0017, angenommen): Sie gelten als Planungsgrundlage, aber frag nach, bevor du Code darauf baust, solange Daniel sie nicht angenommen hat.
+Der aktuelle Planungsstand steht an **einer** Stelle: `docs/status.md` (was existiert, was blockiert, was als Nächstes kommt). Diese Datei wiederholt ihn nicht. Zwei Regeln gelten unabhängig davon:
+
+- Fang nicht ungefragt mit Code an; Daniel gibt den Start der Implementierung frei.
+- Welche ADRs angenommen und welche nur *vorgeschlagen* sind, steht in `docs/decisions/entscheidungen.md`. Vorgeschlagene ADRs sind Planungsgrundlage; frag nach, bevor du Code darauf baust.
 
 ## Zuerst lesen
 
-1. `docs/index.md`: die Inhaltskarte des Vaults.
-2. `docs/backlog.md`: **hier wählst du deine Aufgabe** (oberstes offenes Item, dessen Abhängigkeiten erledigt sind).
-3. `docs/status.md`: was existiert und was fehlt. Wo der Code widerspricht, gewinnt der Code; dann die Seite korrigieren.
+1. `docs/status.md`: der Planungsstand und der nächste Schritt. Wo der Code widerspricht, gewinnt der Code; dann die Seite korrigieren.
+2. `docs/backlog.md`: **hier wählst du deine Aufgabe**, und oben steht der Ablauf, nach dem jedes Item abgearbeitet wird.
+3. `docs/index.md`: die Inhaltskarte des Vaults, mit der Leseliste „Hier anfangen“.
 4. `docs/architecture/simulationsmodell.md`: die Invarianten und die Tick-Kette.
 5. `docs/specifications/spec-001-prototype.md`: Toolchain, Umfang, Anforderungen, Abnahmekriterien.
-6. `docs/decisions/`: die ADRs. Was entschieden ist, gilt. Eine angenommene ADR nicht neu verhandeln ohne neue ADR.
+6. `docs/decisions/entscheidungen.md`: alle ADRs mit Stand. Was angenommen ist, gilt; eine angenommene ADR nicht neu verhandeln ohne neue ADR.
 7. `docs/problems/problem-log.md`: offene Fragen mit ihrem nächsten Schritt.
-8. `docs/milestones/roadmap.md` und `docs/testing/teststrategie.md`: was in welchem Milestone dran ist und wie es getestet wird.
-9. `docs/architecture/sicherheit.md`: Sicherheitsregeln für jede Änderung, die Netzwerk, Eingaben von außen oder Add-ons berührt.
-10. `docs/templates/konventionen.md`: wie Seiten, ADRs und P-Einträge geschrieben und abgelegt werden.
-11. Die Einstiegsseiten für Menschen (`docs/einstieg-windows.md`, `docs/einstieg-ki-agenten.md`, `docs/einstieg-gestalten.md`): Wer hier mitarbeitet, liest sie; wer Arbeitsabläufe oder Regeln ändert, zieht sie mit.
+8. `docs/architecture/sicherheit.md`: Sicherheitsregeln für jede Änderung, die Netzwerk, Eingaben von außen oder Add-ons berührt.
+9. `docs/templates/konventionen.md`: wie Seiten, ADRs und P-Einträge geschrieben werden, und welche Tatsache wo steht („Eine Quelle pro Tatsache“).
+
+Die Einstiegsseiten für Menschen (`docs/einstieg-windows.md`, `docs/einstieg-ki-agenten.md`, `docs/einstieg-gestalten.md`): Wer Arbeitsabläufe oder Regeln ändert, zieht sie mit.
 
 ## So arbeitest du ein Backlog-Item ab
 
-1. **Tests zuerst** (ADR-0026): die Tests aus der Spalte *Tests* schreiben, laufen lassen, fehlschlagen sehen. Erst dann implementieren, bis sie grün sind; dann aufräumen. Tests nie abschwächen, um Code durchzubringen; ist ein Test falsch, begründen und Vault nachziehen. Noch nicht erfüllbare Tests: `#[ignore = "B-nnn"]`.
-2. Gates (unten) grün.
-3. Vault nachziehen: betroffene Seiten, `docs/status.md`, Implementation-Log des Milestones.
-4. **Backlog pflegen:** erledigtes Item entfernen (ein Satz ins Implementation-Log), geänderte Items anpassen, neue Aufgaben als neue Items mit Abhängigkeiten und Tests eintragen, Abhängigkeitsgraph nachziehen, nächste freie Nummer hochzählen.
-5. `target/` prüfen (unten).
+Der Ablauf steht oben in `docs/backlog.md` und gilt für Menschen und Agenten gleich: Tests zuerst, Gates grün, Vault und Status nachziehen, Backlog pflegen. Danach `target/` prüfen (unten).
 
 ## Vor dem Commit: die Gates
 
@@ -73,8 +72,8 @@ Bevy-Builds sind groß: Ein einziger Debug-Build legt mehrere Gigabyte in `targe
 ## Den Vault pflegen
 
 - **Konventionen** stehen in `docs/templates/konventionen.md`: Titel „Thema — der Punkt in einem Halbsatz“, Front Matter mit `title:`, Verweise als Obsidian-Links `[[dateiname|Anzeigetext]]`.
-- **Entscheidungen** bekommen keine Prosa, sondern eine ADR nach `docs/templates/adr-nnnn.md`. Nächste freie Nummer steht in den Konventionen (derzeit ADR-0028).
-- **Offene Fragen** bekommen eine Seite nach `docs/templates/p-nnn.md` und eine Zeile in `docs/problems/problem-log.md` (derzeit P-017).
-- **Status mitziehen:** Wer etwas baut, aktualisiert `docs/status.md` und das Implementation-Log des Milestones (`docs/milestones/mN-implementation-log.md`).
-- Nach neuen ADRs oder P-Einträgen die nächste freie Nummer in den Konventionen bzw. im Problem-Log hochzählen.
+- **Eine Quelle pro Tatsache:** nichts abschreiben, was eine andere Seite schon sagt; verlinken. Die Tabelle dazu steht in den Konventionen.
+- **Entscheidungen** bekommen keine Prosa, sondern eine ADR nach `docs/templates/adr-nnnn.md` und eine Zeile in `docs/decisions/entscheidungen.md` (dort steht die nächste freie Nummer).
+- **Offene Fragen** bekommen eine Seite nach `docs/templates/p-nnn.md` und eine Zeile in `docs/problems/problem-log.md` (dort steht die nächste freie Nummer).
+- **Status mitziehen:** Wer etwas baut oder den Planungsstand ändert, aktualisiert `docs/status.md` und das Implementation-Log des Milestones.
 - Der Vault ist auf Deutsch; Bezeichner im Code sind englisch.

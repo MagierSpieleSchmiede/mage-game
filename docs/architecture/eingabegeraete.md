@@ -3,7 +3,7 @@ title: "Eingabegeräte — Tastatur und Maus, Controller, Touch"
 ---
 # Eingabegeräte — Tastatur und Maus, Controller, Touch
 
-Gespielt wird mit Tastatur und Maus oder mit Controller, auf Mobilgeräten per Touch. Alle Geräte erzeugen **Aktionen**, aus denen der `HumanController` den `MageIntent` baut ([[adr-0022-eingabe-ueber-aktionen|ADR-0022]], vorgeschlagen). Die Simulation weiß nicht, welches Gerät benutzt wird ([[intent-steuerung|Intent & Steuerung]]).
+Gespielt wird mit Tastatur und Maus oder mit Controller, auf Mobilgeräten per Touch. Alle Geräte erzeugen **Aktionen**, aus denen der `HumanController` den `MageIntent` baut ([[adr-0022-eingabe-ueber-aktionen|ADR-0022]]). Die Simulation weiß nicht, welches Gerät benutzt wird ([[intent-steuerung|Intent & Steuerung]]).
 
 ## Standardbelegung
 
@@ -16,7 +16,7 @@ Gespielt wird mit Tastatur und Maus oder mit Controller, auf Mobilgeräten per T
 | Zauber 3 (Feuerball) | `3` | linker Trigger | Knopf |
 | Menü | `Esc` | Start | Menü-Knopf |
 
-Platzhalter, wird im Spieltest angepasst. Jede Belegung ist vom Spieler änderbar und wird gespeichert.
+Platzhalter, wird im Spieltest angepasst. Jede Belegung ist vom Spieler änderbar und wird gespeichert. Das README zeigt eine Kopie der Spalten Tastatur und Controller; wer hier ändert, zieht sie mit.
 
 ## Regeln
 

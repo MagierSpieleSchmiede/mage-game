@@ -5,13 +5,12 @@ title: "Backlog — die nächsten Aufgaben der Implementierung"
 
 Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erklären die verlinkten Seiten; die große Linie steht in [[roadmap|Roadmap & Milestones]].
 
-> [!important] Regeln für alle, die hier arbeiten (Menschen und Agenten)
-> 1. **Aufgabe wählen:** das oberste Item mit Status *offen*, dessen Abhängigkeiten alle erledigt sind.
-> 2. **Tests zuerst** ([[adr-0026-tests-zuerst|ADR-0026]]): die in der Spalte *Tests* genannten Tests schreiben, fehlschlagen sehen, dann implementieren.
-> 3. **Fertig heißt:** Gates aus `AGENTS.md` grün, Vault-Seiten nachgezogen, [[status|Status]] aktualisiert.
-> 4. **Danach dieses Backlog pflegen:** das erledigte Item **entfernen** und mit einem Satz ins Implementation-Log des Milestones schreiben; Items, die sich durch die Arbeit geändert haben, **anpassen**; neu entdeckte Aufgaben **als neue Items** mit Abhängigkeiten eintragen; Graph unten nachziehen.
+> [!important] So wird ein Item abgearbeitet (Menschen und Agenten; die einzige Fassung dieses Ablaufs)
+> 1. **Aufgabe wählen:** das oberste Item mit Status *offen*, dessen Abhängigkeiten alle erledigt sind. Ein Item ist *blockiert*, solange eine Entscheidung (ADR) oder ein Problem (P) in seiner Spalte *Abhängig von* offen ist; baut es auf einer *vorgeschlagenen* ADR auf ([[entscheidungen|Entscheidungen]]), erst Daniel fragen.
+> 2. **Tests zuerst** ([[adr-0026-tests-zuerst|ADR-0026]]): die Tests aus der Spalte *Tests* schreiben, laufen lassen, fehlschlagen sehen; dann implementieren, bis sie grün sind; dann aufräumen. Tests nie abschwächen, um Code durchzubringen; ist ein Test falsch, begründen und Vault nachziehen. Noch nicht erfüllbare Tests: `#[ignore = "B-nnn"]`.
+> 3. **Fertig heißt:** die Gates aus `AGENTS.md` grün, betroffene Vault-Seiten nachgezogen, [[status|Status]] aktualisiert.
+> 4. **Dieses Backlog pflegen:** das erledigte Item **entfernen** und mit einem Satz ins Implementation-Log des Milestones schreiben (`milestones/mN-implementation-log.md`); Items, die sich durch die Arbeit geändert haben, **anpassen**; neu entdeckte Aufgaben **als neue Items** mit Abhängigkeiten und Tests eintragen; Graph unten nachziehen.
 > 5. **Nummern** werden nie wiederverwendet. Nächste freie Nummer: **B-028**.
-> 6. Ein Item ist *blockiert*, solange eine Entscheidung (ADR) oder ein Problem (P) offen ist; das steht in der Spalte *Abhängig von*.
 
 ## Milestone 1 — Walking Skeleton
 

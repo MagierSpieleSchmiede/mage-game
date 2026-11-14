@@ -3,12 +3,26 @@ title: "Status — was existiert, was fehlt"
 ---
 # Status — was existiert, was fehlt
 
-Stand 2026-11-14 (Vault v1.2): spezifiziert und geplant, nichts implementiert. ADR-0017 (Rollback mit Server als Schiedsrichter) und ADR-0027 (Zielfilter pro Fähigkeit) sind angenommen; die übrigen ADRs von ADR-0015 bis ADR-0026 sind **vorgeschlagen** und warten auf Freigabe. Die nächsten Aufgaben stehen im [[backlog|Backlog]].
+Die eine Seite zum aktuellen Planungsstand. README, `AGENTS.md` und die Startseite verweisen hierher, statt ihn zu wiederholen.
+
+## Stand
+
+**2026-11-14, Vault v1.3:** spezifiziert und geplant, nichts implementiert; `cargo run` gibt nur „Hello, world!“ aus.
+
+| Frage | Antwort |
+| --- | --- |
+| Was ist der nächste Schritt? | Milestone 1 — Walking Skeleton, beginnend mit **B-001** (Workspace) im [[backlog\|Backlog]]. Gestartet wird, wenn Daniel es freigibt. |
+| Was blockiert den Start? | Freigabe der vorgeschlagenen ADRs, die M1 braucht, vor allem ADR-0020, ADR-0026, ADR-0015 und ADR-0016 ([[entscheidungen\|Entscheidungen]]). |
+| Welche Entscheidungen gelten? | Alle angenommenen ADRs; welche das sind, steht nur in [[entscheidungen\|Entscheidungen]]. |
+| Welche Fragen sind offen? | [[problem-log\|Problem-Log]]; für M1 relevant ist [[p-005-avians-physik-in-fixedupdate-einhaengen\|P-005]] (Avian in `FixedUpdate`). |
+| Was ist schon erledigt? | Implementation-Logs je Milestone, derzeit [[m1-implementation-log\|M1]]. |
+
+## Bereich für Bereich
 
 | Bereich | Heute | Fehlt |
 | --- | --- | --- |
 | Simulation | vollständig spezifiziert (Kette, Intent, Zauber, Kampf, Determinismus) | Implementierung (ab M1) |
-| Teams und Attribute | geplant ([[teams\|Teams]], [[attribute\|Attribute]]) | Friendly-Fire-Regel ([[p-007-friendly-fire-und-team-regeln\|P-007]]); Implementierung (M1) |
+| Teams und Attribute | geplant ([[teams\|Teams]], [[attribute\|Attribute]]); Friendly Fire pro Fähigkeit entschieden ([[adr-0027-zielfilter-pro-faehigkeit\|ADR-0027]]) | Implementierung (M1) |
 | Sichtbarkeit und Unsichtbarkeit | geplant ([[sichtbarkeit\|Sichtbarkeit]], [[beobachtung\|Beobachtung]]) | Grundform (M2), Tarnung (M5) |
 | Präsentation | spezifiziert (Kamera, Render-Target, HUD, Interpolation, Animation entkoppelt) | Implementierung (M3) |
 | Eingabe | geplant: Tastatur/Maus, Controller, Touch über Aktionen ([[eingabegeraete\|Eingabegeräte]]) | Crate-Frage ([[p-011-eingabe-crate-und-zielhilfe\|P-011]]); M3 |
@@ -22,4 +36,9 @@ Stand 2026-11-14 (Vault v1.2): spezifiziert und geplant, nichts implementiert. A
 | Add-ons | geplant ([[add-ons\|Add-ons]]) | Laufzeit und Fairness ([[p-010-add-on-laufzeit-und-fairness\|P-010]]); M8 |
 | Gestaltung / Assets | Greybox geplant; Stil-Vorbild; Einstieg für Gestaltende ([[einstieg-gestalten\|Gestalten]]) | Asset-Ablage ([[p-006-asset-ablage-und-grosse-binaerdateien\|P-006]]) |
 
-Offene technische Fragen stehen im [[problem-log|Problem-Log]].
+## Verlauf
+
+| Version | Datum | Änderung |
+| --- | --- | --- |
+| v1.3 | 2026-11-14 | Vault entdoppelt: ADR-Stand nur noch in [[entscheidungen\|Entscheidungen]], Planungsstand nur hier, Arbeitsablauf nur im [[backlog\|Backlog]], Nummernzähler je an einer Stelle. |
+| v1.2 | 2026-11-14 | Teams, Attribute, Unsichtbarkeit, KI und RL, Netzwerk und Sicherheit, Add-ons, Plattformen, Sprachen, Eingabegeräte, Benchmarks geplant; ADR-0017 und ADR-0027 angenommen. |

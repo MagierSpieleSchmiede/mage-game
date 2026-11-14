@@ -3,7 +3,7 @@ title: "ADR-Vorlage"
 ---
 # ADR-Vorlage
 
-Neue Entscheidung: diesen Block nach `decisions/adr-nnnn-<slug>.md` kopieren, die nächste freie Nummer aus den [[konventionen|Konventionen]] nehmen und die Platzhalter ersetzen.
+Neue Entscheidung: diesen Block nach `decisions/adr-nnnn-<slug>.md` kopieren, die nächste freie Nummer aus [[entscheidungen|Entscheidungen]] nehmen, die Platzhalter ersetzen und dort eine Zeile ergänzen.
 
 ```markdown
 ---

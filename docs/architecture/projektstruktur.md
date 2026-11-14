@@ -3,7 +3,7 @@ title: "Projektstruktur — Workspace, Crates und Plugins, und warum es sie gibt
 ---
 # Projektstruktur — Workspace, Crates und Plugins, und warum es sie gibt
 
-Das Repo wird ein Cargo-Workspace ([[adr-0020-simulation-als-eigene-crate|ADR-0020]], vorgeschlagen). Die Grenze zwischen Simulation und Präsentation ist eine Crate-Grenze: Der Compiler verhindert, dass die Simulation Fenster, Renderer, Texte oder Eingabegeräte kennt.
+Das Repo wird ein Cargo-Workspace ([[adr-0020-simulation-als-eigene-crate|ADR-0020]]). Die Grenze zwischen Simulation und Präsentation ist eine Crate-Grenze: Der Compiler verhindert, dass die Simulation Fenster, Renderer, Texte oder Eingabegeräte kennt.
 
 ## Crates
 

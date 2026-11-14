@@ -3,7 +3,7 @@ title: "Add-ons — den eigenen Charakter auslesen und automatisieren"
 ---
 # Add-ons — den eigenen Charakter auslesen und automatisieren
 
-Spieler sollen Add-ons nutzen können, die ihren Charakter **auslesen** (eigene Anzeigen, Statistiken, Aufzeichnung) oder seine Aktionen **automatisieren** (Abläufe, Makros, programmierte Magier). Grundsatz: [[adr-0025-add-ons-als-intent-produzenten|ADR-0025]] (vorgeschlagen). Gebaut wird es in Milestone 8.
+Spieler sollen Add-ons nutzen können, die ihren Charakter **auslesen** (eigene Anzeigen, Statistiken, Aufzeichnung) oder seine Aktionen **automatisieren** (Abläufe, Makros, programmierte Magier). Grundsatz: [[adr-0025-add-ons-als-intent-produzenten|ADR-0025]]. Gebaut wird es in Milestone 8.
 
 ## Wie ein Add-on arbeitet
 

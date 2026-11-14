@@ -3,7 +3,7 @@ title: "Teststrategie — Tests zuerst, auf sieben Ebenen"
 ---
 # Teststrategie — Tests zuerst, auf sieben Ebenen
 
-**Tests zuerst** ([[adr-0026-tests-zuerst|ADR-0026]], vorgeschlagen): Jedes [[backlog|Backlog]]-Item beginnt mit Tests, die das Verhalten aus dem Vault festhalten und zunächst fehlschlagen. Dann wird implementiert, bis sie grün sind. Tests werden nicht abgeschwächt, um Code durchzubringen.
+**Tests zuerst** ([[adr-0026-tests-zuerst|ADR-0026]]): Jedes [[backlog|Backlog]]-Item beginnt mit den Tests aus seiner Spalte *Tests*; der Ablauf steht im Backlog. Diese Seite sagt, welche Arten von Tests es gibt.
 
 | Ebene | Was | Wie | Ab |
 | --- | --- | --- | --- |

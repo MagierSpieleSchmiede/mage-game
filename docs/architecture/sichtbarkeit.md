@@ -3,7 +3,7 @@ title: "Sichtbarkeit — Unsichtbarkeit als Mechanik, pro Team berechnet"
 ---
 # Sichtbarkeit — Unsichtbarkeit als Mechanik, pro Team berechnet
 
-Magier können sich unsichtbar machen. Damit das fair bleibt, ist Sichtbarkeit kein Grafikeffekt, sondern Simulationszustand: Was ein Team nicht sieht, erfährt es auch nicht, weder über die Grafik noch über KI, Add-ons oder das Netzwerk. Entschieden in [[adr-0018-sichtbarkeit-als-simulationszustand|ADR-0018]] (vorgeschlagen).
+Magier können sich unsichtbar machen. Damit das fair bleibt, ist Sichtbarkeit kein Grafikeffekt, sondern Simulationszustand: Was ein Team nicht sieht, erfährt es auch nicht, weder über die Grafik noch über KI, Add-ons oder das Netzwerk. Entschieden in [[adr-0018-sichtbarkeit-als-simulationszustand|ADR-0018]].
 
 ## Regeln
 

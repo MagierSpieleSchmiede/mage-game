@@ -8,9 +8,9 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
 
 > [!WARNING]
-> **Mage Game ist ein Prototyp in der Planungsphase.** Die Spezifikation steht,
-> die Implementierung hat noch nicht begonnen: `cargo run` gibt heute nur
-> „Hello, world!“ aus. Alles hier kann sich ohne Vorwarnung ändern.
+> **Mage Game ist ein Prototyp in der Planungsphase.** Noch ist nichts
+> spielbar. Wo das Projekt gerade steht, steht immer aktuell auf der Seite
+> [Status](docs/status.md). Alles hier kann sich ohne Vorwarnung ändern.
 
 ## Die Idee
 
@@ -50,29 +50,21 @@ Geschrieben in **Rust** mit [Bevy](https://bevy.org) 0.20 und
 - Läuft auch auf **alten Rechnern**: Leistung wird mit einer Benchmark-Suite
   gegen ein festes Budget gemessen.
 
-## Was heute funktioniert
+## Stand und Planung
 
-Noch nichts Spielbares. Fertig ist die Planung: Spezifikation, Architektur,
-Entscheidungen (ADRs), Teststrategie, Problem-Log und ein Backlog mit den
-nächsten Aufgaben, siehe [Dokumentation](#dokumentation).
-
-## Geplant
-
-| Milestone | Inhalt |
+| Frage | Seite |
 | --- | --- |
-| M1 — Walking Skeleton | Simulation headless: Teams, Intent, Attribute, Bolt, Mana, Cooldowns; Tests zuerst; CI für alle Plattformen |
-| M2 — Zauber-Matrix | Homing-Bolt, Feuerball, Slow, Tod und Respawn, Sichtbarkeit in Grundform |
-| M3 — Arena & Präsentation | Greybox-Arena, Kamera, Low-Res-Look, HUD, Maus und Controller, Englisch und Deutsch |
-| M4 — Härtung & Messung | Benchmarks, Desktop-Builds, Determinismus über alle Zauber |
-| M5 — Unsichtbarkeit | Tarnung, Wahrnehmung, Enthüllung |
-| M6 — KI & RL | Computergegner, Trainingsumgebung, Balancing durch Selbstspiel |
-| M7 — Netzwerk & Sicherheit | Rollback-Netcode, Server als Schiedsrichter, Sync- und Latenztests |
-| M8 — Add-ons | Sandbox, Auslesen und Automatisieren |
-| M9 — Mobile & Web | Android, iOS, Touch, Web-Client wenn machbar |
+| Wo steht das Projekt, was kommt als Nächstes? | [Status](docs/status.md) |
+| Welche Aufgaben sind dran? | [Backlog](docs/backlog.md) |
+| Was kommt in welchem Milestone (M1 Walking Skeleton bis M9 Mobile & Web)? | [Roadmap](docs/milestones/roadmap.md) |
+| Was ist entschieden, was nur vorgeschlagen? | [Entscheidungen](docs/decisions/entscheidungen.md) |
+| Welche Fragen sind offen? | [Problem-Log](docs/problems/problem-log.md) |
 
-Die konkreten nächsten Aufgaben: [Backlog](docs/backlog.md).
+Diese Seiten sind die einzige Quelle; das README wiederholt ihren Inhalt nicht.
 
 ## Steuerung (geplant, ab M3)
+
+Standardbelegung, Kopie aus [Eingabegeräte](docs/architecture/eingabegeraete.md) (dort auch Touch):
 
 | Aktion | Tastatur und Maus | Controller |
 | --- | --- | --- |
@@ -104,9 +96,8 @@ siehe [Bevys Linux-Abhängigkeiten](https://github.com/bevyengine/bevy/blob/main
 Planung und Entscheidungen leben im **Vault** unter [`docs/`](docs/index.md):
 Markdown-Seiten, die man mit [Obsidian](https://obsidian.md) öffnet
 (*Open folder as vault* → `docs`) und die genauso über Git laufen wie der
-Code. Eine Seite pro Thema, Entscheidungen als nummerierte ADRs, offene Fragen
-im Problem-Log, Pläne als Milestones, die nächsten Aufgaben im
-[Backlog](docs/backlog.md).
+Code. Eine Seite pro Thema, jede Tatsache an genau einer Stelle; Einstieg ist
+die [Startseite](docs/index.md).
 
 Zum Lesen gibt es den Vault als Webseite:
 **<https://magierspieleschmiede.github.io/mage-game/>**. Sie wird bei jedem

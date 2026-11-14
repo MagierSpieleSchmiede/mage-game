@@ -3,7 +3,7 @@ title: "Beobachtung — was ein Spieler, eine KI oder ein Add-on sehen darf"
 ---
 # Beobachtung — was ein Spieler, eine KI oder ein Add-on sehen darf
 
-Eine **Beobachtung** (`Observation`) ist alles, was ein Spieler in einem Tick wissen kann. Sie ist die einzige Leseschnittstelle für HUD, KI-Gegner, RL-Training, Add-ons und den Netzwerk-Versand. Geschrieben wird nur über `MageIntent`. Entschieden in [[adr-0019-eine-beobachtungs-schnittstelle|ADR-0019]] (vorgeschlagen).
+Eine **Beobachtung** (`Observation`) ist alles, was ein Spieler in einem Tick wissen kann. Sie ist die einzige Leseschnittstelle für HUD, KI-Gegner, RL-Training, Add-ons und den Netzwerk-Versand. Geschrieben wird nur über `MageIntent`. Entschieden in [[adr-0019-eine-beobachtungs-schnittstelle|ADR-0019]].
 
 ```mermaid
 flowchart LR
