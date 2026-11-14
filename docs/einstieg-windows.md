@@ -144,6 +144,7 @@ Ab der Implementierung:
 
 - **Aufgaben** stehen als *Issues* auf GitHub. Wer eine übernimmt, weist sie sich selbst zu, damit niemand doppelt arbeitet.
 - **Entscheidungen** (ADRs) und **offene Probleme** (P-Log) stehen im Vault. Eine neue Entscheidung ist eine neue ADR-Seite (nach der [[adr-nnnn|ADR-Vorlage]]).
+- **Kommentare zu einer Vault-Seite** direkt unten auf der Seite der Webseite (Anmeldung mit GitHub). Sie landen in den *Discussions* des Repos.
 - **Schnelle Absprachen** im Chat; was dabei beschlossen wird, gehört danach in den Vault oder ein Issue, sonst ist es vergessen.
 
 ## 7. Wenn etwas schiefgeht
