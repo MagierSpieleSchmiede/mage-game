@@ -5,7 +5,7 @@ title: "Stil-Vorbild — nächtliche Pixel-Fantasy in Blau und warmem Licht"
 
 ![[vorbild.jpg|Pixel-Art-Szene: ein Magier in violetter Robe mit Spitzhut, Laterne und leuchtendem Kristallstab steht nachts auf einer Anhöhe neben einer Pflanze; dahinter ein See mit Vollmond-Spiegelung, eine Burg auf einer Insel und ein beleuchtetes Dorf]]
 
-*Herkunft: bitte nachtragen (Werkzeug, Modell, Datum).*
+*Herkunft: KI-generiert mit ChatGPT (Bildgenerierung) aus einem Text-Prompt; Dateidatum 2026-10-02. Der Prompt ist nicht überliefert.*
 
 Dieses Bild ist das **Stil-Vorbild** für Mage Game. Es ist 2D-Pixel-Art; unser Spiel ist 3D. Die Brücke ist das Low-Res-Rendering mit harten Pixelkanten ([[adr-0011-low-res-render-target-mit-nearest|ADR-0011]]): Eine einfache 3D-Szene, in niedriger Auflösung gerendert, bekommt von selbst einen pixeligen Look. Übernehmen wollen wir deshalb nicht die Technik, sondern **Farben, Licht und Formensprache**.
 
