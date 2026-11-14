@@ -13,5 +13,6 @@ Stand ist der spezifizierte, nicht implementierte Prototyp. Bereich für Bereich
 | Tests | Strategie festgelegt, zwei Integrationstests spezifiziert | Implementierung |
 | KI-Gegner | nur Erweiterungspunkt (Intent-Schnittstelle) | bewusst außerhalb |
 | Netzwerk / Rollback | nur Erweiterungspunkte (Serialisierung, Snapshots) | bewusst außerhalb |
+| Gestaltung / Assets | Greybox geplant; Einstieg für Gestaltende ([[einstieg-gestalten\|Gestalten]]) | Look-Entwürfe; Asset-Ablage offen ([[p-006-asset-ablage-und-grosse-binaerdateien\|P-006]]) |
 
 Offene technische Fragen stehen im [[problem-log|Problem-Log]].

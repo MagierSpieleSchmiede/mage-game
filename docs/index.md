@@ -7,10 +7,10 @@ description: Ein stilisiertes 3D-Arena-Duellspiel in Rust mit Bevy und Avian —
 **Mage Game** ist ein stilisiertes 3D-Arena-Duellspiel in Rust (Bevy 0.20, Avian 0.8). Spieler steuern Magier mit freier 3D-Bewegung, Third-Person-Zielen und modularen, anpassbaren Zaubern; später kommen PvP mit Rollback-Netcode und KI-Gegner. Dieser Vault dokumentiert den fundamentalen Prototyp: Spezifikation, Architektur, Entscheidungen, Teststrategie und offene Probleme, eine Seite pro Thema.
 
 > [!info] Status — Vault v1.1 (2026-11-14)
-> Spezifikation nach Review überarbeitet; [[p-001-move-and-slide|P-001]] und [[p-002-observer-laufzeitpunkt-innerhalb-der-tick-kette|P-002]] sind entschieden, offen bleiben P-003 bis P-005. Implementierung noch nicht begonnen. Nächster Schritt: Milestone 1 — Walking Skeleton. Alles Bereich für Bereich: **[[status|Status]]**.
+> Spezifikation nach Review überarbeitet; [[p-001-move-and-slide|P-001]] und [[p-002-observer-laufzeitpunkt-innerhalb-der-tick-kette|P-002]] sind entschieden, offen bleiben P-003 bis P-006. Implementierung noch nicht begonnen. Nächster Schritt: Milestone 1 — Walking Skeleton. Alles Bereich für Bereich: **[[status|Status]]**.
 
 > [!tip] Neu hier?
-> **[[einstieg-windows|Einstieg für Mitwirkende (Windows)]]** führt von null bis zum ersten Pull Request: Git, GitHub Desktop, Rust, Obsidian.
+> **[[einstieg-windows|Einstieg für Mitwirkende (Windows)]]** führt von null bis zum ersten Beitrag: Git, GitHub Desktop, Rust, Obsidian. Danach: **[[einstieg-ki-agenten|KI-Agenten]]** (Claude Code, Codex) für alle, die mit einem Agenten arbeiten, und **[[einstieg-gestalten|Gestalten]]** (Blender, ArtCraft) für alle, die am Look des Spiels arbeiten.
 
 ## Hier anfangen
 
@@ -30,7 +30,7 @@ description: Ein stilisiertes 3D-Arena-Duellspiel in Rust mit Bevy und Avian —
 | Spezifikation | [[spec-001-prototype\|Spec 001 — fundamentaler Prototyp]] |
 | Testing | [[teststrategie\|Teststrategie]] · [[headless-integrationstest\|Headless-Integrationstest]] · [[determinismustest\|Determinismustest]] |
 | Planung | [[status\|Status]] · [[roadmap\|Roadmap & Milestones]] · [[erweiterungspunkte\|Erweiterungspunkte]] |
-| Probleme | [[problem-log\|Problem-Log]] (P-001 bis P-005) |
+| Probleme | [[problem-log\|Problem-Log]] (P-001 bis P-006) |
 | Konventionen | [[konventionen\|Konventionen]] · [[adr-nnnn\|ADR-Vorlage]] · [[p-nnn\|P-Vorlage]] |
 | Glossar | [[glossar\|Glossar]] — Begriffe von Intent bis Rollback |
-| Mitmachen | [[einstieg-windows\|Einstieg für Mitwirkende (Windows)]] |
+| Mitmachen | [[einstieg-windows\|Einstieg für Mitwirkende (Windows)]] · [[einstieg-ki-agenten\|KI-Agenten]] · [[einstieg-gestalten\|Gestalten]] |

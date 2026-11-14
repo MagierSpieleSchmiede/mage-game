@@ -94,8 +94,10 @@ site/build.sh --serve    # http://localhost:8080, baut bei jeder Änderung neu
 
 Neu dabei? Die Anleitung
 [Einstieg für Mitwirkende (Windows)](docs/einstieg-windows.md) führt von null
-bis zum ersten Pull Request: Git, GitHub Desktop, Rust, Obsidian und der
-Arbeitsablauf mit Branches.
+bis zum ersten Beitrag: Git, GitHub Desktop, Rust, Obsidian und der
+Arbeitsablauf. Danach je nach Interesse:
+[KI-Agenten](docs/einstieg-ki-agenten.md) (Claude Code, Codex) oder
+[Gestalten](docs/einstieg-gestalten.md) (Blender, ArtCraft).
 
 Für Code-Agenten (Claude Code, Codex & Co.) gilt [AGENTS.md](AGENTS.md).
 

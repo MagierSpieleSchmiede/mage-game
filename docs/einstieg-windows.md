@@ -5,7 +5,7 @@ title: "Mage Game – Einstieg für Mitwirkende (Windows)"
 
 Nov 14, 2026 · @Daniel
 
-Diese Anleitung bringt dich von null bis zum ersten eigenen Beitrag. Du brauchst keine Vorkenntnisse – nur einen Windows-PC, etwa eine Stunde Zeit und ein bisschen Geduld beim ersten Kompilieren.
+Diese Anleitung bringt dich von null bis zum ersten eigenen Beitrag. Danach geht es je nach Interesse weiter mit [[einstieg-ki-agenten|KI-Agenten (Claude Code, Codex)]] oder [[einstieg-gestalten|Gestalten (Blender, ArtCraft)]]. Du brauchst keine Vorkenntnisse – nur einen Windows-PC, etwa eine Stunde Zeit und ein bisschen Geduld beim ersten Kompilieren.
 
 ## 1. Worum es geht
 
@@ -22,8 +22,10 @@ Diese Anleitung bringt dich von null bis zum ersten eigenen Beitrag. Du brauchst
 | Rust (rustup) | Compiler und Paketverwaltung `cargo` | Ja (für Code) |
 | VS Code + rust-analyzer | Code-Editor mit Rust-Unterstützung | Empfohlen |
 | Obsidian | Vault lesen und bearbeiten | Ja |
+| Claude Code oder Codex | KI-Agent, der beim Programmieren und Schreiben hilft | Optional, siehe [[einstieg-ki-agenten\|KI-Agenten]] |
+| Blender, ArtCraft | Modelle, Konzeptbilder, Look des Spiels | Optional, siehe [[einstieg-gestalten\|Gestalten]] |
 
-Wer nur am Vault (Konzept, Balance, Ideen) mitarbeitet, braucht Build Tools, Rust und VS Code nicht.
+Wer nur am Vault (Konzept, Balance, Ideen) mitarbeitet, braucht Build Tools, Rust und VS Code nicht. Wer gestalten will, liest danach [[einstieg-gestalten|Gestalten]]; wer mit einem KI-Agenten arbeiten will, [[einstieg-ki-agenten|KI-Agenten]].
 
 ## 3. Was sind Git und GitHub?
 
@@ -116,9 +118,13 @@ cargo test
 
 Obsidian starten → *Open folder as vault* → den Ordner `docs` im Projekt wählen. Fertig: Jede Seite ist eine normale `.md`-Datei im Repo, und Änderungen daran laufen genauso über Git wie Code.
 
-Zum reinen Lesen gibt es den Vault auch als Webseite: <https://magierspieleschmiede.github.io/mage-game/>. Sie wird nach jedem Merge in `master` automatisch neu gebaut.
+Zum reinen Lesen gibt es den Vault auch als Webseite: <https://magierspieleschmiede.github.io/mage-game/>. Sie wird nach jedem Push auf `master` automatisch neu gebaut.
 
 ## 5. Der Arbeitsablauf – jedes Mal
+
+> **Solange wir planen** (vor Milestone 1, siehe [[status|Status]]), arbeiten alle direkt auf `master`: pullen, ändern, committen, pushen. Kleine Commits, vor jedem Start pullen. Branches und Pull Requests wie unten beschrieben gelten **ab Beginn der Implementierung**; das wird im Chat angesagt.
+
+Ab der Implementierung:
 
 1. **Aktualisieren:** In GitHub Desktop auf `master` wechseln und *Fetch origin* → *Pull origin* klicken.
 2. **Branch anlegen:** *Current branch → New branch*, sprechender Name wie `feuerball-split` oder `vault-balance-mana`.
@@ -130,14 +136,14 @@ Zum reinen Lesen gibt es den Vault auch als Webseite: <https://magierspieleschmi
 
 **Die drei goldenen Regeln:**
 
-- Nie direkt auf `master` arbeiten – immer ein eigener Branch.
+- Ab der Implementierung nie direkt auf `master` arbeiten – immer ein eigener Branch.
 - Vor dem Start immer erst pullen.
-- Bevor du einen PR für Code abschickst: `cargo test` muss grün sein.
+- Bevor du Code abschickst: `cargo test` muss grün sein.
 
 ## 6. Wer macht was, wo wird gesprochen
 
 - **Aufgaben** stehen als *Issues* auf GitHub. Wer eine übernimmt, weist sie sich selbst zu, damit niemand doppelt arbeitet.
-- **Entscheidungen** (ADRs) und **offene Probleme** (P-Log) stehen im Vault. Eine neue Entscheidung ist ein PR mit einer neuen ADR-Seite.
+- **Entscheidungen** (ADRs) und **offene Probleme** (P-Log) stehen im Vault. Eine neue Entscheidung ist eine neue ADR-Seite (nach der [[adr-nnnn|ADR-Vorlage]]).
 - **Schnelle Absprachen** im Chat; was dabei beschlossen wird, gehört danach in den Vault oder ein Issue, sonst ist es vergessen.
 
 ## 7. Wenn etwas schiefgeht
@@ -151,6 +157,7 @@ Zum reinen Lesen gibt es den Vault auch als Webseite: <https://magierspieleschmi
 | Versehentlich auf `master` gearbeitet | Nicht committen. *Current branch → New branch* – deine Änderungen wandern mit. |
 | Alles kaputt, ich will zurück | Datei in GitHub Desktop rechtsklicken → *Discard changes*. Was committet ist, geht nicht verloren. |
 | Erster Build hängt ewig | Normal. Beim zweiten Mal ist es schnell. |
+| Festplatte voll, Ordner `target` riesig | `target` enthält nur Zwischenstände des Compilers und wächst mit jedem Versionswechsel von Bevy. Im Projektordner `cargo clean` ausführen: löscht ihn komplett, der nächste Build dauert dann wieder lange. Lohnt sich ab etwa 20 GB oder nach einem Update der Abhängigkeiten. Größe prüfen: Rechtsklick auf `target` → *Eigenschaften*. |
 
 ## 8. Checkliste
 
@@ -162,4 +169,5 @@ Zum reinen Lesen gibt es den Vault auch als Webseite: <https://magierspieleschmi
 - [ ] Repo nach `C:\dev\mage-game` geklont (nicht in OneDrive!)
 - [ ] `cargo run` startet das Spiel
 - [ ] Vault in Obsidian geöffnet
-- [ ] Ersten Branch, Commit und Pull Request gemacht – zum Üben gern einen Tippfehler im Vault korrigieren
+- [ ] Ersten Commit gemacht und gepusht – zum Üben gern einen Tippfehler im Vault korrigieren
+- [ ] (Optional) [[einstieg-ki-agenten|KI-Agent]] oder [[einstieg-gestalten|Gestaltungswerkzeuge]] eingerichtet
