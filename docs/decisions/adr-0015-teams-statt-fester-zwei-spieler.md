@@ -3,7 +3,7 @@ title: "ADR-0015 — Teams mit beliebig vielen Magiern statt eines festen Zwei-S
 ---
 # ADR-0015 — Teams mit beliebig vielen Magiern statt eines festen Zwei-Spieler-Duells
 
-**Status:** vorgeschlagen
+**Status:** angenommen (2026-11-14)
 
 **Kontext:** Das Spiel soll nicht nur 1-gegen-1 laufen, sondern mit zwei oder mehr Teams aus jeweils mehreren Spielern. Der ursprüngliche Entwurf kannte genau zwei Magier; Homing suchte „den“ Gegner, das HUD zeigte „beide“ Magier.
 

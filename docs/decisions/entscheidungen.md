@@ -23,7 +23,7 @@ Die eine Liste aller Architekturentscheidungen. Der **Stand** steht nur hier und
 | [[adr-0012-split-hakt-auf-on-impact\|ADR-0012]] | Split hakt auf on impact statt on expire | angenommen |
 | [[adr-0013-simid-statt-entity-index-fuer-jede\|ADR-0013]] | SimId statt Entity-Index für jede ergebnisrelevante Reihenfolge | angenommen |
 | [[adr-0014-impacts-sammeln-dann-sortiert-ausloesen\|ADR-0014]] | Impacts sammeln, dann sortiert auslösen | angenommen |
-| [[adr-0015-teams-statt-fester-zwei-spieler\|ADR-0015]] | Teams mit beliebig vielen Magiern statt eines festen Zwei-Spieler-Duells | **vorgeschlagen** |
+| [[adr-0015-teams-statt-fester-zwei-spieler\|ADR-0015]] | Teams mit beliebig vielen Magiern statt eines festen Zwei-Spieler-Duells | angenommen (2026-11-14) |
 | [[adr-0016-attribute-mit-modifikatoren\|ADR-0016]] | Attribute mit Modifikatoren, pro Tick zu effektiven Werten verrechnet | **vorgeschlagen** |
 | [[adr-0017-rollback-mit-server-als-schiedsrichter\|ADR-0017]] | Rollback-Netcode, wo immer möglich; der Server ist Schiedsrichter | angenommen (2026-11-14) |
 | [[adr-0018-sichtbarkeit-als-simulationszustand\|ADR-0018]] | Sichtbarkeit ist Simulationszustand, pro Team berechnet | **vorgeschlagen** |
@@ -39,4 +39,4 @@ Die eine Liste aller Architekturentscheidungen. Der **Stand** steht nur hier und
 
 ## Was offen ist
 
-Acht vorgeschlagene ADRs warten auf Freigabe. Als Nächstes braucht Milestone 1 ADR-0015 (Teams, B-004) und ADR-0016 (Attribute, B-007); siehe [[status|Status]].
+Sieben vorgeschlagene ADRs warten auf Freigabe. Als Nächstes braucht Milestone 1 ADR-0016 (Attribute, B-007); siehe [[status|Status]].

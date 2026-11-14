@@ -8,17 +8,18 @@ title: "Status — Übergabe: was zuletzt erledigt wurde und was als Nächstes k
 
 ## Zuletzt erledigt
 
-**2026-11-14, B-002 (Branch `dev-danielb`):** CI in `.github/workflows/ci.yml`: fmt, clippy, Tests auf Linux, Windows, macOS; `cargo check -p mage_sim` für wasm32, Android, iOS. Auf allen sieben Jobs grün; ein absichtlicher Clippy-Fehler macht sie rot. Android braucht das Feature `android-check` von `mage_sim`, iOS läuft auf macOS ([[plattformen|Plattformen]]). ADR-0024 ist angenommen. Davor B-001: Workspace `crates/mage_sim` und `crates/mage_client`.
+**2026-11-14, B-003 (Branch `dev-danielb`):** `mage_sim` hat `TICKS_PER_SECOND` (60), `MageSimPlugin` (stellt den Fixed-Takt ein), `scenario::Scenario` mit Builder (Teams, Spieler pro Team, Seed; 2 bis 32 Teams, kein leeres Team) und `headless::{headless_app, step_ticks}`. Tests in `crates/mage_sim/tests/headless.rs`. Die Bevy-Migrationsleitfäden 0.18→0.20 sind gelesen; für die Simulation wichtig: `Resource` ist jetzt ein Subtrait von `Component` (ein Typ kann nicht beides ableiten), Observer heißen `On<Add<A>>` statt `On<Add, A>`, Lifecycle-Event `Replace` heißt `Discard`. ADR-0015 ist angenommen.
 
 ## Nächste Aufgabe
 
-**B-003 — Test-Support: Szenario-Builder (Teams, Spieler, Seed), headless App aus `mage_sim`, `step_ticks`.**
+**B-004 — IDs: `SimId`-Zähler, `PlayerId`, `TeamId`, `SpellId`; das Szenario spawnt Magier mit Teams.**
 
-- **Erst klären:** Der Szenario-Builder kennt Teams; dafür sollte Daniel [[adr-0015-teams-statt-fester-zwei-spieler|ADR-0015]] annehmen.
-- **Dafür lesen:** die Zeile B-003 im [[backlog|Backlog]]; [[headless-integrationstest|Headless-Integrationstest]]; [[teststrategie|Teststrategie]] (Abschnitt Regeln); in [[teams|Teams]] den Punkt „Szenario“. Das ist der **erste Code mit Bevy-API**: vorher die Migrationsleitfäden Bevy 0.18→0.19 und 0.19→0.20 lesen und `TimeUpdateStrategy::ManualDuration` im Quellcode von Bevy 0.20.1 prüfen (`~/.cargo/registry/src/`).
-- **Tests zuerst:** `step_ticks(n)` führt genau n fixe Ticks aus.
+- **Erst klären:** nichts; die nötigen ADRs (0006, 0013, 0015) sind angenommen.
+- **Dafür lesen:** die Zeile B-004 im [[backlog|Backlog]]; [[serialisierung-ids|Serialisierung & IDs]]; in [[teams|Teams]] den Abschnitt „Was gilt“; in [[simulationsmodell|Simulationsmodell]] die Invarianten 5 und 6. Code: `crates/mage_sim/src/scenario.rs` und `headless.rs`.
+- **Tests zuerst:** `SimId` fortlaufend und eindeutig; ein 2-gegen-2-Szenario hat vier Magier in zwei Teams.
 
 ## Hinweise für die nächste Sitzung
 
-- Lokal ist `cargo fmt --check` auf Daniels Rechner kaputt, solange in `~/.cargo/bin` das alte Paket `rustfmt` 0.10 liegt (Reparatur: `cargo uninstall rustfmt`); bis dahin prüft nur die CI das Format.
+- `headless_app` macht schon ein Update (Uhr starten); wer beim Bauen der App spawnt, muss das in `Startup` oder vor diesem Update tun, sonst existieren die Magier erst nach dem ersten Tick.
+- IDs sollen serde-serialisierbar sein (ADR-0006); `serde` wäre dann die erste neue Abhängigkeit: Plattformen prüfen und im Commit begründen (`AGENTS.md`).
 - Solange nur Daniel arbeitet: auf `dev-danielb` committen, auf sein Wort direkt nach `master` übernehmen.
