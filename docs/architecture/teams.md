@@ -8,7 +8,7 @@ Mage Game ist kein festes Duell: Eine Runde hat zwei oder mehr Teams, jedes mit 
 ## Was gilt
 
 - Jeder Magier trägt `PlayerId` (wer) und `TeamId` (zu wem er gehört). Beide sind stabile IDs, nie `Entity` ([[serialisierung-ids|Serialisierung & IDs]]).
-- „Gegner“ heißt immer: Magier mit anderer `TeamId`. Kein Code fragt nach „dem“ Gegner.
+- „Gegner“ heißt immer: Einheit mit anderer `TeamId` (Magier oder Kreatur, [[einheiten|Einheiten]]). Kein Code fragt nach „dem“ Gegner. Wilde und neutrale Kreaturen: [[p-022-feindschaft-zwischen-teams|P-022]].
 - **Zielwahl** (Homing): der nächste Gegner, der für das eigene Team sichtbar ist ([[sichtbarkeit|Sichtbarkeit]]); bei gleichem Abstand entscheidet die kleinere `SimId`.
 - **Friendly Fire** entscheidet jede Fähigkeit selbst über ihren Zielfilter ([[adr-0027-zielfilter-pro-faehigkeit|ADR-0027]]): Bolt fliegt durch Verbündete, der Feuerball trifft alle.
 - **Spawnpunkte** gehören zu Teams; die Arena definiert pro Team mehrere.

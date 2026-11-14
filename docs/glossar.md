@@ -43,5 +43,8 @@ title: "Glossar"
 | Zelle / CellId | Quadrat des Weltrasters; Einheit, in der die Welt geladen und entladen wird |
 | Interessenbereich | Zellen im Radius R um den eigenen Magier; nur dort existiert für einen Client etwas Simulationsrelevantes |
 | Fernsicht | grobe Landschaft außerhalb des Interessenbereichs, reine Präsentation ohne Gameplay |
-| Reittier (Mount) | Bewegungsmodus des Magiers aus einem `MountBlueprint`: Boden oder Flug |
+| Einheit | alles, was kämpfen kann: Magier und Kreaturen, mit gemeinsamem Kern (Team, Leben, Attribute, Leiste, Steuerung) |
+| Kreatur | Einheit aus einem `CreatureBlueprint`, meist KI-gesteuert: Tier, Gegner, Pet, Reittier, Boss |
+| Reittier (Mount) | Kreatur mit eigenem Leben, auf der ein Magier reitet oder fliegt |
+| Kampfzustand | außer Kampf, im Kampf oder tot; entscheidet, ob Leiste und Ausrüstung geändert werden dürfen |
 | Fähigkeitenleiste (Loadout) | vom Spieler deklarierte Zuordnung Slot → Fähigkeit; Teil der Simulation |

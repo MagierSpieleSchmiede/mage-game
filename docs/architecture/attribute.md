@@ -22,7 +22,7 @@ Der Satz ist erweiterbar: ein neues Attribut ist eine Enum-Variante, ein Basiswe
 
 ## Wie gerechnet wird
 
-1. **Basiswerte** kommen aus der Balance-Ressource (später je Klasse oder Ausrüstung).
+1. **Basiswerte** kommen aus der Balance-Ressource bzw. dem Blueprint der Kreatur; Ausrüstung wirkt später als Modifikator ohne Ablauf und darf nur außer Kampf gewechselt werden ([[adr-0032-kampfzustand|ADR-0032]]).
 2. **Modifikatoren** stehen in einer Liste am Magier: Attribut, additiv oder multiplikativ, Wert, Restdauer in Ticks, Quelle (`SimId`).
 3. Das Set **Werte** (direkt nach Intent) zählt Restdauern herunter, entfernt abgelaufene Modifikatoren und rechnet: *effektiv = (Basis + Σ additiv) × Π (1 + multiplikativ)*, geklemmt auf Unter- und Obergrenzen.
 4. Gerechnet wird **ganzzahlig in Tausendsteln**; die Reihenfolge der Modifikatoren ist nach `SimId` der Quelle festgelegt. So bleibt alles deterministisch.

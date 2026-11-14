@@ -37,7 +37,9 @@ Grundlage für alles, was danach kommt:
   ([Sicherheit](docs/architecture/sicherheit.md)).
 - **Add-ons**, die den eigenen Charakter auslesen oder automatisieren, in
   einer Sandbox.
-- **Reittiere** am Boden und in der Luft, auf denen auch gekämpft wird.
+- **Kreaturen** neben den Spielern: wilde Tiere, Pets und Bosse.
+- **Reittiere** am Boden und in der Luft, mit eigenem Leben, auf denen auch
+  gekämpft wird.
 - Eine **große Welt** für tausende Spieler, von der jeder Client nur die
   Umgebung seines Magiers lädt.
 

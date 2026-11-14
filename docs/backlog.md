@@ -11,7 +11,7 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 > 3. **Fertig heißt:** die Gates aus `AGENTS.md` grün, betroffene Vault-Seiten nachgezogen.
 > 4. **Dieses Backlog pflegen:** das erledigte Item **entfernen** und mit einem Satz ins Implementation-Log des Milestones schreiben (`milestones/mN-implementation-log.md`); Items, die sich durch die Arbeit geändert haben, **anpassen**; neu entdeckte Aufgaben **als neue Items** mit Abhängigkeiten und Tests eintragen; Graph unten nachziehen.
 > 5. **Übergabe schreiben:** [[status|Status]] überschreiben: was erledigt wurde, die nächste Aufgabe, welche Seiten sie braucht, Hinweise. Das ist das Letzte jeder Sitzung; die nächste liest zuerst nur diese Seite.
-> 6. **Nummern** werden nie wiederverwendet. Nächste freie Nummer: **B-029**.
+> 6. **Nummern** werden nie wiederverwendet. Nächste freie Nummer: **B-030**.
 
 ## Milestone 1 — Walking Skeleton
 
@@ -36,6 +36,7 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 | B-017 | Homing-Bolt mit Zielwahl nach Team und Sichtbarkeit | B-011, B-015 | nächster sichtbarer Gegner; Zielverlust hinter Wand; Gleichstand nach `SimId` | offen |
 | B-018 | Slow als Attribut-Modifikator | B-007, B-011 | Tempo sinkt ab dem Folgetick; erneuter Slow setzt Dauer zurück | offen |
 | B-019 | Feuerball: GroundArea, Fuse, Split, Fragmente, AreaDamage | B-011 | Zielpunkt geklemmt; Fuse in Ticks; Fragmente ab Folgetick; Hindernis schirmt Flächenschaden ab; Flächenschaden trifft auch Verbündete und den Zaubernden (Zielfilter) | offen |
+| B-029 | Kampfzustand: `CombatState` (außer Kampf, im Kampf, tot), Eintritt im Set Schaden, Austritt nach 300 Ticks im Set Aufräumen; Charakter-Änderung als geprüfter Befehl ([[einheiten\|Einheiten]]) | B-020, B-028, [[adr-0032-kampfzustand\|ADR-0032]] | Schaden setzt beide Seiten in den Kampf; 299 Ticks ohne Handlung noch im Kampf, 300 außer Kampf; Leiste ändern im Kampf abgelehnt, außer Kampf und im Tod angenommen | offen |
 | B-028 | Fähigkeitenleiste: `Loadout` pro Spieler im Szenario, Prüfung (erlaubt, höchstens `MAX_SLOTS`, keine doppelt), Casting liest Slot → `SpellId` aus der Leiste ([[faehigkeiten\|Fähigkeiten & Belegung]]) | B-011, [[adr-0030-faehigkeitenleiste-vom-spieler\|ADR-0030]] | ungültige Leiste wird abgelehnt; zwei Spieler mit vertauschten Leisten zaubern bei gleichem Slot verschiedene Zauber; leerer Slot wirkt nichts | offen |
 | B-020 | Tod und Respawn mit Spawnpunkten je Team | B-011 | tödlicher Treffer setzt `Dead` im selben Tick; Respawn nach 180 Ticks am Team-Spawnpunkt | offen |
 
@@ -65,7 +66,8 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 | M7 Netzwerk & Sicherheit | M4, M5 (Interest Management braucht volle Sichtbarkeit) | [[netzwerk\|Netzwerk]], [[sicherheit\|Sicherheit]] |
 | M8 Add-ons | M6 (gleiche Schnittstelle), M7 (Regeln im PvP) | [[add-ons\|Add-ons]] |
 | M9 Mobile & Web | M3 (Eingabe über Aktionen), M4 | [[plattformen\|Plattformen]] |
-| M10 Reittiere | M3, B-028 (Aufsitzen als Fähigkeit) | [[reittiere\|Reittiere]] |
+| M10 Reittiere | M3, M12 (Reittiere sind Kreaturen), B-028, B-029 | [[reittiere\|Reittiere]] |
+| M12 Kreaturen | M6 (KI), [[adr-0031-einheiten-magier-und-kreaturen\|ADR-0031]] | [[einheiten\|Einheiten]] |
 | M11 Große Welt | M7 (Server, Interest Management), P-017, P-018, P-021 | [[welt\|Welt]] |
 
 ## Abhängigkeiten
@@ -93,6 +95,8 @@ flowchart LR
   B011 --> B019["B-019 Feuerball"]
   B011 --> B020["B-020 Tod und Respawn"]
   B011 --> B028["B-028 Fähigkeitenleiste"]
+  B020 --> B029["B-029 Kampfzustand"]
+  B028 --> B029
   B016 --> B021["B-021 Client"]
   B006 --> B022["B-022 Eingabe"]
   B021 --> B022

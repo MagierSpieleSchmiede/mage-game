@@ -3,7 +3,7 @@ title: "Problem-Log — offene und erledigte Fragen"
 ---
 # Problem-Log — offene und erledigte Fragen
 
-Jede offene technische Frage bekommt hier einen Eintrag und eine eigene Seite nach der [[p-nnn|P-Vorlage]]. Nächste freie Nummer: **P-022**.
+Jede offene technische Frage bekommt hier einen Eintrag und eine eigene Seite nach der [[p-nnn|P-Vorlage]]. Nächste freie Nummer: **P-024**.
 
 | Nr. | Problem | Stand |
 | --- | --- | --- |
@@ -25,6 +25,8 @@ Jede offene technische Frage bekommt hier einen Eintrag und eine eigene Seite na
 | [[p-016-direkte-verbindungen-zwischen-clients\|P-016]] | Direkte Verbindungen zwischen Clients als Optimierung | offen, Messung in M7 |
 | [[p-017-welt-auf-mehrere-server-verteilen\|P-017]] | Die große Welt auf mehrere Serverprozesse verteilen | offen, M7 / Welt |
 | [[p-018-sichtbarkeit-bei-vielen-teams\|P-018]] | Sichtbarkeit pro Team skaliert nicht auf eine offene Welt | offen, vor M5 |
-| [[p-019-reittier-als-eigenes-ziel\|P-019]] | Haben Reittiere eigenes Leben, und kann man abgeworfen werden? | offen, nach M3 |
-| [[p-020-faehigkeitenleiste-aendern\|P-020]] | Wann darf die Fähigkeitenleiste geändert werden, und was ist erlaubt? | offen, vor M7 |
+| [[p-019-reittier-als-eigenes-ziel\|P-019]] | Haben Reittiere eigenes Leben, und kann man abgeworfen werden? | entschieden (ADR-0029, überarbeitet) |
+| [[p-020-faehigkeitenleiste-aendern\|P-020]] | Wann darf die Fähigkeitenleiste geändert werden, und was ist erlaubt? | wann: ADR-0032; was: offen, vor M7 |
 | [[p-021-weltdaten-und-fernsicht\|P-021]] | Format der Weltdaten und Detailstufen der Fernsicht | offen, vor Welt |
+| [[p-022-feindschaft-zwischen-teams\|P-022]] | Wer ist wem feind, wenn es wilde Tiere, neutrale Kreaturen und Pets gibt? | offen, nach M6 |
+| [[p-023-boss-mechaniken\|P-023]] | Phasen, Trefferzonen und besondere Fähigkeiten von Bossen als Daten | offen, nach M6 |

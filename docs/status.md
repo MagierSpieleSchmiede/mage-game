@@ -23,6 +23,7 @@ title: "Status — Übergabe: was zuletzt erledigt wurde und was als Nächstes k
 
 ## Hinweise für die nächste Sitzung
 
+- **Neu geplant (2026-11-15, vorgeschlagen):** Einheiten-Kern für Magier und Kreaturen ([[adr-0031-einheiten-magier-und-kreaturen|ADR-0031]], [[einheiten|Einheiten]]), Kampfzustand ([[adr-0032-kampfzustand|ADR-0032]]), Reittiere mit eigenem Leben (ADR-0029 überarbeitet). Für B-005 egal; ab B-006 (Intent-Puffer nach Einheit) und B-009 (Leben, Bewegung am Kern) braucht es Daniels Antwort zu ADR-0031. Neue Systeme sollen schon jetzt Kern-Components abfragen (`SimId`, `TeamId`), nicht `With<Mage>`.
 - Magier werden in `Startup` gespawnt; `headless_app` führt `Startup` schon aus, bevor es die App zurückgibt.
 - Nach jeder Aufgabe ohne Nachfrage `dev-danielb` pushen, CI abwarten, bei Grün `master` per Fast-Forward nachziehen (`AGENTS.md`).
 - `Resource` ist in Bevy 0.20 ein Subtrait von `Component`: Ein Typ kann nicht beides ableiten.

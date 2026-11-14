@@ -3,7 +3,7 @@ title: "Entscheidungen — alle ADRs mit ihrem Stand"
 ---
 # Entscheidungen — alle ADRs mit ihrem Stand
 
-Die eine Liste aller Architekturentscheidungen. Der **Stand** steht nur hier und in der ADR selbst; andere Seiten verlinken die ADR, ohne ihren Stand zu wiederholen. Neue ADRs nach der [[adr-nnnn|ADR-Vorlage]] und den [[konventionen|Konventionen]]. Nächste freie Nummer: **ADR-0031**.
+Die eine Liste aller Architekturentscheidungen. Der **Stand** steht nur hier und in der ADR selbst; andere Seiten verlinken die ADR, ohne ihren Stand zu wiederholen. Neue ADRs nach der [[adr-nnnn|ADR-Vorlage]] und den [[konventionen|Konventionen]]. Nächste freie Nummer: **ADR-0033**.
 
 *Vorgeschlagen* heißt: Planungsgrundlage, aber vor Code, der darauf baut, Daniels Freigabe einholen.
 
@@ -37,9 +37,11 @@ Die eine Liste aller Architekturentscheidungen. Der **Stand** steht nur hier und
 | [[adr-0026-tests-zuerst\|ADR-0026]] | Tests zuerst: jede Funktion beginnt mit einem fehlschlagenden Test | angenommen (2026-11-14) |
 | [[adr-0027-zielfilter-pro-faehigkeit\|ADR-0027]] | Friendly Fire wird pro Fähigkeit über einen Zielfilter entschieden | angenommen |
 | [[adr-0028-grosse-welt-mit-interessenbereich\|ADR-0028]] | Große Welt in Zellen; geladen wird nur der Interessenbereich um den Spieler | **vorgeschlagen** |
-| [[adr-0029-reittiere-als-bewegungsmodus\|ADR-0029]] | Reittiere sind ein Bewegungsmodus des Magiers, Boden oder Flug, und Kampf geht auch im Sattel | **vorgeschlagen** |
+| [[adr-0029-reittiere-als-bewegungsmodus\|ADR-0029]] | Reittiere sind Kreaturen mit eigenem Leben, am Boden oder fliegend; der Reiter steuert und kämpft im Sattel | **vorgeschlagen** (überarbeitet) |
 | [[adr-0030-faehigkeitenleiste-vom-spieler\|ADR-0030]] | Der Spieler stellt seine Fähigkeitenleiste und ihre Tastenbelegung selbst zusammen | **vorgeschlagen** |
+| [[adr-0031-einheiten-magier-und-kreaturen\|ADR-0031]] | Magier und Kreaturen sind Einheiten mit gemeinsamem Kern; Bosse, Pets und Tiere sind Kreaturen | **vorgeschlagen** |
+| [[adr-0032-kampfzustand\|ADR-0032]] | Jede Einheit ist außer Kampf, im Kampf oder tot; davon hängt ab, was am Charakter geändert werden darf | **vorgeschlagen** |
 
 ## Was offen ist
 
-Zehn vorgeschlagene ADRs warten auf Freigabe. Als Nächstes braucht Milestone 1 ADR-0016 (Attribute, B-007); siehe [[status|Status]]. ADR-0030 (Fähigkeitenleiste) betrifft schon M1/M2: Der Intent sollte von Anfang an `MAX_SLOTS` Slots haben (B-006).
+Zwölf vorgeschlagene ADRs warten auf Freigabe. Als Nächstes braucht Milestone 1 ADR-0016 (Attribute, B-007); siehe [[status|Status]]. ADR-0030 (Fähigkeitenleiste) betrifft schon M1/M2: Der Intent sollte von Anfang an `MAX_SLOTS` Slots haben (B-006). ADR-0031 (Einheiten) betrifft B-006 und B-009: Intent-Puffer nach Einheit statt nach Spieler, Leben und Bewegung am Kern statt am Magier.
