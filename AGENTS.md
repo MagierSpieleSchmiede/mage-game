@@ -39,6 +39,12 @@ cargo clippy --all-targets -- -D warnings
 cargo test
 ```
 
+**Testen, ohne Tokens zu verschwenden:**
+
+- **Während der Arbeit** nur, was die Änderung betrifft: `cargo test -p mage_sim`, `cargo test <namensteil>`, `cargo clippy -p <crate>`. Cargo baut nur neu, was sich geändert hat.
+- **Vor dem Commit** alle Gates, aber still: mit `-q` und nur das Ende der Ausgabe oder die Fehler lesen (z. B. `cargo test -q 2>&1 | tail -5`), nie ganze Build-Logs.
+- **Andere Plattformen** (Windows, macOS, Android, iOS, wasm32) nicht lokal nachbauen; das prüft die CI (`.github/workflows/ci.yml`) bei jedem Push auf `dev-*` und in Pull Requests. Ihr Ergebnis steht ohne Anmeldung unter `https://api.github.com/repos/MagierSpieleSchmiede/mage-game/actions/runs`; Logs nur lesen, wenn ein Job rot ist, und dann nur den roten Schritt.
+
 Laut Spec 001 nach **jedem** Modul `cargo check` und `cargo clippy -- -D warnings`, beides sauber, bevor es weitergeht. Wer `docs/` oder `site/` ändert, prüft zusätzlich, dass `site/build.sh` durchläuft.
 
 **Webseite vorab ansehen:** Der Branch `preview` ist zum Ausprobieren da; jeder darf jederzeit darauf pushen, auch mit `--force` (z. B. `git push -f origin HEAD:preview`). Die Webseite daraus erscheint nach etwa einer Minute unter <https://magierspieleschmiede.github.io/mage-game/preview/>; die Hauptseite bleibt unberührt. Gebaut wird nur, wenn sich `docs/` oder `site/` geändert hat; sonst die Action *Deploy vault to GitHub Pages* für `preview` von Hand starten. `preview` wird nie nach `master` gemergt.

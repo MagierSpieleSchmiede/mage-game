@@ -5,10 +5,12 @@ name: CI
 #   tier 2  Android, iOS            cargo check of the simulation
 #   tier 3  Web (wasm32)            cargo check of the simulation
 # Changes that only touch the vault or the site are left to deploy.yml.
+# master is not built on push: everything reaching it was already built on a dev-* branch or
+# in its pull request, so a fast-forward merge would only repeat the same run.
 
 on:
   push:
-    branches: [master, "dev-*"]
+    branches: ["dev-*"]
     paths-ignore: ["docs/**", "site/**", "**.md"]
   pull_request:
     paths-ignore: ["docs/**", "site/**", "**.md"]

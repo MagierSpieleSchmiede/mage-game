@@ -20,6 +20,5 @@ title: "Status — Übergabe: was zuletzt erledigt wurde und was als Nächstes k
 
 ## Hinweise für die nächste Sitzung
 
-- CI-Ergebnisse ohne angemeldetes `gh`: `https://api.github.com/repos/MagierSpieleSchmiede/mage-game/actions/runs` (öffentlich).
-- Lokal ist `cargo fmt --check` auf Daniels Rechner kaputt (alte rustfmt); die CI prüft das Format. Reparatur: `rustup component remove rustfmt && rustup component add rustfmt`.
+- Lokal ist `cargo fmt --check` auf Daniels Rechner kaputt, solange in `~/.cargo/bin` das alte Paket `rustfmt` 0.10 liegt (Reparatur: `cargo uninstall rustfmt`); bis dahin prüft nur die CI das Format.
 - Solange nur Daniel arbeitet: auf `dev-danielb` committen, auf sein Wort direkt nach `master` übernehmen.
