@@ -22,14 +22,14 @@ Jede Tatsache steht an genau einer Stelle; alle anderen Seiten verlinken dorthin
 
 | Tatsache | steht nur in |
 | --- | --- |
-| Planungsstand, nächster Schritt, Version des Vaults | [[status\|Status]] |
+| Übergabe: zuletzt erledigt, nächste Aufgabe, was sie zu lesen braucht | [[status\|Status]] |
 | Stand jeder ADR, nächste freie ADR-Nummer | [[entscheidungen\|Entscheidungen]] |
 | Offene Fragen, nächste freie P-Nummer | [[problem-log\|Problem-Log]] |
 | Nächste Aufgaben, Arbeitsablauf pro Item, nächste freie B-Nummer | [[backlog\|Backlog]] |
 | Milestones und ihre Abnahme | [[roadmap\|Roadmap & Milestones]] |
 | Simulations-Invarianten | [[simulationsmodell\|Simulationsmodell]] |
 | Standardbelegung der Eingabe | [[eingabegeraete\|Eingabegeräte]] (das README zeigt eine Kopie, wie [[spec-001-prototype\|Spec 001]] verlangt) |
-| Gates, `target/`-Pflege | `AGENTS.md` |
+| Gates, `target/`-Pflege, Preview-Branch der Webseite | `AGENTS.md` |
 
 ## Ablage
 

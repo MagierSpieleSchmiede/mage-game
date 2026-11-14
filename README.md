@@ -9,8 +9,8 @@
 
 > [!WARNING]
 > **Mage Game ist ein Prototyp in der Planungsphase.** Noch ist nichts
-> spielbar. Wo das Projekt gerade steht, steht immer aktuell auf der Seite
-> [Status](docs/status.md). Alles hier kann sich ohne Vorwarnung ändern.
+> spielbar. Was zuletzt erledigt wurde und was als Nächstes kommt, steht
+> immer aktuell auf der Seite [Status](docs/status.md). Alles hier kann sich ohne Vorwarnung ändern.
 
 ## Die Idee
 
@@ -54,7 +54,7 @@ Geschrieben in **Rust** mit [Bevy](https://bevy.org) 0.20 und
 
 | Frage | Seite |
 | --- | --- |
-| Wo steht das Projekt, was kommt als Nächstes? | [Status](docs/status.md) |
+| Was wurde zuletzt erledigt, was kommt als Nächstes? | [Status](docs/status.md) |
 | Welche Aufgaben sind dran? | [Backlog](docs/backlog.md) |
 | Was kommt in welchem Milestone (M1 Walking Skeleton bis M9 Mobile & Web)? | [Roadmap](docs/milestones/roadmap.md) |
 | Was ist entschieden, was nur vorgeschlagen? | [Entscheidungen](docs/decisions/entscheidungen.md) |
@@ -101,7 +101,10 @@ die [Startseite](docs/index.md).
 
 Zum Lesen gibt es den Vault als Webseite:
 **<https://magierspieleschmiede.github.io/mage-game/>**. Sie wird bei jedem
-Push auf `master`, der `docs/` ändert, neu gebaut. Lokal ansehen (braucht git
+Push auf `master`, der `docs/` ändert, neu gebaut. Zum Probelesen vor dem
+Merge: auf den Branch `preview` pushen (jederzeit erlaubt, auch mit
+`--force`); das Ergebnis erscheint unter
+<https://magierspieleschmiede.github.io/mage-game/preview/>. Lokal ansehen (braucht git
 und Node ≥ 22):
 
 ```sh

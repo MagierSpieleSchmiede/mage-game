@@ -5,12 +5,17 @@ name: Deploy vault to GitHub Pages
 # Pages serves (Settings → Pages → Deploy from a branch: gh-pages, /). The address is
 # https://magierspieleschmiede.github.io/mage-game/.
 #
+# The preview branch is a scratch branch anyone may push (or force-push) to, to see whether
+# the vault renders before it goes to master. It is published to /preview/ on the same
+# gh-pages branch: https://magierspieleschmiede.github.io/mage-game/preview/. Each deploy
+# replaces only its own part, so master and preview never overwrite each other.
+#
 # A pull request that touches the vault or the site is built too, without publishing: the
 # rendered site is attached to the run as the "site" artifact.
 
 on:
   push:
-    branches: [master]
+    branches: [master, preview]
     paths:
       - "docs/**"
       - "site/**"
@@ -25,6 +30,7 @@ on:
 permissions:
   contents: write # push to gh-pages
 
+# All publishing runs share one group, so two deploys never edit gh-pages at the same time.
 concurrency:
   group: pages-${{ github.event_name == 'pull_request' && github.ref || 'deploy' }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
@@ -40,7 +46,11 @@ jobs:
         with:
           node-version: 22
       - name: Build site with Quartz
-        run: site/build.sh
+        env:
+          SITE_BASEURL: ${{ github.ref_name == 'preview' && 'magierspieleschmiede.github.io/mage-game/preview' || '' }}
+        run: |
+          [[ -n "$SITE_BASEURL" ]] || unset SITE_BASEURL
+          site/build.sh
       - name: Attach the rendered site to a pull request's run
         if: github.event_name == 'pull_request'
         uses: actions/upload-artifact@v4
@@ -48,18 +58,31 @@ jobs:
           name: site
           path: site/public
           retention-days: 14
-      # One commit, force-pushed: the branch holds the current site only.
-      # .nojekyll: serve the files as they are.
+      # gh-pages holds master's site at the root and the preview branch's site in preview/.
+      # A deploy replaces only its own part and keeps the other, then force-pushes a single
+      # commit, so the branch holds the current sites only. .nojekyll: serve files as they are.
       - name: Publish to gh-pages
         if: github.event_name != 'pull_request'
-        working-directory: site/public
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET: ${{ github.ref_name == 'preview' && 'preview' || 'root' }}
         run: |
+          REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          OLD="$RUNNER_TEMP/old" NEW="$RUNNER_TEMP/new"
+          mkdir -p "$NEW"
+          git clone -q --depth 1 --branch gh-pages "$REMOTE" "$OLD" 2>/dev/null || mkdir -p "$OLD"
+          if [[ "$TARGET" == preview ]]; then
+            (cd "$OLD" && find . -mindepth 1 -maxdepth 1 ! -name .git ! -name preview -exec cp -r {} "$NEW/" \;)
+            cp -r site/public "$NEW/preview"
+          else
+            cp -r site/public/. "$NEW/"
+            if [[ -d "$OLD/preview" ]]; then cp -r "$OLD/preview" "$NEW/preview"; fi
+          fi
+          cd "$NEW"
           touch .nojekyll
           git init -q -b gh-pages
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -q -m "Deploy vault from ${GITHUB_SHA}"
-          git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
+          git commit -q -m "Deploy vault ($TARGET) from ${GITHUB_SHA}"
+          git push -q -f "$REMOTE" gh-pages

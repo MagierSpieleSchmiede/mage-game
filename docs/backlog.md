@@ -8,9 +8,10 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 > [!important] So wird ein Item abgearbeitet (Menschen und Agenten; die einzige Fassung dieses Ablaufs)
 > 1. **Aufgabe wählen:** das oberste Item mit Status *offen*, dessen Abhängigkeiten alle erledigt sind. Ein Item ist *blockiert*, solange eine Entscheidung (ADR) oder ein Problem (P) in seiner Spalte *Abhängig von* offen ist; baut es auf einer *vorgeschlagenen* ADR auf ([[entscheidungen|Entscheidungen]]), erst Daniel fragen.
 > 2. **Tests zuerst** ([[adr-0026-tests-zuerst|ADR-0026]]): die Tests aus der Spalte *Tests* schreiben, laufen lassen, fehlschlagen sehen; dann implementieren, bis sie grün sind; dann aufräumen. Tests nie abschwächen, um Code durchzubringen; ist ein Test falsch, begründen und Vault nachziehen. Noch nicht erfüllbare Tests: `#[ignore = "B-nnn"]`.
-> 3. **Fertig heißt:** die Gates aus `AGENTS.md` grün, betroffene Vault-Seiten nachgezogen, [[status|Status]] aktualisiert.
+> 3. **Fertig heißt:** die Gates aus `AGENTS.md` grün, betroffene Vault-Seiten nachgezogen.
 > 4. **Dieses Backlog pflegen:** das erledigte Item **entfernen** und mit einem Satz ins Implementation-Log des Milestones schreiben (`milestones/mN-implementation-log.md`); Items, die sich durch die Arbeit geändert haben, **anpassen**; neu entdeckte Aufgaben **als neue Items** mit Abhängigkeiten und Tests eintragen; Graph unten nachziehen.
-> 5. **Nummern** werden nie wiederverwendet. Nächste freie Nummer: **B-028**.
+> 5. **Übergabe schreiben:** [[status|Status]] überschreiben: was erledigt wurde, die nächste Aufgabe, welche Seiten sie braucht, Hinweise. Das ist das Letzte jeder Sitzung; die nächste liest zuerst nur diese Seite.
+> 6. **Nummern** werden nie wiederverwendet. Nächste freie Nummer: **B-028**.
 
 ## Milestone 1 — Walking Skeleton
 

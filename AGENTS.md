@@ -2,32 +2,33 @@
 
 Du arbeitest an **Mage Game**, einem stilisierten 3D-Arena-Spiel in Rust mit Bevy 0.20 und Avian3D 0.8: zwei oder mehr Teams von Magiern, freie 3D-Bewegung, Third-Person-Zielen, modulare Zauber (Bolt, Homing-Bolt, Feuerball), Attribute, die sich im Kampf ändern. Das gesamte Gameplay ist eine deterministische, headless-fähige Tick-Simulation im `FixedUpdate` (Crate `mage_sim`); die Präsentation ist ein reiner Beobachter. Ziele: Windows, Linux, macOS, Android, iOS (Web wenn machbar), Englisch und Deutsch, Tastatur/Maus und Controller. Später kommen Unsichtbarkeit, KI-Gegner und Reinforcement Learning, PvP über einen Server und Add-ons; dafür wird entworfen, aber noch nicht gebaut.
 
-`docs/` ist der **Vault**, das Design-Gedächtnis des Projekts (ein Obsidian-Vault, als Webseite veröffentlicht). Lies ihn, bevor du etwas änderst, und pflege ihn, wenn du es tust.
+`docs/` ist der **Vault**, das Design-Gedächtnis des Projekts (ein Obsidian-Vault, als Webseite veröffentlicht). Pflege ihn, wenn du etwas änderst. Lies ihn aber **nicht** ganz: Das kostet viele Tokens. Lies, was die Übergabe in `docs/status.md` nennt, und schlage den Rest nur nach, wenn die Aufgabe ihn braucht.
 
-## Stand
+## Sitzung beginnen und beenden
 
-Der aktuelle Planungsstand steht an **einer** Stelle: `docs/status.md` (was existiert, was blockiert, was als Nächstes kommt). Diese Datei wiederholt ihn nicht. Zwei Regeln gelten unabhängig davon:
+1. **Beginnen:** `docs/status.md` lesen. Das ist die Übergabe der letzten Sitzung: was erledigt wurde, die nächste Aufgabe, welche Seiten sie braucht, Hinweise. Genau diese Seiten lesen, nicht mehr. Wo der Code der Seite widerspricht, gewinnt der Code; dann die Seite korrigieren.
+2. **Arbeiten** nach dem Ablauf oben in `docs/backlog.md` (Tests zuerst, Gates grün, Vault und Backlog nachziehen).
+3. **Beenden:** `target/` prüfen (unten), dann die Übergabe in `docs/status.md` **überschreiben**: was du erledigt hast, die nächste Aufgabe, welche Seiten sie braucht, was die nächste Sitzung wissen muss. Kurz; der Verlauf gehört ins Implementation-Log des Milestones.
+
+Unabhängig von der Aufgabe gilt:
 
 - Fang nicht ungefragt mit Code an; Daniel gibt den Start der Implementierung frei.
 - Welche ADRs angenommen und welche nur *vorgeschlagen* sind, steht in `docs/decisions/entscheidungen.md`. Vorgeschlagene ADRs sind Planungsgrundlage; frag nach, bevor du Code darauf baust.
 
-## Zuerst lesen
+## Nachschlagen, wenn die Aufgabe es braucht
 
-1. `docs/status.md`: der Planungsstand und der nächste Schritt. Wo der Code widerspricht, gewinnt der Code; dann die Seite korrigieren.
-2. `docs/backlog.md`: **hier wählst du deine Aufgabe**, und oben steht der Ablauf, nach dem jedes Item abgearbeitet wird.
-3. `docs/index.md`: die Inhaltskarte des Vaults, mit der Leseliste „Hier anfangen“.
-4. `docs/architecture/simulationsmodell.md`: die Invarianten und die Tick-Kette.
-5. `docs/specifications/spec-001-prototype.md`: Toolchain, Umfang, Anforderungen, Abnahmekriterien.
-6. `docs/decisions/entscheidungen.md`: alle ADRs mit Stand. Was angenommen ist, gilt; eine angenommene ADR nicht neu verhandeln ohne neue ADR.
-7. `docs/problems/problem-log.md`: offene Fragen mit ihrem nächsten Schritt.
-8. `docs/architecture/sicherheit.md`: Sicherheitsregeln für jede Änderung, die Netzwerk, Eingaben von außen oder Add-ons berührt.
-9. `docs/templates/konventionen.md`: wie Seiten, ADRs und P-Einträge geschrieben werden, und welche Tatsache wo steht („Eine Quelle pro Tatsache“).
+| Seite | wofür |
+| --- | --- |
+| `docs/index.md` | Inhaltskarte des Vaults |
+| `docs/backlog.md` | alle Aufgaben, Abhängigkeiten, Ablauf pro Item |
+| `docs/architecture/simulationsmodell.md` | die Invarianten und die Tick-Kette |
+| `docs/specifications/spec-001-prototype.md` | Toolchain, Umfang, Anforderungen, Abnahmekriterien |
+| `docs/decisions/entscheidungen.md` | alle ADRs mit Stand; eine angenommene ADR nicht neu verhandeln ohne neue ADR |
+| `docs/problems/problem-log.md` | offene Fragen mit ihrem nächsten Schritt |
+| `docs/architecture/sicherheit.md` | Pflicht bei jeder Änderung, die Netzwerk, Eingaben von außen oder Add-ons berührt |
+| `docs/templates/konventionen.md` | wie Seiten, ADRs und P-Einträge geschrieben werden, welche Tatsache wo steht |
 
 Die Einstiegsseiten für Menschen (`docs/einstieg-windows.md`, `docs/einstieg-ki-agenten.md`, `docs/einstieg-gestalten.md`): Wer Arbeitsabläufe oder Regeln ändert, zieht sie mit.
-
-## So arbeitest du ein Backlog-Item ab
-
-Der Ablauf steht oben in `docs/backlog.md` und gilt für Menschen und Agenten gleich: Tests zuerst, Gates grün, Vault und Status nachziehen, Backlog pflegen. Danach `target/` prüfen (unten).
 
 ## Vor dem Commit: die Gates
 
@@ -39,6 +40,8 @@ cargo test
 ```
 
 Laut Spec 001 nach **jedem** Modul `cargo check` und `cargo clippy -- -D warnings`, beides sauber, bevor es weitergeht. Wer `docs/` oder `site/` ändert, prüft zusätzlich, dass `site/build.sh` durchläuft.
+
+**Webseite vorab ansehen:** Der Branch `preview` ist zum Ausprobieren da; jeder darf jederzeit darauf pushen, auch mit `--force` (z. B. `git push -f origin HEAD:preview`). Die Webseite daraus erscheint nach etwa einer Minute unter <https://magierspieleschmiede.github.io/mage-game/preview/>; die Hauptseite bleibt unberührt. Gebaut wird nur, wenn sich `docs/` oder `site/` geändert hat; sonst die Action *Deploy vault to GitHub Pages* für `preview` von Hand starten. `preview` wird nie nach `master` gemergt.
 
 ## Regeln
 

@@ -1,44 +1,24 @@
 ---
-title: "Status — was existiert, was fehlt"
+title: "Status — Übergabe: was zuletzt erledigt wurde und was als Nächstes kommt"
 ---
-# Status — was existiert, was fehlt
+# Status — Übergabe: was zuletzt erledigt wurde und was als Nächstes kommt
 
-Die eine Seite zum aktuellen Planungsstand. README, `AGENTS.md` und die Startseite verweisen hierher, statt ihn zu wiederholen.
+> [!important] Wozu diese Seite da ist
+> Sie ist die **Übergabe von einer Sitzung zur nächsten**, damit niemand den ganzen Vault lesen muss. Wer eine Aufgabe beginnt, liest **nur diese Seite** und die Seiten, die unter *Dafür lesen* stehen. Wer eine Aufgabe beendet, **überschreibt** die drei Abschnitte unten (nicht anhängen; der Verlauf gehört ins Implementation-Log des Milestones). Kurz halten: höchstens etwa 30 Zeilen.
 
-## Stand
+## Zuletzt erledigt
 
-**2026-11-14, Vault v1.3:** spezifiziert und geplant, nichts implementiert; `cargo run` gibt nur „Hello, world!“ aus.
+**2026-11-14:** Vault entdoppelt: Stand jeder ADR nur noch in [[entscheidungen|Entscheidungen]], Ablauf pro Item nur im [[backlog|Backlog]], Nummernzähler je an einer Stelle ([[konventionen|Konventionen]], Abschnitt „Eine Quelle pro Tatsache“). Branch `preview` veröffentlicht die Webseite zum Probelesen unter `/preview/`. Implementiert ist noch nichts; `cargo run` gibt „Hello, world!“ aus.
 
-| Frage | Antwort |
-| --- | --- |
-| Was ist der nächste Schritt? | Milestone 1 — Walking Skeleton, beginnend mit **B-001** (Workspace) im [[backlog\|Backlog]]. Gestartet wird, wenn Daniel es freigibt. |
-| Was blockiert den Start? | Freigabe der vorgeschlagenen ADRs, die M1 braucht, vor allem ADR-0020, ADR-0026, ADR-0015 und ADR-0016 ([[entscheidungen\|Entscheidungen]]). |
-| Welche Entscheidungen gelten? | Alle angenommenen ADRs; welche das sind, steht nur in [[entscheidungen\|Entscheidungen]]. |
-| Welche Fragen sind offen? | [[problem-log\|Problem-Log]]; für M1 relevant ist [[p-005-avians-physik-in-fixedupdate-einhaengen\|P-005]] (Avian in `FixedUpdate`). |
-| Was ist schon erledigt? | Implementation-Logs je Milestone, derzeit [[m1-implementation-log\|M1]]. |
+## Nächste Aufgabe
 
-## Bereich für Bereich
+**B-001 — Cargo-Workspace mit `mage_sim` und `mage_client`** (Milestone 1, erstes Item im [[backlog|Backlog]]).
 
-| Bereich | Heute | Fehlt |
-| --- | --- | --- |
-| Simulation | vollständig spezifiziert (Kette, Intent, Zauber, Kampf, Determinismus) | Implementierung (ab M1) |
-| Teams und Attribute | geplant ([[teams\|Teams]], [[attribute\|Attribute]]); Friendly Fire pro Fähigkeit entschieden ([[adr-0027-zielfilter-pro-faehigkeit\|ADR-0027]]) | Implementierung (M1) |
-| Sichtbarkeit und Unsichtbarkeit | geplant ([[sichtbarkeit\|Sichtbarkeit]], [[beobachtung\|Beobachtung]]) | Grundform (M2), Tarnung (M5) |
-| Präsentation | spezifiziert (Kamera, Render-Target, HUD, Interpolation, Animation entkoppelt) | Implementierung (M3) |
-| Eingabe | geplant: Tastatur/Maus, Controller, Touch über Aktionen ([[eingabegeraete\|Eingabegeräte]]) | Crate-Frage ([[p-011-eingabe-crate-und-zielhilfe\|P-011]]); M3 |
-| Sprachen | geplant: Englisch und Deutsch ([[lokalisierung\|Lokalisierung]]) | Integrationsfrage ([[p-012-fluent-integration\|P-012]]); M3 |
-| Zauber | drei Blueprints definiert (Bolt, Homing-Bolt, Feuerball) | Implementierung, Balance |
-| Tests | Strategie mit Tests zuerst, Sync- und Latenztests, Benchmarks geplant ([[teststrategie\|Teststrategie]]) | Implementierung |
-| Leistung | Szenarien und Platzhalter-Budgets ([[benchmarks\|Benchmarks]]) | Referenzrechner ([[p-008-mindest-hardware-und-leistungsbudget\|P-008]]); M4 |
-| Plattformen | Stufen und Regeln ([[plattformen\|Plattformen]]) | CI-Ziele ([[p-014-mobile-und-web-builds\|P-014]]) |
-| KI und RL | geplant ([[ki-und-rl\|KI & RL]]) | Brücke ([[p-013-rl-bruecke\|P-013]]); M6 |
-| Netzwerk und Sicherheit | geplant: Rollback-Netcode mit Server als Schiedsrichter ([[netzwerk\|Netzwerk]], [[sicherheit\|Sicherheit]]) | Transport ([[p-009-netzwerk-crate-und-transport\|P-009]]), Trefferwertung ([[p-015-trefferwertung-unter-latenz\|P-015]]); M7 |
-| Add-ons | geplant ([[add-ons\|Add-ons]]) | Laufzeit und Fairness ([[p-010-add-on-laufzeit-und-fairness\|P-010]]); M8 |
-| Gestaltung / Assets | Greybox geplant; Stil-Vorbild; Einstieg für Gestaltende ([[einstieg-gestalten\|Gestalten]]) | Asset-Ablage ([[p-006-asset-ablage-und-grosse-binaerdateien\|P-006]]) |
+- **Erst klären:** Daniel gibt den Start der Implementierung frei und nimmt die vorgeschlagenen ADRs an, auf denen M1 baut, zuerst [[adr-0020-simulation-als-eigene-crate|ADR-0020]] (Workspace) und [[adr-0026-tests-zuerst|ADR-0026]] (Tests zuerst); für die folgenden Items ADR-0015, ADR-0016 und ADR-0024.
+- **Dafür lesen:** die Zeile B-001 und den Ablauf oben im [[backlog|Backlog]]; [[adr-0020-simulation-als-eigene-crate|ADR-0020]]; [[projektstruktur|Projektstruktur]] (Abschnitt Crates); [[plattformen|Plattformen]] (Regeln für `mage_sim`); die Migrationsleitfäden Bevy 0.18→0.19 und 0.19→0.20 (Regel in `AGENTS.md`).
+- **Tests zuerst:** `cargo test` läuft im Workspace; ein Test stellt sicher, dass `mage_sim` keine Render-Crate im Abhängigkeitsbaum hat.
 
-## Verlauf
+## Hinweise für die nächste Sitzung
 
-| Version | Datum | Änderung |
-| --- | --- | --- |
-| v1.3 | 2026-11-14 | Vault entdoppelt: ADR-Stand nur noch in [[entscheidungen\|Entscheidungen]], Planungsstand nur hier, Arbeitsablauf nur im [[backlog\|Backlog]], Nummernzähler je an einer Stelle. |
-| v1.2 | 2026-11-14 | Teams, Attribute, Unsichtbarkeit, KI und RL, Netzwerk und Sicherheit, Add-ons, Plattformen, Sprachen, Eingabegeräte, Benchmarks geplant; ADR-0017 und ADR-0027 angenommen. |
+- Der Wechsel auf einen Workspace verändert `Cargo.lock` stark: danach einmal `cargo clean` (`AGENTS.md`, Abschnitt `target/`).
+- Ab Beginn der Implementierung wird auf einem eigenen Branch mit Pull Request gearbeitet, nicht mehr direkt auf `master`.

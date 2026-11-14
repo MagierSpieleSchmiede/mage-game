@@ -56,6 +56,7 @@ Der Agent fragt nach, bevor er Dateien ändert oder Befehle ausführt. **Lies, w
 - **Du bist verantwortlich, nicht der Agent.** Alles, was du committest, hast du gelesen. Ein Agent kann sich irren, auch wenn er sehr sicher klingt.
 - **Aufgaben kommen aus dem [[backlog|Backlog]].** Der Agent nimmt das oberste offene Item, dessen Abhängigkeiten erledigt sind, schreibt **zuerst die Tests** und pflegt danach das Backlog (erledigtes Item entfernen, neue Aufgaben eintragen). Der Ablauf steht oben im Backlog; `AGENTS.md` verweist dorthin.
 - **Erst planen lassen, dann bauen.** Bitte den Agenten zuerst um einen Plan („noch nichts ändern“), prüfe ihn, dann gib ihn frei.
+- **Übergabe statt Vault lesen.** Jede Sitzung beginnt mit [[status|Status]] und liest nur die Seiten, die dort stehen; am Ende überschreibt der Agent die Seite mit dem, was er erledigt hat, und der nächsten Aufgabe. Das spart Tokens und damit Geld und Zeit. Prüf am Ende, ob er es getan hat.
 - **Klein halten.** Eine Aufgabe pro Sitzung: eine Vault-Seite, ein Modul, ein Test. Große Aufträge („bau das Spiel“) gehen schief.
 - **Prüfen lassen.** Vor jedem Code-Commit muss der Agent die Gates aus `AGENTS.md` laufen lassen (`cargo fmt --check`, `cargo clippy`, `cargo test`), und du schaust dir das Ergebnis an.
 - **Entscheidungen gehören in den Vault.** Schlägt der Agent eine neue Lösung vor, lass ihn eine ADR nach der [[adr-nnnn|ADR-Vorlage]] schreiben, statt sie still einzubauen. Offene Fragen kommen ins [[problem-log|Problem-Log]].

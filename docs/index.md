@@ -9,14 +9,14 @@ description: Ein stilisiertes 3D-Arena-Spiel für Teams von Magiern in Rust mit 
 **Mage Game** ist ein stilisiertes 3D-Arena-Spiel in Rust (Bevy 0.20, Avian 0.8): zwei oder mehr Teams von Magiern, freie 3D-Bewegung, Third-Person-Zielen, modulare Zauber und Eigenschaften, die sich im Kampf ändern. Geplant für Windows, Linux, macOS, Android und iOS, auf Englisch und Deutsch, mit Tastatur und Maus oder Controller. Später kommen PvP über einen Server, Unsichtbarkeit, KI-Gegner aus Reinforcement Learning und Add-ons. Dieser Vault dokumentiert den fundamentalen Prototyp: Spezifikation, Architektur, Entscheidungen, Teststrategie und offene Probleme, eine Seite pro Thema.
 
 > [!info] Stand
-> Geplant, noch nicht implementiert. Wo das Projekt steht und was als Nächstes kommt: **[[status|Status]]**. Die nächsten Aufgaben: **[[backlog|Backlog]]**.
+> Geplant, noch nicht implementiert. Was zuletzt erledigt wurde und was als Nächstes kommt: **[[status|Status]]**. Die nächsten Aufgaben: **[[backlog|Backlog]]**.
 
 > [!tip] Neu hier?
 > **[[einstieg-windows|Einstieg für Mitwirkende (Windows)]]** führt von null bis zum ersten Beitrag: Git, GitHub Desktop, Rust, Obsidian. Danach: **[[einstieg-ki-agenten|KI-Agenten]]** (Claude Code, Codex) für alle, die mit einem Agenten arbeiten, und **[[einstieg-gestalten|Gestalten]]** (Blender, ArtCraft) für alle, die am Look des Spiels arbeiten.
 
 ## Hier anfangen
 
-1. [[status|Status]] — der aktuelle Planungsstand: was existiert, was fehlt, was als Nächstes kommt
+1. [[status|Status]] — die Übergabe: was zuletzt erledigt wurde, was als Nächstes kommt
 2. [[uebersicht|Übersicht]] — das System in einem Diagramm
 3. [[projektstruktur|Projektstruktur]] — das Plugin-Layout und warum jedes Plugin existiert
 4. [[simulationsmodell|Simulationsmodell]] — die eine große Wette: eine deterministische Tick-Kette

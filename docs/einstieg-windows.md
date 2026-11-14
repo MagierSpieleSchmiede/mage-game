@@ -118,7 +118,7 @@ cargo test
 
 Obsidian starten → *Open folder as vault* → den Ordner `docs` im Projekt wählen. Fertig: Jede Seite ist eine normale `.md`-Datei im Repo, und Änderungen daran laufen genauso über Git wie Code.
 
-Zum reinen Lesen gibt es den Vault auch als Webseite: <https://magierspieleschmiede.github.io/mage-game/>. Sie wird nach jedem Push auf `master` automatisch neu gebaut.
+Zum reinen Lesen gibt es den Vault auch als Webseite: <https://magierspieleschmiede.github.io/mage-game/>. Sie wird nach jedem Push auf `master` automatisch neu gebaut. Wer sehen will, wie eine Änderung als Webseite aussieht, bevor sie auf `master` kommt, pusht sie auf den Branch `preview` (darf jeder, jederzeit) und schaut nach etwa einer Minute unter <https://magierspieleschmiede.github.io/mage-game/preview/>.
 
 ## 5. Der Arbeitsablauf – jedes Mal
 
