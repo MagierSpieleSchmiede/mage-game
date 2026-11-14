@@ -3,7 +3,7 @@ title: "Problem-Log — offene und erledigte Fragen"
 ---
 # Problem-Log — offene und erledigte Fragen
 
-Jede offene technische Frage bekommt hier einen Eintrag und eine eigene Seite nach der [[p-nnn|P-Vorlage]]. Nächste freie Nummer: **P-016**.
+Jede offene technische Frage bekommt hier einen Eintrag und eine eigene Seite nach der [[p-nnn|P-Vorlage]]. Nächste freie Nummer: **P-017**.
 
 | Nr. | Problem | Stand |
 | --- | --- | --- |
@@ -22,3 +22,4 @@ Jede offene technische Frage bekommt hier einen Eintrag und eine eigene Seite na
 | [[p-013-rl-bruecke\|P-013]] | Brücke zum Reinforcement Learning | offen, M6 |
 | [[p-014-mobile-und-web-builds\|P-014]] | Mobile- und Web-Builds in CI | offen, M1 / M4 / M9 |
 | [[p-015-trefferwertung-unter-latenz\|P-015]] | Trefferwertung unter Latenz | offen, M7 |
+| [[p-016-direkte-verbindungen-zwischen-clients\|P-016]] | Direkte Verbindungen zwischen Clients als Optimierung | offen, Messung in M7 |

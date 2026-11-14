@@ -27,10 +27,10 @@ flowchart LR
 
 ## Ablauf
 
-- **Verbindungen:** alle Clients zum Server, nie untereinander. Server dediziert (`mage_server`, headless) oder als Host in einem Spiel-Client für private Runden.
+- **Verbindungen:** alle Clients zum Server, nicht untereinander (direkte Verbindungen innerhalb eines Teams sind als spätere Optimierung offen: [[p-016-direkte-verbindungen-zwischen-clients|P-016]]). Server dediziert (`mage_server`, headless) oder als Host in einem Spiel-Client für private Runden.
 - **Tickrate:** 60 Ticks pro Sekunde überall.
 - **Client → Server:** `MageIntent` mit Tick-Nummer; jedes Paket wiederholt die letzten Intents, damit Verluste nichts kosten.
-- **Server → Client, laufend:** die Intents aller Spieler, die das Team des Clients in diesem Tick sieht, sobald sie beim Server angekommen sind.
+- **Server → Client, laufend:** die Intents aller Spieler, die das Team des Clients in diesem Tick sieht, sobald sie beim Server angekommen sind. Jeder weitergeleitete Intent trägt Absender (`PlayerId`), Tick und Sequenznummer und ist unabhängig vom Transportweg; pro Tick und Spieler zählt der erste, Doppelte werden verworfen.
 - **Rollback auf dem Client:** Der Client rechnet voraus. Für fremde Spieler, deren Intent noch fehlt, gilt deren letzter Intent weiter (gehaltene Knöpfe und Achsen, keine neuen Drücke). Kommt der echte Intent und weicht ab, spult der Client zum betroffenen Tick zurück (Snapshot) und rechnet bis jetzt neu. Rollback-Fenster: höchstens 8 Ticks (Platzhalter, abhängig von der Rechenleistung, [[benchmarks|Benchmarks]]).
 - **Server → Client, bei Bedarf:**
   - **Neu sichtbar:** Wird ein Gegner für ein Team sichtbar, schickt der Server dessen Zustand für diesen Tick; der Client fügt ihn per Rollback ein.
@@ -64,6 +64,7 @@ Ein Replay ist Szenario plus Seed plus alle Intents aller Spieler; der Server ze
 
 - [[p-009-netzwerk-crate-und-transport|P-009]] Netzwerk-Crate und Transport (eine fertige Rollback-Crate muss Teilsicht und Server-Korrekturen erlauben)
 - [[p-015-trefferwertung-unter-latenz|P-015]] Trefferwertung unter Latenz
+- [[p-016-direkte-verbindungen-zwischen-clients|P-016]] Direkte Verbindungen zwischen Clients als Optimierung
 - [[p-003-cross-plattform-determinismus-fuer-echtes-pvp|P-003]] Abweichungen zwischen Plattformen
 - Lobby, Matchmaking und Konten: nach Milestone 7.
 

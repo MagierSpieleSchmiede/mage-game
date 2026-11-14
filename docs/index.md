@@ -35,7 +35,7 @@ description: Ein stilisiertes 3D-Arena-Spiel für Teams von Magiern in Rust mit 
 | Spezifikation | [[spec-001-prototype\|Spec 001 — fundamentaler Prototyp]] |
 | Testing | [[teststrategie\|Teststrategie]] · [[headless-integrationstest\|Headless-Integrationstest]] · [[determinismustest\|Determinismustest]] · [[synchronisation-latenz\|Synchronisation & Latenz]] · [[benchmarks\|Benchmarks]] |
 | Planung | [[status\|Status]] · [[backlog\|Backlog]] · [[roadmap\|Roadmap & Milestones]] · [[erweiterungspunkte\|Erweiterungspunkte]] |
-| Probleme | [[problem-log\|Problem-Log]] (P-001 bis P-015) |
+| Probleme | [[problem-log\|Problem-Log]] (P-001 bis P-016) |
 | Konventionen | [[konventionen\|Konventionen]] · [[adr-nnnn\|ADR-Vorlage]] · [[p-nnn\|P-Vorlage]] |
 | Gestaltung | [[stil-vorbild\|Stil-Vorbild]] · [[einstieg-gestalten\|Gestalten]] |
 | Glossar | [[glossar\|Glossar]] — Begriffe von Intent bis Rollback |

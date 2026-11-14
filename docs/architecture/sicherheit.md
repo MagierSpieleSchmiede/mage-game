@@ -26,7 +26,7 @@ title: "Sicherheit — wie Server und PvP-Kommunikation abgesichert werden"
 | Fremde Verbindung übernehmen | Sitzungs-Token pro Verbindung, kurzlebig, an die Verbindung gebunden, nie in URLs oder Logs. Kontensystem erst nach M7; bis dahin Beitritts-Code pro Runde. |
 | Überlastung (DoS), riesige oder viele Pakete | Größenobergrenze pro Nachricht und pro Sekunde und Verbindung; Verbindungen ohne gültigen Handshake werden nach kurzer Zeit getrennt; ein Intent pro Spieler und Tick, Überzählige werden verworfen. |
 | Absturz durch fehlerhafte Daten | Begrenzte Parser: Längenpräfixe mit Obergrenze, keine unbegrenzten Listen, kein `unwrap` auf Netzwerkdaten. Fuzz-Tests für alle Nachrichtentypen. Ein fehlerhafter Client wird getrennt, der Server läuft weiter. |
-| IP-Adressen von Mitspielern | Kein Peer-to-Peer, auch nicht für Rollback; Spieler sehen nur den Server. |
+| IP-Adressen von Mitspielern | Kein Peer-to-Peer, auch nicht für Rollback; Spieler sehen nur den Server. Direkte Verbindungen höchstens später, innerhalb eines Teams und als Opt-in ([[p-016-direkte-verbindungen-zwischen-clients\|P-016]]). |
 | Manipulierter Client-Zustand (eigene Simulation verfälscht) | Ohne Wirkung auf andere: Der Client schickt keinen Zustand, und der Server korrigiert ihn beim nächsten Prüfstand. |
 | Bösartige Add-ons | WebAssembly-Sandbox ohne Dateisystem, Netzwerk und Uhr; Rechenzeit- und Speichergrenzen pro Tick ([[add-ons\|Add-ons]]). |
 | Unsichere Abhängigkeiten | `Cargo.lock` eingecheckt; CI prüft bekannte Schwachstellen und Lizenzen der Abhängigkeiten (`cargo audit` oder `cargo deny`); neue Abhängigkeiten nur begründet. |

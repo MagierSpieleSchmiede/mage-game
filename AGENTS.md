@@ -74,7 +74,7 @@ Bevy-Builds sind groß: Ein einziger Debug-Build legt mehrere Gigabyte in `targe
 
 - **Konventionen** stehen in `docs/templates/konventionen.md`: Titel „Thema — der Punkt in einem Halbsatz“, Front Matter mit `title:`, Verweise als Obsidian-Links `[[dateiname|Anzeigetext]]`.
 - **Entscheidungen** bekommen keine Prosa, sondern eine ADR nach `docs/templates/adr-nnnn.md`. Nächste freie Nummer steht in den Konventionen (derzeit ADR-0028).
-- **Offene Fragen** bekommen eine Seite nach `docs/templates/p-nnn.md` und eine Zeile in `docs/problems/problem-log.md` (derzeit P-016).
+- **Offene Fragen** bekommen eine Seite nach `docs/templates/p-nnn.md` und eine Zeile in `docs/problems/problem-log.md` (derzeit P-017).
 - **Status mitziehen:** Wer etwas baut, aktualisiert `docs/status.md` und das Implementation-Log des Milestones (`docs/milestones/mN-implementation-log.md`).
 - Nach neuen ADRs oder P-Einträgen die nächste freie Nummer in den Konventionen bzw. im Problem-Log hochzählen.
 - Der Vault ist auf Deutsch; Bezeichner im Code sind englisch.
