@@ -1841,6 +1841,7 @@ dependencies = [
 name = "mage_sim"
 version = "0.1.0"
 dependencies = [
+ "android-activity",
  "avian3d",
  "bevy",
 ]

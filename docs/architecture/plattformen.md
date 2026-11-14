@@ -32,4 +32,9 @@ Mage Game soll auf Windows, Linux und macOS laufen, auf Android und iOS, und im 
 | `aarch64-linux-android`, `aarch64-apple-ios` | `cargo check`, später Paket |
 | `wasm32-unknown-unknown` | `cargo check -p mage_sim`, später Web-Client |
 
+Die CI steht in `.github/workflows/ci.yml` (B-002). Zwei Eigenheiten der Ziele:
+
+- **Android:** Bevy bindet auf Android immer `android-activity` ein, und das baut erst, wenn die App eine Implementierung wählt. Der Client wählt sie über `bevy_winit`; die Simulation darf das nicht. Für den Check allein hat `mage_sim` deshalb das Feature `android-check`, das `native-activity` direkt wählt; der Client schaltet es nie ein.
+- **iOS:** Ein Build-Skript von `tracing-oslog` (iOS-Ausgabe von `bevy_log`) kompiliert C mit der Apple-Toolchain. Der iOS-Check läuft deshalb auf macOS, nicht unter Linux.
+
 Ab wann welche Stufe was prüft: [[p-014-mobile-und-web-builds|P-014]].

@@ -3,7 +3,7 @@ title: "ADR-0024 — Plattformneutralität: keine Entscheidung, die eine Zielpla
 ---
 # ADR-0024 — Plattformneutralität: keine Entscheidung, die eine Zielplattform ausschließt
 
-**Status:** vorgeschlagen
+**Status:** angenommen (2026-11-14)
 
 **Kontext:** Das Spiel soll auf Windows, Linux und macOS laufen, außerdem auf Android und iOS, und wenn es ohne größere Probleme geht, im Browser (WebAssembly). Jede dieser Plattformen hat Einschränkungen: keine Threads und kein Dateisystem im Browser, kein JIT auf iOS, Touch statt Maus auf Mobilgeräten, schwächere GPUs.
 

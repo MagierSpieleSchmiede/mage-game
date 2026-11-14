@@ -1,0 +1,76 @@
+name: CI
+
+# The gates from AGENTS.md on every platform (B-002, ADR-0024):
+#   tier 1  Linux, Windows, macOS   fmt, clippy, test
+#   tier 2  Android, iOS            cargo check of the simulation
+#   tier 3  Web (wasm32)            cargo check of the simulation
+# Changes that only touch the vault or the site are left to deploy.yml.
+
+on:
+  push:
+    branches: [master, "dev-*"]
+    paths-ignore: ["docs/**", "site/**", "**.md"]
+  pull_request:
+    paths-ignore: ["docs/**", "site/**", "**.md"]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - run: cargo fmt --all --check
+
+  # Clippy and tests on the three desktop systems.
+  desktop:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo clippy --all-targets --locked -- -D warnings
+      - run: cargo test --locked
+
+  # The simulation must build for every platform (plattformen.md, "Ziele für CI").
+  # iOS runs on macOS because a build script of bevy_log's iOS backend compiles C with the
+  # Apple toolchain. Android needs the android-check feature, see crates/mage_sim/Cargo.toml.
+  sim-targets:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: wasm32-unknown-unknown
+            os: ubuntu-latest
+            features: ""
+          - target: aarch64-linux-android
+            os: ubuntu-latest
+            features: "--features android-check"
+          - target: aarch64-apple-ios
+            os: macos-latest
+            features: ""
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: ${{ matrix.target }}
+      - run: cargo check -p mage_sim --locked --target ${{ matrix.target }} ${{ matrix.features }}

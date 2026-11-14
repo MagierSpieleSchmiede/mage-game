@@ -12,3 +12,13 @@ license.workspace = true
 # (rendering); only what static colliders, spatial queries and MoveAndSlide need (ADR-0003).
 avian3d = { workspace = true, features = ["3d", "parry-f32"] }
 bevy = { workspace = true, features = ["std"] }
+
+# Bevy always links android-activity on Android, which only compiles once the app picks an
+# implementation; the client does that through bevy_winit, which the simulation must not use.
+# This feature picks one so that CI can `cargo check` mage_sim for Android on its own (B-002).
+# The client never enables it.
+[features]
+android-check = ["dep:android-activity", "android-activity/native-activity"]
+
+[target.'cfg(target_os = "android")'.dependencies]
+android-activity = { version = "0.6.1", optional = true }
