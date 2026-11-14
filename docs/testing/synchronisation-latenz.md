@@ -20,12 +20,15 @@ Netzwerkverhalten wird nicht erst im echten Netz getestet. Ein Test startet Serv
 | Test | Erwartung |
 | --- | --- |
 | **Konvergenz** | Nachdem alle aufhören zu steuern, ist der Zustand jedes Clients (für alles, was er sieht) nach spätestens Puffer + Latenz + 2 Ticks gleich dem Server-Zustand. |
-| **Vorhersage ohne Verlust** | Im Profil LAN und gut korrigiert der Server die Vorhersage des eigenen Magiers nie (Prüfsummen gleich). |
-| **Abgleich** | Bei Verlust weicht die Vorhersage ab und wird korrigiert; die Korrektur ist nach einem Server-Stand vollständig, und alle späteren Eingaben bleiben erhalten. |
+| **Rollback ist exakt** | Ein Client, der fremde Eingaben verspätet bekommt und zurückspult, landet im selben Zustand wie ein Lauf, der alle Eingaben von Anfang an kannte (Byte-Vergleich). |
+| **Kein Server-Eingriff ohne Grund** | Im Profil LAN und gut, alle sichtbar, gleiche Plattform: der Server muss nie Zustand korrigieren (Prüfsummen gleich). |
+| **Rollback-Fenster** | Eingaben, die älter als das Fenster sind, führen nicht zu Rollback, sondern zu einer Server-Korrektur; danach ist der Client synchron. |
+| **Unsichtbare bleiben unsichtbar** | Kein Paket an Team A enthält Intents oder Zustand eines für Team A unsichtbaren Gegners; ein Treffer aus dem Verborgenen kommt als Server-Korrektur an. |
+| **Server gewinnt** | Ein absichtlich verfälschter Client-Zustand wird beim nächsten Prüfstand erkannt und durch den Server-Zustand ersetzt; alle späteren eigenen Eingaben bleiben erhalten. |
 | **Kein Eingabeverlust** | Jeder Tastendruck eines Clients wirkt auf dem Server genau einmal, auch bei 10 % Verlust (dank Wiederholung der letzten Intents). |
-| **Eingabeverzögerung** | Ein Intent wirkt auf dem Server spätestens Latenz + Jitter-Puffer + 1 Tick nach dem Senden; der Client sieht die Wirkung beim eigenen Magier sofort (Vorhersage). |
+| **Eingabeverzögerung** | Ein Intent wirkt auf dem Server spätestens Latenz + Jitter-Puffer + 1 Tick nach dem Senden; der Client sieht die Wirkung beim eigenen Magier sofort. |
 | **Sichtbarkeitsfilter** | Kein Paket an Team A enthält eine Entity, die für Team A unsichtbar ist; geprüft an jedem gesendeten Paket. |
-| **Fremde Magier flüssig** | Interpolierte Positionen springen bei Profil mittel nicht weiter als eine Platzhalter-Grenze pro Bild. |
+| **Fremde Magier flüssig** | Rollback-Korrekturen fremder Magier werden in der Darstellung geglättet; bei Profil mittel springt keine Position weiter als eine Platzhalter-Grenze pro Bild. |
 | **Treffer unter Latenz** | Anteil der Treffer, die auf dem Client sichtbar trafen, auf dem Server aber nicht, je Profil; Grundlage für [[p-015-trefferwertung-unter-latenz\|P-015]]. |
 | **Uhrabgleich** | Nach einem plötzlichen Latenzsprung von 25 auf 100 ms passt der Client seinen Vorlauf innerhalb einer Platzhalter-Zahl von Ticks an. |
 | **Bandbreite** | Bytes pro Sekunde je Client im 5-gegen-5-Szenario unter einer Grenze ([[benchmarks\|Benchmarks]]). |
@@ -33,4 +36,4 @@ Netzwerkverhalten wird nicht erst im echten Netz getestet. Ein Test startet Serv
 
 ## Messgrößen für Berichte
 
-Korrekturen pro Minute, mittlere und maximale Korrekturweite, Eingabeverzögerung (Mittel, 95. Perzentil), Bandbreite pro Client, Prüfsummen-Abweichungen. Werden bei jedem Lauf in die Testausgabe geschrieben, damit Veränderungen auffallen.
+Rollbacks pro Minute und mittlere Rollback-Tiefe, Server-Korrekturen pro Minute, mittlere und maximale Korrekturweite, Eingabeverzögerung (Mittel, 95. Perzentil), Bandbreite pro Client, Prüfsummen-Abweichungen. Werden bei jedem Lauf in die Testausgabe geschrieben, damit Veränderungen auffallen.

@@ -23,7 +23,7 @@ Tarnung und Wahrnehmung sind [[attribute|Attribute]]; Unsichtbarkeit ist ein Eff
 | --- | --- |
 | Homing ([[zauber-datenmodell\|Zauber-Datenmodell]]) | wählt nur Ziele, die für das Team des Zaubernden sichtbar sind; verliert das Ziel, wenn es unsichtbar wird |
 | [[beobachtung\|Beobachtung]] (HUD, KI, Add-ons) | enthält nur Entities mit gesetztem Bit des eigenen Teams |
-| Netzwerk ([[netzwerk\|Netzwerk]]) | der Server schickt einem Client nur, was dessen Team sieht (Interest Management) |
+| Netzwerk ([[netzwerk\|Netzwerk]]) | der Server leitet einem Client nur Intents und Zustand dessen weiter, was sein Team sieht (Interest Management); Rollback gibt es nur für Sichtbares |
 | Darstellung | eigene unsichtbare Teammitglieder halbtransparent; Gegner, die nicht sichtbar sind, existieren im Client gar nicht |
 | Replays und Zuschauer | sehen alles |
 

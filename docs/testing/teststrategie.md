@@ -12,7 +12,7 @@ title: "Teststrategie — Tests zuerst, auf sieben Ebenen"
 | 3. Determinismus | gleicher Seed und gleiche Intents → byte-gleicher Zustand | zwei Läufe, serialisierter Vergleich ([[determinismustest\|Determinismustest]]) | M1 |
 | 4. Präsentation | Animation blockiert keinen Cast; HUD zeigt nur Beobachtung; alle Texte vorhanden in Englisch und Deutsch | Client-App ohne Fenster bzw. mit Test-Fenster; Sprachdatei-Tests ([[lokalisierung\|Lokalisierung]]) | M3 |
 | 5. Leistung | Tick-Kosten, Schritte pro Sekunde, Bildzeit, Speicher | Benchmarks mit Szenarien ([[benchmarks\|Benchmarks]]) | M1 (Gerüst), M4 |
-| 6. Synchronisation und Latenz | Vorhersage, Abgleich, Konvergenz, Sichtbarkeitsfilter, Eingabeverzögerung | Server und Clients in einem Prozess mit simulierter Leitung ([[synchronisation-latenz\|Synchronisation & Latenz]]) | M7 |
+| 6. Synchronisation und Latenz | Rollback-Exaktheit, Server-Korrekturen, Konvergenz, Sichtbarkeitsfilter, Eingabeverzögerung | Server und Clients in einem Prozess mit simulierter Leitung ([[synchronisation-latenz\|Synchronisation & Latenz]]) | M7 |
 | 7. Robustheit | fehlerhafte Netzwerkdaten, Add-on-Missbrauch | Fuzz-Tests, Sandbox-Grenztests ([[sicherheit\|Sicherheit]]) | M7, M8 |
 
 ## Pflicht-Tests, die nie fehlen dürfen

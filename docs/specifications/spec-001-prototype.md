@@ -13,7 +13,7 @@ title: "Spec 001 — Mage Game: fundamentaler Prototyp (revidiert)"
 
 **Umfang**
 
-Entwirf für (implementiere nicht): KI-Gegner und Reinforcement Learning ([[ki-und-rl|KI & RL]]), Netzwerk mit Server und Client-Vorhersage ([[netzwerk|Netzwerk]], [[sicherheit|Sicherheit]]), Snapshot/Restore, Unsichtbarkeit mit Tarnung und Wahrnehmung ([[sichtbarkeit|Sichtbarkeit]]), Add-ons ([[add-ons|Add-ons]]), Touch-Steuerung, Mobile- und Web-Builds ([[plattformen|Plattformen]]), weitere Deliveries, Modifikatoren, Attribute und Effekte. Nicht im Umfang: Netzwerk, KI, Add-ons, Menüs, Audio, Asset-Pipelines, Spielstände, Zauber-Skriptsprachen, Animationen aus Asset-Dateien. Keine Abstraktion, die nicht der „Entwirf für"-Liste dient oder mindestens zweimal verwendet wird. Keine TODO-Stubs für Kernfunktionalität.
+Entwirf für (implementiere nicht): KI-Gegner und Reinforcement Learning ([[ki-und-rl|KI & RL]]), Rollback-Netcode mit Server als Schiedsrichter ([[netzwerk|Netzwerk]], [[sicherheit|Sicherheit]]), Snapshot/Restore, Unsichtbarkeit mit Tarnung und Wahrnehmung ([[sichtbarkeit|Sichtbarkeit]]), Add-ons ([[add-ons|Add-ons]]), Touch-Steuerung, Mobile- und Web-Builds ([[plattformen|Plattformen]]), weitere Deliveries, Modifikatoren, Attribute und Effekte. Nicht im Umfang: Netzwerk, KI, Add-ons, Menüs, Audio, Asset-Pipelines, Spielstände, Zauber-Skriptsprachen, Animationen aus Asset-Dateien. Keine Abstraktion, die nicht der „Entwirf für"-Liste dient oder mindestens zweimal verwendet wird. Keine TODO-Stubs für Kernfunktionalität.
 
 **Simulations-Invarianten**
 

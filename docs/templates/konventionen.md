@@ -11,7 +11,7 @@ Jede Seite beginnt mit Front Matter (`title:` in Anführungszeichen) und derselb
 
 ## Entscheidungen und Probleme
 
-- **ADR:** eine Seite `decisions/adr-nnnn-<slug>.md` nach der [[adr-nnnn|ADR-Vorlage]]. Eine angenommene ADR wird nicht still geändert; wer sie kippen will, schreibt eine neue ADR, die sie ersetzt. Jede ADR hat einen **Status**: *vorgeschlagen* (wartet auf Daniels Freigabe), *angenommen*, oder *ersetzt durch ADR-nnnn*. Nächste freie Nummer: **ADR-0027**.
+- **ADR:** eine Seite `decisions/adr-nnnn-<slug>.md` nach der [[adr-nnnn|ADR-Vorlage]]. Eine angenommene ADR wird nicht still geändert; wer sie kippen will, schreibt eine neue ADR, die sie ersetzt. Jede ADR hat einen **Status**: *vorgeschlagen* (wartet auf Daniels Freigabe), *angenommen*, oder *ersetzt durch ADR-nnnn*. Nächste freie Nummer: **ADR-0028**.
 - **Problem:** eine Seite `problems/p-nnn-<slug>.md` nach der [[p-nnn|P-Vorlage]] und eine Zeile im [[problem-log|Problem-Log]]. Nächste freie Nummer: **P-016**.
 - **Backlog-Item:** eine Zeile im [[backlog|Backlog]] (`B-nnn`) mit Abhängigkeiten und den zuerst zu schreibenden Tests; erledigte Items werden entfernt und ins Implementation-Log übernommen.
 - **Implementation-Log:** pro Milestone eine Seite `milestones/mN-implementation-log.md` („Milestone N — Implementation Log“), sobald gebaut wird: was gebaut wurde, was anders kam als geplant, welche ADRs und P-Einträge dabei entstanden.

@@ -3,7 +3,7 @@ title: "Status — was existiert, was fehlt"
 ---
 # Status — was existiert, was fehlt
 
-Stand 2026-11-14 (Vault v1.2): spezifiziert und geplant, nichts implementiert. ADR-0015 bis ADR-0026 sind **vorgeschlagen** und warten auf Freigabe. Die nächsten Aufgaben stehen im [[backlog|Backlog]].
+Stand 2026-11-14 (Vault v1.2): spezifiziert und geplant, nichts implementiert. ADR-0017 (Rollback mit Server als Schiedsrichter) und ADR-0027 (Zielfilter pro Fähigkeit) sind angenommen; die übrigen ADRs von ADR-0015 bis ADR-0026 sind **vorgeschlagen** und warten auf Freigabe. Die nächsten Aufgaben stehen im [[backlog|Backlog]].
 
 | Bereich | Heute | Fehlt |
 | --- | --- | --- |
@@ -18,7 +18,7 @@ Stand 2026-11-14 (Vault v1.2): spezifiziert und geplant, nichts implementiert. A
 | Leistung | Szenarien und Platzhalter-Budgets ([[benchmarks\|Benchmarks]]) | Referenzrechner ([[p-008-mindest-hardware-und-leistungsbudget\|P-008]]); M4 |
 | Plattformen | Stufen und Regeln ([[plattformen\|Plattformen]]) | CI-Ziele ([[p-014-mobile-und-web-builds\|P-014]]) |
 | KI und RL | geplant ([[ki-und-rl\|KI & RL]]) | Brücke ([[p-013-rl-bruecke\|P-013]]); M6 |
-| Netzwerk und Sicherheit | geplant: Server-autoritativ ([[netzwerk\|Netzwerk]], [[sicherheit\|Sicherheit]]) | Transport ([[p-009-netzwerk-crate-und-transport\|P-009]]), Trefferwertung ([[p-015-trefferwertung-unter-latenz\|P-015]]); M7 |
+| Netzwerk und Sicherheit | geplant: Rollback-Netcode mit Server als Schiedsrichter ([[netzwerk\|Netzwerk]], [[sicherheit\|Sicherheit]]) | Transport ([[p-009-netzwerk-crate-und-transport\|P-009]]), Trefferwertung ([[p-015-trefferwertung-unter-latenz\|P-015]]); M7 |
 | Add-ons | geplant ([[add-ons\|Add-ons]]) | Laufzeit und Fairness ([[p-010-add-on-laufzeit-und-fairness\|P-010]]); M8 |
 | Gestaltung / Assets | Greybox geplant; Stil-Vorbild; Einstieg für Gestaltende ([[einstieg-gestalten\|Gestalten]]) | Asset-Ablage ([[p-006-asset-ablage-und-grosse-binaerdateien\|P-006]]) |
 

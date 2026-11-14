@@ -6,7 +6,7 @@ Du arbeitest an **Mage Game**, einem stilisierten 3D-Arena-Spiel in Rust mit Bev
 
 ## Stand
 
-**Implementierung noch nicht begonnen.** `src/main.rs` ist ein Platzhalter. Nächster Schritt laut Vault: Milestone 1 — Walking Skeleton, Aufgaben im Backlog (`docs/backlog.md`). Fang nicht ungefragt mit Code an; Daniel gibt den Start frei. ADR-0015 bis ADR-0026 sind *vorgeschlagen*: Sie gelten als Planungsgrundlage, aber frag nach, bevor du Code darauf baust, solange Daniel sie nicht angenommen hat.
+**Implementierung noch nicht begonnen.** `src/main.rs` ist ein Platzhalter. Nächster Schritt laut Vault: Milestone 1 — Walking Skeleton, Aufgaben im Backlog (`docs/backlog.md`). Fang nicht ungefragt mit Code an; Daniel gibt den Start frei. ADR-0015 bis ADR-0026 sind *vorgeschlagen* (außer ADR-0017, angenommen): Sie gelten als Planungsgrundlage, aber frag nach, bevor du Code darauf baust, solange Daniel sie nicht angenommen hat.
 
 ## Zuerst lesen
 
@@ -73,7 +73,7 @@ Bevy-Builds sind groß: Ein einziger Debug-Build legt mehrere Gigabyte in `targe
 ## Den Vault pflegen
 
 - **Konventionen** stehen in `docs/templates/konventionen.md`: Titel „Thema — der Punkt in einem Halbsatz“, Front Matter mit `title:`, Verweise als Obsidian-Links `[[dateiname|Anzeigetext]]`.
-- **Entscheidungen** bekommen keine Prosa, sondern eine ADR nach `docs/templates/adr-nnnn.md`. Nächste freie Nummer steht in den Konventionen (derzeit ADR-0027).
+- **Entscheidungen** bekommen keine Prosa, sondern eine ADR nach `docs/templates/adr-nnnn.md`. Nächste freie Nummer steht in den Konventionen (derzeit ADR-0028).
 - **Offene Fragen** bekommen eine Seite nach `docs/templates/p-nnn.md` und eine Zeile in `docs/problems/problem-log.md` (derzeit P-016).
 - **Status mitziehen:** Wer etwas baut, aktualisiert `docs/status.md` und das Implementation-Log des Milestones (`docs/milestones/mN-implementation-log.md`).
 - Nach neuen ADRs oder P-Einträgen die nächste freie Nummer in den Konventionen bzw. im Problem-Log hochzählen.

@@ -32,8 +32,9 @@ Grundlage für alles, was danach kommt:
 
 - **KI-Gegner**, trainiert mit **Reinforcement Learning**, die auch beim
   Balancing helfen.
-- **PvP über einen Server**, der allein entscheidet, mit Vorhersage auf den
-  Clients ([Sicherheit](docs/architecture/sicherheit.md)).
+- **PvP mit Rollback-Netcode** und einem Server als Schiedsrichter: Jeder
+  Client rechnet selbst, was er sehen darf; im Zweifel gilt der Server
+  ([Sicherheit](docs/architecture/sicherheit.md)).
 - **Add-ons**, die den eigenen Charakter auslesen oder automatisieren, in
   einer Sandbox.
 
@@ -65,7 +66,7 @@ nächsten Aufgaben, siehe [Dokumentation](#dokumentation).
 | M4 — Härtung & Messung | Benchmarks, Desktop-Builds, Determinismus über alle Zauber |
 | M5 — Unsichtbarkeit | Tarnung, Wahrnehmung, Enthüllung |
 | M6 — KI & RL | Computergegner, Trainingsumgebung, Balancing durch Selbstspiel |
-| M7 — Netzwerk & Sicherheit | Server, Client-Vorhersage, Sync- und Latenztests |
+| M7 — Netzwerk & Sicherheit | Rollback-Netcode, Server als Schiedsrichter, Sync- und Latenztests |
 | M8 — Add-ons | Sandbox, Auslesen und Automatisieren |
 | M9 — Mobile & Web | Android, iOS, Touch, Web-Client wenn machbar |
 

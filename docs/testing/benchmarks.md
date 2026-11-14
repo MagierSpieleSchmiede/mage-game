@@ -23,6 +23,7 @@ Alle Szenarien sind deterministisch (fester Seed, aufgezeichnete Intents) und di
 | --- | --- | --- |
 | Simulations-Tick | Benchmark-Bibliothek in `mage_sim/benches/` | `teams_5v5` ≤ 2 ms pro Tick auf dem Referenzrechner (bei 60 Ticks/s also ≤ 12 % eines Kerns) |
 | Schritte pro Sekunde headless | dieselben Benchmarks | `duel_combat` ≥ 50-fache Echtzeit auf einem Kern (für RL) |
+| Rollback | Benchmark: Snapshot laden und 8 Ticks des für einen Client sichtbaren Teils von `teams_5v5` neu rechnen | ≤ 8 ms auf dem Referenzrechner (eine halbe Bildzeit); sonst schrumpft dort das Rollback-Fenster |
 | Snapshot und Beobachtung | Benchmarks | Snapshot von `teams_5v5` ≤ 0,2 ms, Größe ≤ 16 KB |
 | Bildzeit Client | Benchmark-Modus des Clients: fährt eine feste Kamerafahrt über ein Szenario, schreibt Bildzeiten | 60 Bilder/s (16,7 ms) im 95. Perzentil auf dem Referenzrechner bei 1280 × 720 |
 | Speicher | Benchmark-Modus | ≤ 1 GB Arbeitsspeicher im Client |

@@ -20,7 +20,7 @@ title: "Glossar"
 | SimId | fortlaufende ID jeder Simulations-Entity; bestimmt jede ergebnisrelevante Reihenfolge und liegt im Snapshot |
 | Headless | Simulations-Plugins ohne Fenster und Renderer, Normalfall der Tests |
 | Greybox | untexturierte Platzhaltergeometrie der Arena |
-| Rollback | Netcode-Ansatz: Snapshots des Simulationszustands, Zurückspulen und Neuausführen ab einem Tick |
+| Rollback | Netcode-Ansatz: bei verspäteter oder abweichender Eingabe zum betroffenen Tick zurückspulen (Snapshot) und neu rechnen; bei uns mit dem Server als Schiedsrichter |
 | ADR | Architecture Decision Record; nummerierte Entscheidung mit verworfener Alternative |
 | P-Log | Problem-Log; nummerierte offene Fragen mit nächstem Schritt |
 | Team / TeamId | Gruppe von Magiern, die zusammen spielen; „Gegner“ heißt immer: anderes Team |
@@ -33,9 +33,9 @@ title: "Glossar"
 | Beobachtung (Observation) | alles, was ein Spieler in einem Tick wissen darf; einzige Leseschnittstelle für HUD, KI, Add-ons, Netzwerk |
 | Aktion | geräteunabhängige Eingabe (Bewegen, Zauber 1 …), auf Tasten, Sticks oder Touch belegbar |
 | Fluent | Format für übersetzte Texte (`.ftl`), kann Mehrzahl und Variablen |
-| Server-autoritativ | nur der Server entscheidet, was passiert; Clients schicken Intents |
-| Client-Vorhersage | Client simuliert den eigenen Magier sofort, ohne auf den Server zu warten |
-| Reconciliation (Abgleich) | Client setzt bei Abweichung auf den Server-Stand zurück und simuliert eigene Eingaben neu |
+| Server als Schiedsrichter | der Server führt die maßgebliche Simulation; weicht ein Client ab, gilt der Server |
+| Vorhersage (fremder Eingaben) | fehlt der Intent eines Mitspielers noch, gilt dessen letzter Intent weiter, bis der echte ankommt |
+| Korrektur (Abgleich) | Client spult bei Abweichung zum Server-Stand zurück, übernimmt ihn und rechnet seine Eingaben neu |
 | Interest Management | Server schickt jedem Client nur, was dessen Team sehen darf |
 | Add-on | Spieler-Erweiterung in einer Sandbox: liest die Beobachtung, schlägt Intents vor |
 | RL (Reinforcement Learning) | Lernverfahren, bei dem Agenten durch Belohnungen aus vielen Spielen lernen |

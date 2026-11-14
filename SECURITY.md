@@ -6,8 +6,9 @@ und keine veröffentlichten Builds.
 ## Eine Sicherheitslücke melden
 
 Bitte **nicht** als öffentliches Issue. Stattdessen über GitHub:
-*Security → Report a vulnerability* in diesem Repository, oder direkt an die
-Maintainer. Wir antworten so schnell wie möglich.
+*Security → Report a vulnerability* in diesem Repository
+(<https://github.com/MagierSpieleSchmiede/mage-game/security/advisories/new>).
+Die Meldung ist nur für die Maintainer sichtbar. Wir antworten so schnell wie möglich.
 
 *Please do not open a public issue. Use "Security → Report a vulnerability"
 on GitHub instead.*

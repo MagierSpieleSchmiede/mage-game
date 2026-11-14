@@ -26,9 +26,8 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 | B-007 | Attribute: Basiswerte, Modifikatoren, Set Werte, `EffectiveAttributes`; Balance als Daten ([[attribute\|Attribute]]) | B-004, B-005 | Verrechnung, Stapelregeln, Ablauf in Ticks, Grenzen, Ganzzahligkeit, Reihenfolge nach Quelle | offen |
 | B-008 | Geseedete RNG-Ressource | B-003 | gleicher Seed → gleiche Folge; eine Clippy-Regel (`disallowed_methods`) verbietet andere Zufallsquellen in `mage_sim` | offen |
 | B-009 | Magier: Leben, Mana in Tausendsteln, Regeneration, Cooldowns, Bewegung per `MoveAndSlide` mit effektivem Tempo ([[kampf-physik\|Kampf & Physik]]) | B-005, B-006, B-007 | Regeneration vor Ausgaben; Cooldown N = frühestens N Ticks später; Tempo-Modifikator ändert Weg pro Tick | offen |
-| B-010 | **Entscheidung:** Friendly-Fire-Regel als ADR ([[p-007-friendly-fire-und-team-regeln\|P-007]]) | — (Daniel) | — | offen |
-| B-011 | Bolt: Blueprint-Registry, Projectile, Spread, Damage, Impacts sammeln und sortiert auslösen, `DamageApplied` ([[zauber-datenmodell\|Zauber-Datenmodell]]) | B-008, B-009, B-010 | Spec-Test: Dummy verliert Leben, Zaubernder Mana; Cast wirkt im Tick der Eingabe ohne jede Präsentation | blockiert (B-010) |
-| B-012 | 2-gegen-2: Bolt verhält sich gegenüber Verbündeten nach der Regel aus B-010 | B-011 | Szenario 2-gegen-2 mit Bolt zwischen Verbündeten hindurch | blockiert (B-010) |
+| B-011 | Bolt: Blueprint-Registry mit Zielfilter ([[adr-0027-zielfilter-pro-faehigkeit\|ADR-0027]]), Projectile, Spread, Damage, Impacts sammeln und sortiert auslösen, `DamageApplied` ([[zauber-datenmodell\|Zauber-Datenmodell]]) | B-008, B-009 | Spec-Test: Dummy verliert Leben, Zaubernder Mana; Cast wirkt im Tick der Eingabe ohne jede Präsentation | offen |
+| B-012 | 2-gegen-2 und Zielfilter | B-011 | Bolt fliegt durch einen Verbündeten und trifft den Gegner dahinter; ein Blueprint mit Filter „alle“ trifft den Verbündeten; Filter „Zaubernder“ trifft nur den Zaubernden | offen |
 | B-013 | Snapshot-Serialisierung und Determinismustest ([[determinismustest\|Determinismustest]]) | B-011 | zwei Läufe, byte-gleich; Test schlägt fehl, wenn eine Reihenfolge an `Entity` hängt | offen |
 | B-014 | Benchmark-Gerüst mit `duel_idle` und `duel_combat` ([[benchmarks\|Benchmarks]]) | B-011 | Benchmarks laufen in CI in Kurzform | offen |
 
@@ -40,7 +39,7 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 | B-016 | Beobachtung, Grundform: Ich, sichtbare Magier und Zauber ([[beobachtung\|Beobachtung]]) | B-015 | keine Entity ohne Team-Bit in der Beobachtung | offen |
 | B-017 | Homing-Bolt mit Zielwahl nach Team und Sichtbarkeit | B-011, B-015 | nächster sichtbarer Gegner; Zielverlust hinter Wand; Gleichstand nach `SimId` | offen |
 | B-018 | Slow als Attribut-Modifikator | B-007, B-011 | Tempo sinkt ab dem Folgetick; erneuter Slow setzt Dauer zurück | offen |
-| B-019 | Feuerball: GroundArea, Fuse, Split, Fragmente, AreaDamage | B-011, B-010 | Zielpunkt geklemmt; Fuse in Ticks; Fragmente ab Folgetick; Hindernis schirmt Flächenschaden ab | blockiert (B-010) |
+| B-019 | Feuerball: GroundArea, Fuse, Split, Fragmente, AreaDamage | B-011 | Zielpunkt geklemmt; Fuse in Ticks; Fragmente ab Folgetick; Hindernis schirmt Flächenschaden ab; Flächenschaden trifft auch Verbündete und den Zaubernden (Zielfilter) | offen |
 | B-020 | Tod und Respawn mit Spawnpunkten je Team | B-011 | tödlicher Treffer setzt `Dead` im selben Tick; Respawn nach 180 Ticks am Team-Spawnpunkt | offen |
 
 ## Milestone 3 — Arena & Präsentation
@@ -85,8 +84,7 @@ flowchart LR
   B005 --> B009["B-009 Magier"]
   B006 --> B009
   B007 --> B009
-  B010["B-010 Friendly Fire (Entscheidung)"] --> B011["B-011 Bolt"]
-  B008 --> B011
+  B008 --> B011["B-011 Bolt"]
   B009 --> B011
   B011 --> B012["B-012 2-gegen-2"]
   B011 --> B013["B-013 Determinismus"]
@@ -98,7 +96,6 @@ flowchart LR
   B007 --> B018["B-018 Slow"]
   B011 --> B018
   B011 --> B019["B-019 Feuerball"]
-  B010 --> B019
   B011 --> B020["B-020 Tod und Respawn"]
   B016 --> B021["B-021 Client"]
   B006 --> B022["B-022 Eingabe"]
