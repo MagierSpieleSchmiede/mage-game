@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Mage Game</title>
+      <link>https://magierspieleschmiede.github.io/mage-game</link>
+      <description>Letzte 10 Seiten on Mage Game</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>Determinismus — was garantiert wird, und auf welcher Ebene</title>
+    <link>https://magierspieleschmiede.github.io/mage-game/architecture/determinismus</link>
+    <guid>https://magierspieleschmiede.github.io/mage-game/architecture/determinismus</guid>
+    <description><![CDATA[ Determinismus — was garantiert wird, und auf welcher Ebene Garantiert ist bit-identische Reproduktion auf derselben Plattform- und Compiler-Konfiguration: gleicher Startzustand, gleiche Intent-Sequenz, gleicher Seed ⇒ identischer serialisierter Endzustand. ]]></description>
+    <pubDate>Sun, 15 Nov 2026 00:02:04 GMT</pubDate>
+  </item><item>
+    <title>Backlog — die nächsten Aufgaben der Implementierung</title>
+    <link>https://magierspieleschmiede.github.io/mage-game/backlog</link>
+    <guid>https://magierspieleschmiede.github.io/mage-game/backlog</guid>
+    <description><![CDATA[ Backlog — die nächsten Aufgaben der Implementierung Die konkreten nächsten Aufgaben, mit Abhängigkeiten. ]]></description>
+    <pubDate>Sun, 15 Nov 2026 00:02:04 GMT</pubDate>
+  </item><item>
+    <title>Milestone 1 — Implementation Log</title>
+    <link>https://magierspieleschmiede.github.io/mage-game/milestones/m1-implementation-log</link>
+    <guid>https://magierspieleschmiede.github.io/mage-game/milestones/m1-implementation-log</guid>
+    <description><![CDATA[ Milestone 1 — Implementation Log Was in M1 erledigt wurde, in der Reihenfolge des Abschlusses. ]]></description>
+    <pubDate>Sun, 15 Nov 2026 00:02:04 GMT</pubDate>
+  </item><item>
+    <title>Status — Übergabe: was zuletzt erledigt wurde und was als Nächstes kommt</title>
+    <link>https://magierspieleschmiede.github.io/mage-game/status</link>
+    <guid>https://magierspieleschmiede.github.io/mage-game/status</guid>
+    <description><![CDATA[ Status — Übergabe: was zuletzt erledigt wurde und was als Nächstes kommt Wozu diese Seite da ist Sie ist die Übergabe von einer Sitzung zur nächsten, damit niemand den ganzen Vault lesen muss. ]]></description>
+    <pubDate>Sun, 15 Nov 2026 00:02:04 GMT</pubDate>
+  </item><item>
+    <title>Attribute — wie stark und fähig ein Magier gerade ist</title>
+    <link>https://magierspieleschmiede.github.io/mage-game/architecture/attribute</link>
+    <guid>https://magierspieleschmiede.github.io/mage-game/architecture/attribute</guid>
+    <description><![CDATA[ Attribute — wie stark und fähig ein Magier gerade ist Jeder Magier hat mehrere Eigenschaften, die zusammen sagen, wie stark und fähig er in diesem Moment ist. ]]></description>
+    <pubDate>Sat, 14 Nov 2026 23:59:57 GMT</pubDate>
+  </item><item>
+    <title>ADR-0016 — Attribute mit Modifikatoren, pro Tick zu effektiven Werten verrechnet</title>
+    <link>https://magierspieleschmiede.github.io/mage-game/decisions/adr-0016-attribute-mit-modifikatoren</link>
+    <guid>https://magierspieleschmiede.github.io/mage-game/decisions/adr-0016-attribute-mit-modifikatoren</guid>
+    <description><![CDATA[ ADR-0016 — Attribute mit Modifikatoren, pro Tick zu effektiven Werten verrechnet Status: angenommen (2026-11-15) Kontext: Ein Spieler soll mehrere Eigenschaften haben, die sagen, wie stark und fähig er gerade ist (Tempo, Zauberkraft, Widerstand, Tarnung …), und die sich durch Effekte zeitweise änder... ]]></description>
+    <pubDate>Sat, 14 Nov 2026 23:59:57 GMT</pubDate>
+  </item><item>
+    <title>Entscheidungen — alle ADRs mit ihrem Stand</title>
+    <link>https://magierspieleschmiede.github.io/mage-game/decisions/entscheidungen</link>
+    <guid>https://magierspieleschmiede.github.io/mage-game/decisions/entscheidungen</guid>
+    <description><![CDATA[ Entscheidungen — alle ADRs mit ihrem Stand Die eine Liste aller Architekturentscheidungen. ]]></description>
+    <pubDate>Sat, 14 Nov 2026 23:59:57 GMT</pubDate>
+  </item><item>
+    <title>Intent &amp; Steuerung — MageIntent, InputBuffer, das Flanken-Protokoll</title>
+    <link>https://magierspieleschmiede.github.io/mage-game/architecture/intent-steuerung</link>
+    <guid>https://magierspieleschmiede.github.io/mage-game/architecture/intent-steuerung</guid>
+    <description><![CDATA[ Intent &amp; Steuerung — MageIntent, InputBuffer, das Flanken-Protokoll Zwei Datentypen, bewusst getrennt: MageIntent ist das, was die Simulation pro Tick konsumiert und was später über das Netz geht. ]]></description>
+    <pubDate>Sat, 14 Nov 2026 23:51:20 GMT</pubDate>
+  </item><item>
+    <title>Simulationsmodell — die eine große Wette: eine deterministische Tick-Kette</title>
+    <link>https://magierspieleschmiede.github.io/mage-game/architecture/simulationsmodell</link>
+    <guid>https://magierspieleschmiede.github.io/mage-game/architecture/simulationsmodell</guid>
+    <description><![CDATA[ Simulationsmodell — die eine große Wette: eine deterministische Tick-Kette Invarianten (nicht verhandelbar; 10 bis 12 neu, vorgeschlagen): Der gesamte Gameplay-Zustand liegt in Components und Ressourcen. ]]></description>
+    <pubDate>Sat, 14 Nov 2026 23:45:13 GMT</pubDate>
+  </item><item>
+    <title>Übersicht — das System in einem Diagramm</title>
+    <link>https://magierspieleschmiede.github.io/mage-game/architecture/uebersicht</link>
+    <guid>https://magierspieleschmiede.github.io/mage-game/architecture/uebersicht</guid>
+    <description><![CDATA[ Übersicht — das System in einem Diagramm Alles Gameplay läuft in einer headless-fähigen Simulation im FixedUpdate (Crate mage_sim). ]]></description>
+    <pubDate>Sat, 14 Nov 2026 23:45:13 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
