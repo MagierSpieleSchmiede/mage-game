@@ -1,0 +1,13 @@
+# The simulation draws randomness only from SimRng and never reads a clock (ADR-0008,
+# ADR-0009, determinismus.md). Everything that would bring in other randomness or time is
+# forbidden here; `cargo clippy -- -D warnings` turns a use into an error.
+disallowed-methods = [
+    { path = "std::time::Instant::now", reason = "no clock in the simulation; count ticks" },
+    { path = "std::time::SystemTime::now", reason = "no clock in the simulation; count ticks" },
+    { path = "std::collections::hash_map::RandomState::new", reason = "random seed; use SimRng" },
+]
+disallowed-types = [
+    { path = "std::collections::hash_map::RandomState", reason = "random seed; use SimRng" },
+    { path = "std::collections::HashMap", reason = "random iteration order; use BTreeMap" },
+    { path = "std::collections::HashSet", reason = "random iteration order; use BTreeSet" },
+]

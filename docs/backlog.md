@@ -17,9 +17,8 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 
 | Nr. | Aufgabe | Abhängig von | Tests (zuerst schreiben) | Status |
 | --- | --- | --- | --- | --- |
-| B-008 | Geseedete RNG-Ressource | — | gleicher Seed → gleiche Folge; eine Clippy-Regel (`disallowed_methods`) verbietet andere Zufallsquellen in `mage_sim` | offen |
 | B-009 | Einheiten-Kern: Leben, Mana in Tausendsteln, Regeneration, Cooldowns, Bewegung per `MoveAndSlide` mit effektivem Tempo; für alle Einheiten, nicht nur Magier ([[einheiten\|Einheiten]]) ([[kampf-physik\|Kampf & Physik]]) | — | Regeneration vor Ausgaben; Cooldown N = frühestens N Ticks später; Tempo-Modifikator ändert Weg pro Tick | offen |
-| B-011 | Bolt: Blueprint-Registry mit Zielfilter ([[adr-0027-zielfilter-pro-faehigkeit\|ADR-0027]]), Projectile, Spread, Damage, Impacts sammeln und sortiert auslösen, `DamageApplied` ([[zauber-datenmodell\|Zauber-Datenmodell]]) | B-008, B-009 | Spec-Test: Dummy verliert Leben, Zaubernder Mana; Cast wirkt im Tick der Eingabe ohne jede Präsentation | offen |
+| B-011 | Bolt: Blueprint-Registry mit Zielfilter ([[adr-0027-zielfilter-pro-faehigkeit\|ADR-0027]]), Projectile, Spread, Damage, Impacts sammeln und sortiert auslösen, `DamageApplied` ([[zauber-datenmodell\|Zauber-Datenmodell]]) | B-009 | Spec-Test: Dummy verliert Leben, Zaubernder Mana; Cast wirkt im Tick der Eingabe ohne jede Präsentation | offen |
 | B-012 | 2-gegen-2 und Zielfilter | B-011 | Bolt fliegt durch einen Verbündeten und trifft den Gegner dahinter; ein Blueprint mit Filter „alle“ trifft den Verbündeten; Filter „Zaubernder“ trifft nur den Zaubernden | offen |
 | B-013 | Snapshot-Serialisierung und Determinismustest ([[determinismustest\|Determinismustest]]) | B-011 | zwei Läufe, byte-gleich; Test schlägt fehl, wenn eine Reihenfolge an `Entity` hängt | offen |
 | B-014 | Benchmark-Gerüst mit `duel_idle` und `duel_combat` ([[benchmarks\|Benchmarks]]) | B-011 | Benchmarks laufen in CI in Kurzform | offen |
@@ -71,10 +70,8 @@ Die konkreten nächsten Aufgaben, mit Abhängigkeiten. Was dahinter steht, erkl�
 
 ```mermaid
 flowchart LR
-  B008["B-008 RNG"]
   B009["B-009 Einheiten-Kern"]
-  B008 --> B011["B-011 Bolt"]
-  B009 --> B011
+  B009 --> B011["B-011 Bolt"]
   B011 --> B012["B-012 2-gegen-2"]
   B011 --> B013["B-013 Determinismus"]
   B011 --> B014["B-014 Benchmark-Gerüst"]

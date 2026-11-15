@@ -22,6 +22,7 @@ pub mod headless;
 pub mod ids;
 pub mod intent;
 pub mod mage;
+pub mod rng;
 pub mod scenario;
 pub mod schedule;
 pub mod unit;
@@ -74,7 +75,7 @@ impl Plugin for MageSimPlugin {
             .add_systems(FixedUpdate, freeze_intents.in_set(SimSet::Intent))
             .add_systems(
                 Startup,
-                mage::spawn_scenario_mages.run_if(resource_exists::<Scenario>),
+                (rng::seed_rng, mage::spawn_scenario_mages).run_if(resource_exists::<Scenario>),
             );
     }
 }
